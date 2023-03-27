@@ -9,6 +9,12 @@ import usuarioRoutes from './routes/routesUsuario.js'
 
 const app = express()
 
+/**
+ * Este archivo lo usamos sobre todo para conectarnos a la bd, definir el puerto en el
+ * que se ejecutara el servidor y configurar las rutas para cada Routes (tenemos un routes
+ * por cada modelo/entidad)
+ */
+
 //Configuraciones
 app.use(cors())
 app.use(express.json())

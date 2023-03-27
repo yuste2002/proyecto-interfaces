@@ -1,7 +1,12 @@
 import AlmacenModel from "../models/AlmacenModel.js";
 import UsuarioModel from "../models/UsuarioModel.js";
 
+/**
+ * En el controlador creamos los metodos con los que realizaremos las consultas en el backend.
+ * Devolvemos un json con los datos de la consulta en el caso de los findAll.
+ */
 //MÉTODOS PARA EL CRUD
+
 
 export const getAllUsuarios = async (req, res) => {
     try {
@@ -58,5 +63,19 @@ export const updateUsuario = async (req,res) => {
         })
     } catch (error) {
         res.json( {message: error.message} )
+    }
+}
+
+//Metodo de papro para el login
+export const getByNameAndPassword = async (req,res) => {
+    try{
+        const user = await UsuarioModel.findOne({
+            where: {nombreUsuario: req.params.nombreUsuario, 
+                contrasena: req.params.contrasena}
+        });
+        console.log(user.dataValues.id)
+        res.json(user.dataValues.id)
+    }catch(error){
+        res.json({message : error.message})
     }
 }

@@ -1,48 +1,49 @@
+
 import axios from 'axios'
 import { useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-
+import { useParams } from 'react-router-dom'
 
 const URIuser = 'http://localhost:8000/usuarios/'
 
-const CompRegistro = () =>{
+const CompEditPerfil = () => {
+    const {idUser} = useParams()
+    /*
+    const usuarioOriginal = await axios.get(URIuser + idUser)
 
-    const [nombreUs, setNombreUs] = useState('')
-    const [correo, setCorreo] = useState('')
+    const [username, setUsername] = useState(usuarioOriginal.data.nombreUsuario)
+    const [email, setEmail] = useState(usuarioOriginal.data.correo)
+    const [password, setPassword] = useState(usuarioOriginal.data.contrasena)
+    const [name, setName] = useState(usuarioOriginal.data.nombre)
+    const [apellid, setApellid] = useState(usuarioOriginal.data.apellido)
+    */
+
+    const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [nombre, setNombre] = useState('')
-    const [apellido, setApellido] = useState('')
+    const [name, setName] = useState('')
+    const [apellid, setApellid] = useState('')
 
-    const navigate = useNavigate()
+    const editar = async () => {
+        const usuarioOriginal = await axios.get(URIuser + idUser)
+        console.log(usuarioOriginal.data)
 
-    async function registro (e) {
-        e.preventDefault()
-
-        await axios.post(URIuser, {
-            nombreUsuario:nombreUs, 
-            correo:correo, 
-            contrasena:password,
-            nombre:nombre,
-            apellido:apellido
-        })
-        navigate(`/`)
     }
 
     return(
         <div className='container'>
             <div className='row'>
                 <div className='col'>
-                    <h3>Registro</h3>
+                    <h3>Editar Perfil</h3>
                 </div>
             </div>
             <div className='row'>
                 <div className='col'>
-                    <form onSubmit={registro}>
+                    <form onSubmit={editar}>
                         <div className='mb-3'>
                             <label className='form-label'>Nombre de usuario</label>
                             <input
-                                value={nombreUs}
-                                onChange={ (e) => setNombreUs(e.target.value)}
+                                value={username}
+                                onChange={ (e) => setUsername(e.target.value)}
                                 type="text"
                                 className='form-control'
                             />
@@ -50,8 +51,8 @@ const CompRegistro = () =>{
                         <div className='mb-3'>
                             <label className='form-label'>Correo electronico</label>
                             <input
-                                value={correo}
-                                onChange={ (e) => setCorreo(e.target.value)}
+                                value={email}
+                                onChange={ (e) => setEmail(e.target.value)}
                                 type="text"
                                 className='form-control'
                             />
@@ -61,15 +62,15 @@ const CompRegistro = () =>{
                             <input
                                 value={password}
                                 onChange={ (e) => setPassword(e.target.value)}
-                                type="password"
+                                type="text"
                                 className='form-control'
                             />
                         </div>
                         <div className='mb-3'>
                             <label className='form-label'>Nombre</label>
                             <input
-                                value={nombre}
-                                onChange={ (e) => setNombre(e.target.value)}
+                                value={name}
+                                onChange={ (e) => setName(e.target.value)}
                                 type="text"
                                 className='form-control'
                             />
@@ -77,18 +78,20 @@ const CompRegistro = () =>{
                         <div className='mb-3'>
                             <label className='form-label'>Apellido</label>
                             <input
-                                value={apellido}
-                                onChange={ (e) => setApellido(e.target.value)}
+                                value={apellid}
+                                onChange={ (e) => setApellid(e.target.value)}
                                 type="text"
                                 className='form-control'
                             />
                         </div>
-                        <button type='submit' className='btn btn-primary'>Registrarse</button>
+                        <button type='submit' className='btn btn-primary'>Confirmar Cambios</button>
                     </form>
                 </div>
             </div>
         </div>
     )
+
+
 }
 
-export default CompRegistro
+export default CompEditPerfil

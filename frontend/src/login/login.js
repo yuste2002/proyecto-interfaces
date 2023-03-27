@@ -10,33 +10,39 @@ const URIuser = 'http://localhost:8000/usuarios/'
 
 const CompLogin = () => {
     const [user, setUser] = useState('')
-    const [contrasena, setContrasena] = useState('')
-    const [isLoggedIn, setLoggedIn] = useState(false)
+    const [password, setPassword] = useState('')
 
-    let usuario
     const navigate = useNavigate()
 
     async function inicioSesion (e) {
         e.preventDefault()
 
-        let usuario = null
+        //INICIO SESION YUSTE
+        /**
+         * Almaceno en usuarios todos los usuarios de la bd y uso la funcion find para buscar en el array
+         * de usuarios el que cumple con los requisitos. 
+         * - Si no se encuentra no se inicia sesion se ejecuta window.location.reload(false) que refresca 
+         * la pagina. Asi dejo el form limpio.
+         * - Si se inicia sesion, hago un navigate a la vista de dicho usuario para mostrar sus cosas
+         */
+        axios.get(URIuser)
+        .then(response => {
+            const usuarios = response.data
 
-        try {
-            usuario = await axios.get(URIuser, {
-                params: {
-                    nombreUsuario:user,
-                    contrasena:contrasena 
-                }
-            })
-            console.log(usuario.data.id)
-            setLoggedIn(true)
-        } catch(error){
-            console.log(error)
-        }
-        if(isLoggedIn) {
-            navigate(`/inicio/${usuario.id}`)
-        }
+            const usuarioEncontrado = usuarios.find(usuario => usuario.nombreUsuario === user && usuario.contrasena === password);
+            if(usuarioEncontrado != undefined) {
+                navigate(`/${usuarioEncontrado.id}`)
+            } else {
+                window.location.reload(false)
+            }
+        })
         
+        //INICIO SESION PAPRO
+        /*
+        const usuario = await axios.get(`${URIuser}/nombreUsuario/${user}/contrasena/${password}`)
+        console.log(usuario.data)
+        navigate(`/${usuario.data.id}`)
+        */
     }
 
     return(
@@ -61,8 +67,8 @@ const CompLogin = () => {
                         <div className='mb-3'>
                             <label className='form-label'>Contraseña</label>
                             <input
-                                value={contrasena}
-                                onChange={ (e) => setContrasena(e.target.value)}
+                                value={password}
+                                onChange={ (e) => setPassword(e.target.value)}
                                 type="password"
                                 className='form-control'
                             />
