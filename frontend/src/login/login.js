@@ -3,15 +3,49 @@ import axios from 'axios'
 //useState y useEffect son hooks. Estos nos permiten enganchar los componentes con todas las funciones
 //que ofrece la libreria react
 import {useState, useEffect} from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, Redirect, useNavigate} from 'react-router-dom'
 
 const URIuser = 'http://localhost:8000/usuarios/'
 
 const CompLogin = () => {
     const [user, setUser] = useState('')
     const [contrasena, setContrasena] = useState('')
+    const [isLoggedIn, setLoggedIn] = useState(false)
 
-    const inicioSesion = async (e) => {
+    let usuario
+    const navigate = useNavigate()
+    async function inicioSesion (e) {
+        /*console.log(contrasena)
+        console.log(user)*/
+        
+        let usuario = null
+        console.log("furula")
+        let userExists
+        try{
+            usuario = await axios.get(URIuser, {nombreUsuario:user, contrasena:contrasena})
+            console.log(usuario)
+            setLoggedIn(true)
+        }catch(error){
+            console.log(error)
+        }
+        if(isLoggedIn) {
+            navigate('/inicio')
+        }
+        
+        /*
+        axios.get(URIuser)
+            .then(response => {
+                userExists = response.data.some(u => u.nombreUsuario === user && u.contrasena === contrasena);
+                // userExists será true si se encuentra el usuario y false si no se encuentra
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        
+        if(userExists) {
+            setLoggedIn(true)
+        }*/
+        
         
     }
 
