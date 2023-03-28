@@ -1,15 +1,15 @@
 
 import axios from 'axios'
-import { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const URIuser = 'http://localhost:8000/usuarios/'
 
 const CompEditPerfil = () => {
     const {idUser} = useParams()
-    /*
-    const usuarioOriginal = await axios.get(URIuser + idUser)
+    const navigate = useNavigate()
 
+    /*
     const [username, setUsername] = useState(usuarioOriginal.data.nombreUsuario)
     const [email, setEmail] = useState(usuarioOriginal.data.correo)
     const [password, setPassword] = useState(usuarioOriginal.data.contrasena)
@@ -22,11 +22,30 @@ const CompEditPerfil = () => {
     const [password, setPassword] = useState('')
     const [name, setName] = useState('')
     const [apellid, setApellid] = useState('')
+    useEffect(() => {
+        valoresIniciales()
+    }, [])
+
+    const valoresIniciales = async () => {
+        const usuarioOriginal = await axios.get(URIuser + idUser)
+        setUsername(usuarioOriginal.data.nombreUsuario)
+        setEmail(usuarioOriginal.data.correo)
+        setPassword(usuarioOriginal.data.contrasena)
+        setName(usuarioOriginal.data.nombre)
+        setApellid(usuarioOriginal.data.apellido)
+    }
 
     const editar = async () => {
-        const usuarioOriginal = await axios.get(URIuser + idUser)
-        console.log(usuarioOriginal.data)
+        
+        await axios.put(URIuser + idUser, {
+            nombreUsuario: username,
+            correo: email,
+            contrasena: password,
+            nombre: name,
+            apellido: apellid
+        })
 
+        navigate(`/${idUser}`)
     }
 
     return(
@@ -42,7 +61,7 @@ const CompEditPerfil = () => {
                         <div className='mb-3'>
                             <label className='form-label'>Nombre de usuario</label>
                             <input
-                                value={username}
+                                defaultValue={username}
                                 onChange={ (e) => setUsername(e.target.value)}
                                 type="text"
                                 className='form-control'
@@ -51,7 +70,7 @@ const CompEditPerfil = () => {
                         <div className='mb-3'>
                             <label className='form-label'>Correo electronico</label>
                             <input
-                                value={email}
+                                defaultValue={email}
                                 onChange={ (e) => setEmail(e.target.value)}
                                 type="text"
                                 className='form-control'
@@ -60,7 +79,7 @@ const CompEditPerfil = () => {
                         <div className='mb-3'>
                             <label className='form-label'>Contraseña</label>
                             <input
-                                value={password}
+                                defaultValue={password}
                                 onChange={ (e) => setPassword(e.target.value)}
                                 type="text"
                                 className='form-control'
@@ -69,7 +88,7 @@ const CompEditPerfil = () => {
                         <div className='mb-3'>
                             <label className='form-label'>Nombre</label>
                             <input
-                                value={name}
+                                defaultValue={name}
                                 onChange={ (e) => setName(e.target.value)}
                                 type="text"
                                 className='form-control'
@@ -78,7 +97,7 @@ const CompEditPerfil = () => {
                         <div className='mb-3'>
                             <label className='form-label'>Apellido</label>
                             <input
-                                value={apellid}
+                                defaultValue={apellid}
                                 onChange={ (e) => setApellid(e.target.value)}
                                 type="text"
                                 className='form-control'
