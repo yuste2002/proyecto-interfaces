@@ -79,3 +79,16 @@ export const getByNameAndPassword = async (req,res) => {
         res.json({message : error.message})
     }
 }
+
+export const deleteUsuario = async (req,res) => {
+    try{
+        await UsuarioModel.delete(req.body, {
+            where: {id : req.params.id}
+        })
+        res.json({
+            "message":"Deleted"
+        })
+    }catch(error){
+        res.json( {message: error.message} )
+    }
+}  

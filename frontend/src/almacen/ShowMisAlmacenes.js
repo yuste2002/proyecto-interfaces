@@ -4,7 +4,7 @@ import axios from 'axios'
 
 const URIalmacen = 'http://localhost:8000/almacenes/'
 
-const CompShowUsuario = () => {
+const CompShowMisAlmacenes = () => {
     //Pillo el id del usuario desde la url
     const {idUser} = useParams()
 
@@ -18,6 +18,12 @@ const CompShowUsuario = () => {
         let almacens = res.data
         let almacenesFiltrados = almacens.filter(almacen => almacen.propietario == idUser)
         setAlmacenes(almacenesFiltrados)
+    }
+
+    const deleteAlmacen = async (id) => {
+        //HAY QUE HACER EL BORRADO EN CASCADA DE LOS OBJETOS ASOCIADOS AL ALMACEN   
+        await axios.delete(`${URIalmacen}${id}`)
+        getAlmacenes()
     }
 
     return(
@@ -34,6 +40,8 @@ const CompShowUsuario = () => {
                 { almacenes.map ( (almacen) => (
                     <div className="col badge rounded-pill bg-primary" key={almacen.id}>
                         <h2>{almacen.nombre}</h2>
+                        <Link to={`/${idUser}/editAlmacen/${almacen.id}`} className='btn btn-info'>Editar</Link> 
+                        <button onClick={ ()=>deleteAlmacen(almacen.id)}><i class="fa-sharp fa-solid fa-trash"></i></button>
                     </div>
                 ))}
             </div>
@@ -41,4 +49,4 @@ const CompShowUsuario = () => {
     )
 }
 
-export default CompShowUsuario
+export default CompShowMisAlmacenes

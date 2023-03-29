@@ -1,5 +1,5 @@
 import express from "express"
-import { createUsuario, getAllUsuarios, getByNameAndPassword, getUsuario, updateUsuario } from "../controllers/UsuarioController.js"
+import { createUsuario, getAllUsuarios, getByNameAndPassword, getUsuario, updateUsuario, deleteUsuario } from "../controllers/UsuarioController.js"
 
 /**
  * Con esta clase definimos las rutas de las consultas para el modelo de Usuario.
@@ -13,5 +13,6 @@ routerUsuario.get('/:id', getUsuario)
 routerUsuario.get('/nombreUsuario/:nombreUsuario/contrasena/:contrasena', getByNameAndPassword);
 routerUsuario.post('/', createUsuario)
 routerUsuario.put('/:id', updateUsuario)
+routerUsuario.delete('/:id', deleteUsuario)
 
 export default routerUsuario
