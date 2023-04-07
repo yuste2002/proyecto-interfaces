@@ -1,29 +1,40 @@
-import { useEffect, useState } from "react"
-import { useParams, Link } from "react-router-dom"
-import axios from 'axios'
+import { useParams } from "react-router-dom"
 
+const URIinvitacion = 'http://localhost:8000/invitaciones/'
 const URIalmacen = 'http://localhost:8000/almacenes/'
 
-const CompShowMisAlmacenes = () => {
-    //Pillo el id del usuario desde la url
+//NO SE SI FURULA   
+
+const CompShowCompartidos = () => {
     const {idUser} = useParams()
 
     const [almacenes, setAlmacenes] = useState([])
     useEffect( () => {
         getAlmacenes()
-    },[])
-    
-    const getAlmacenes = async () => {
-        const res = await axios.get(URIalmacen)
-        let almacens = res.data
-        let almacenesFiltrados = almacens.filter(almacen => almacen.propietario == idUser)
-        setAlmacenes(almacenesFiltrados)
-    }
+    })
 
-    const deleteAlmacen = async (id) => {
-        //HAY QUE HACER EL BORRADO EN CASCADA DE LOS OBJETOS ASOCIADOS AL ALMACEN   
-        await axios.delete(`${URIalmacen}${id}`)
-        getAlmacenes()
+    const getAlmacenes = async () => {
+        //Pillo todas las invitaciones de la bd
+        const res_invit = await axios.get(URIinvitacion)
+        let invitaciones = res_invit.data
+
+        //Obtengo mis invitaciones
+        let mis_invitaciones = invitaciones.filter(invitacion => invitacion.usuario == idUser)
+        
+        //Creo un array con los id de los almacenes que son compartidos conmigo
+        let mis_almacenes_compartidos_id
+        for (var invitacion of mis_invitaciones) {
+            mis_almacenes_compartidos_id.append(invitacion.almacen)
+        }
+
+        //Obtengo todos los almacenes de la bd
+        const res_almac = await axios.get(URIalmacen)
+        let almacenes = res_almac.data 
+
+        //Filtro los almacenes por el id del array creado y obtengo los mios (obtengo el objeto como tal)
+        let mis_compartidos = almacenes.filter(almacen => mis_almacenes_compartidos_id.includes(almacen.id))
+        
+        setAlmacenes(mis_compartidos)
     }
 
     return(
@@ -33,7 +44,7 @@ const CompShowMisAlmacenes = () => {
                     <h1>buscador</h1>
                 </div>
                 <div className="col-md-10">
-                    <h1>Mis Almacenes</h1>
+                    <h1>Compartidos Conmigo</h1>
                 </div>
                 <div className="col-md-1">
                     <Link to={`/${idUser}/editUser`} className='btn btn-primary mt-2 mb-2'><i class="fa-solid fa-user-ninja"></i></Link>
@@ -57,4 +68,4 @@ const CompShowMisAlmacenes = () => {
     )
 }
 
-export default CompShowMisAlmacenes
+export default CompShowCompartidos

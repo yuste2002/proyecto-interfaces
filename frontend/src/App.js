@@ -17,9 +17,6 @@ import EditAlmacen from "./almacen/EditAlmacen"
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login/>}/>

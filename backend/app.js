@@ -6,6 +6,7 @@ import db from "./database/db.js"
 
 import almacenRoutes from './routes/routesAlmacen.js'
 import usuarioRoutes from './routes/routesUsuario.js'
+import invitacionRoutes from './routes/routesInvitacion.js'
 
 const app = express()
 
@@ -20,6 +21,7 @@ app.use(cors())
 app.use(express.json())
 app.use('/almacenes', almacenRoutes)
 app.use('/usuarios', usuarioRoutes)
+app.use('/invitaciones', invitacionRoutes)
 
 try {
     await db.authenticate()
