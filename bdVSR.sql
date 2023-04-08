@@ -29,15 +29,15 @@ CREATE TABLE IF NOT EXISTS `vsr`.`almacens` (
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE)
 ENGINE = InnoDB
-AUTO_INCREMENT = 7
+AUTO_INCREMENT = 9
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `vsr`.`invitado`
+-- Table `vsr`.`invitados`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `vsr`.`invitado` (
+CREATE TABLE IF NOT EXISTS `vsr`.`invitados` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `usuario` VARCHAR(45) NULL DEFAULT NULL,
   `almacen` VARCHAR(45) NULL DEFAULT NULL,
@@ -45,6 +45,7 @@ CREATE TABLE IF NOT EXISTS `vsr`.`invitado` (
   `updatedAt` DATE NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 3
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 

@@ -17,6 +17,7 @@ const CompShowMisAlmacenes = () => {
         const res = await axios.get(URIalmacen)
         let almacens = res.data
         let almacenesFiltrados = almacens.filter(almacen => almacen.propietario == idUser)
+        console.log(almacens)
         setAlmacenes(almacenesFiltrados)
     }
 
@@ -37,11 +38,6 @@ const CompShowMisAlmacenes = () => {
                 </div>
                 <div className="col-md-1">
                     <Link to={`/${idUser}/editUser`} className='btn btn-primary mt-2 mb-2'><i class="fa-solid fa-user-ninja"></i></Link>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                <Link to={`/${idUser}/createAlmacen`} className='btn btn-primary mt-2 mb-2'><i class="fa-duotone fa-plus"></i></Link>
                 </div>
             </div>
             <div className="row">
