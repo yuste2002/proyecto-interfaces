@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `vsr`.`almacens` (
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE)
 ENGINE = InnoDB
-AUTO_INCREMENT = 9
+AUTO_INCREMENT = 13
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -51,9 +51,9 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `vsr`.`object`
+-- Table `vsr`.`objetos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `vsr`.`object` (
+CREATE TABLE IF NOT EXISTS `vsr`.`objetos` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL DEFAULT NULL,
   `descripcion` VARCHAR(45) NULL DEFAULT NULL,
@@ -64,23 +64,25 @@ CREATE TABLE IF NOT EXISTS `vsr`.`object` (
   `almacenAsociado` INT NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 2
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `vsr`.`reserva`
+-- Table `vsr`.`reservas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `vsr`.`reserva` (
+CREATE TABLE IF NOT EXISTS `vsr`.`reservas` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `fechaInicio` DATE NULL DEFAULT NULL,
   `fechaFin` DATE NULL DEFAULT NULL,
   `createdAt` DATE NULL DEFAULT NULL,
   `updatedAt` DATE NULL DEFAULT NULL,
-  `usuarioRes` INT NOT NULL,
-  `objetoRes` INT NOT NULL,
+  `usuarioReserva` INT NOT NULL,
+  `objetoReserva` INT NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 2
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -101,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `vsr`.`usuarios` (
   UNIQUE INDEX `idUsuario_UNIQUE` (`id` ASC) VISIBLE,
   UNIQUE INDEX `nombreUsuario_UNIQUE` (`nombreUsuario` ASC) VISIBLE)
 ENGINE = InnoDB
-AUTO_INCREMENT = 6
+AUTO_INCREMENT = 7
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
