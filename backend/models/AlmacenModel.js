@@ -14,3 +14,5 @@ const AlmacenModel = db.define('almacen', {
 })
 
 export default AlmacenModel
+
+//Segunda prueba
