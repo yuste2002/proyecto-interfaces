@@ -12,6 +12,7 @@ import Compartidos from "./almacen/ShowCompartidos"
 import BloqueIzq from "./bloqueIzquierdo/bloqueIzquierdo"
 import PagesMisAlmacenes from "./pages/MisAlmacenesBloque"
 import PagesCompartidos from "./pages/CompartidosBloque"
+import CompShowObjetos from './objeto/ShowObjetos'
 
 /**
  * Este es el archivo principal del frontend. En este archivo definimos las rutas para cada
@@ -31,6 +32,7 @@ function App() {
           <Route path="/:idUser/createAlmacen" element={<CreateAlmacen/>}/>
           <Route path="/:idUser/editUser" element={<EditUsuario/>}/>
           <Route path='/:idUser/editAlmacen/:idAlmacen' element={<EditAlmacen/>}/>
+          <Route path='/:idUser/:idAlmacen' element={<CompShowObjetos/>}/>
         </Routes>
       </BrowserRouter>
     </div>

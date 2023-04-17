@@ -17,7 +17,6 @@ const CompShowMisAlmacenes = () => {
         const res = await axios.get(URIalmacen)
         let almacens = res.data
         let almacenesFiltrados = almacens.filter(almacen => almacen.propietario == idUser)
-        console.log(almacens)
         setAlmacenes(almacenesFiltrados)
     }
 
@@ -44,7 +43,7 @@ const CompShowMisAlmacenes = () => {
                 { almacenes.map ( (almacen) => (
                     <div className="col badge rounded-pill bg-primary" key={almacen.id}>
                         <h2>{almacen.nombre}</h2>
-                        <Link to={`/${idUser}/editAlmacen/${almacen.id}`} className='btn btn-info'>Editar</Link> 
+                        <Link to={`/${idUser}/${almacen.id}`} className='btn btn-info'>Editar</Link> 
                         <button onClick={ ()=>deleteAlmacen(almacen.id)}><i class="fa-sharp fa-solid fa-trash"></i></button>
                     </div>
                 ))}

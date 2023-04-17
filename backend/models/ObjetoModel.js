@@ -7,7 +7,8 @@ const ObjetoModel = db.define('objeto',{
     descripcion: { type: DataTypes.STRING },
     ubicacion: { type: DataTypes.STRING },
     foto: { type: DataTypes.STRING },
-    almacenAsociado: { type: DataTypes.INTEGER }
+    almacenAsociado: { type: DataTypes.INTEGER },
+    propietario: { type: DataTypes.INTEGER }
 })
 
 export default ObjetoModel
