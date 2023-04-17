@@ -49,6 +49,7 @@ const CompShowMisAlmacenes = () => {
                 ))}
             </div>
         </div>
+
     )
 }
 
