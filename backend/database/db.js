@@ -6,3 +6,5 @@ const db = new Sequelize('vsr', 'root', 'Plk1plk1plk1', {
 }) 
 
 export default db
+
+//Probando
