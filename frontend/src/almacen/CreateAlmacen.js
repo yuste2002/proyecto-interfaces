@@ -25,6 +25,7 @@ const CompCreateAlmacen = () => {
     }
 
     const crearAlmacen = async (e) => {
+        e.preventDefault()
         const almacen = await axios.get(URIalmacen)
         let almacenesData = almacen.data
         const almacenNotAdded = almacenesData.find(almacen => name === almacen.nombre)
@@ -65,14 +66,14 @@ const CompCreateAlmacen = () => {
     return(
         <div className='container'>
             <div className='row'>
-                <div className='col'>
+                <div className='col mt-3'>
                     <h1>NUEVO ALMACEN</h1>
                 </div>
             </div>
             <div className='row'>
                 <div className='col'>
                     <form onSubmit={crearAlmacen}>
-                        <div className='mb-3'>
+                        <div className='mb-3 mt-3'>
                             <label className='form-label'>Nombre</label>
                             <input
                                 value={name}
@@ -80,29 +81,32 @@ const CompCreateAlmacen = () => {
                                 type="text"
                                 className='form-control'
                             />
-                            <div className='mb-3'>
+                            <div className='mb-3 mt-3'>
                             <label className='form-label'>Compartir con</label> <br/>
                             <input
                                 value={invitado}
                                 onChange={ (e) => setInvitado(e.target.value)}
                                 type="email"
                                 className='form-control'
+                                placeholder='usuario@ejemplo.com'
                             />
+                            <button onClick={nuevoInvitado} className='btn btn-info mt-1'>Compartir</button>
                             </div>
-                            <button onClick={nuevoInvitado} className='btn btn-primary'>Compartir</button>
-                            <table border={1}>
-                                {invitados.map((inv) => (
-                                    <tr>
-                                        <td key={inv}>
-                                            {inv}
-                                            <button onClick={ (e) =>deleteInvitado(e, inv)}><i class="fa-solid fa-trash"></i></button>
-                                        </td>
-                                        
-                                    </tr>
-                                ))}
-                            </table>
+                            <div>
+                                <table border={1}>
+                                    {invitados.map((inv) => (
+                                        <tr>
+                                            <td key={inv}>
+                                                {inv}
+                                                <button className='ms-2' onClick={ (e) =>deleteInvitado(e, inv)}><i class="fa-solid fa-trash"></i></button>
+                                            </td>
+                                            
+                                        </tr>
+                                    ))}
+                                </table>
+                            </div>
                         </div>
-                        <button type='submit' className='btn btn-primary'>Crear</button>
+                        <button type='submit' className='btn btn-primary btn-lg'>Crear nuevo almacen</button>
                     </form>
                 </div>
             </div>

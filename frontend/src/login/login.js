@@ -78,9 +78,9 @@ const CompLogin = () => {
                 </div>
             </div>
             <div className='row'>
-                <div className='col'>
-                    <h3>¿No tienes cuenta?</h3>
-                    <Link to="/registro" className='btn btn-info'>Registrate</Link>
+                <div className='col mt-3'>
+                    <h3>¿No tienes cuenta? <Link to="/registro" className='btn btn-info'>Registrate</Link></h3>
+                    
                 </div>
             </div>
         </div>

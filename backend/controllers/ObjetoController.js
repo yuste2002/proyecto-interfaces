@@ -20,6 +20,7 @@ export const getObjeto = async (req, res) => {
     }
 }
 
+
 export const createObjeto = async (req,res) => {
     try {
         await ObjetoModel.create(req.body)     //Capturamos todo el objeto con req.body
