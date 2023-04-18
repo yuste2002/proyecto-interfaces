@@ -18,11 +18,22 @@ function AlmacenBloque () {
         getAlmacen()
     },)
 
+    const [nombreAlmacen, setNombreAlmacen] = useState()
+    
+
     const getAlmacen = async () => {
         const res = await axios.get(URIalmacen + idAlmacen)
         let almacen = res.data
         setAlmacen(almacen)
-    } 
+    }
+    
+    const editarNombreAlmacen = async (e) => {
+        e.preventDefault()
+
+        await axios.put(URIalmacen + idAlmacen, {
+            nombre: nombreAlmacen
+        })
+    }
 
     return(
         <div className="container">
@@ -35,19 +46,29 @@ function AlmacenBloque () {
                         <div className="col-md-1">
                             <h1>Buscador</h1>
                         </div>
-                        <div className="col-md-10">
-                            {almacen&&(<h3>{almacen.nombre}</h3>)}
+                        <div className="col-md-2"></div>
+                        <div className="col-md-6">
+                            <form onSubmit={editarNombreAlmacen}>
+                            <label className='form-label mt-3'>Nombre almacen</label>
+                                <input 
+                                    value={nombreAlmacen}
+                                    onChange={ (e) => setNombreAlmacen(e.target.value)}
+                                    type="text"
+                                    className="form-control form-control-sm"/>
+                            </form>
+                            
                         </div>
+                        <div className="col-md-2"></div>
                         <div className="col-md-1">
                             <Link to={`/${idUser}/editUser`} className='btn btn-primary mt-2 mb-2'><i class="fa-solid fa-user-ninja"></i></Link>
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-md-5">
+                        <div className="col-md-5 mt-3">
                             <CompShowObjetos></CompShowObjetos>
                         </div>
                         <div className="col-md-2"></div>
-                        <div className="col-md-5">
+                        <div className="col-md-5 mt-3">
                             <CompShowMiembros/>
                         </div>
                     </div>

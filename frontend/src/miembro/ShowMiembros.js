@@ -68,6 +68,20 @@ const CompShowMiembros = () => {
         setEmail("")
     }
 
+    const expulsarMiembro = async (nombreUsuario) => {
+        const res = await axios.get(URIinvitaciones)
+        let invitados = res.data
+        const res2 = await axios.get(URIusuarios)
+        let usuarios = res2.data
+        let usuario = usuarios.find(usuario => usuario.nombreUsuario == nombreUsuario)
+        let invitacion = invitados.find(invitado => invitado.usuario == usuario.id && invitado.almacen == idAlmacen)
+        console.log(invitados)
+        console.log(invitacion)
+        console.log(invitacion.id)
+        await axios.delete(`${URIinvitaciones}${invitacion.id}`)
+        getMiembros()
+    }
+
     return(
         <div className="container">
             <div className="row">
@@ -80,15 +94,16 @@ const CompShowMiembros = () => {
                 </div>
             </div>
             { miembros.map ( (miembro) => (
-                    <div className="row">
+                    <div className="row mb-2">
                         <div className="col badge rounded-pill bg-primary">
                             <h3>{miembro}</h3>
+                            {propietarioAlmacen ? <button onClick={ () => expulsarMiembro(miembro)}>Expulsar</button> : null}
                         </div>
                     </div>
             ))
             }
             {propietarioAlmacen ? 
-            <div>
+            <div className="mb-2">
                 <form onSubmit={invitar}>
                     <label className='form-label'>Nombre</label>
                     <input

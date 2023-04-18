@@ -43,6 +43,14 @@ const CompShowCompartidos = () => {
         setAlmacens(mis_compartidos)
     }
 
+    const salirAlmacen = async (id) => {
+        const res = await axios.get(URIinvitacion)
+        let invitados = res.data
+        let invitacion = invitados.find(invitado => invitado.usuario == idUser && invitado.almacen == id)
+        await axios.delete(`${URIinvitacion}${invitacion.id}`)
+        getAlmacens()
+    }
+
     return(
         <div className="container">
             <div className="row">
@@ -60,6 +68,8 @@ const CompShowCompartidos = () => {
                 { almacens.map ( (almacen) => (
                     <div className="col badge rounded-pill bg-primary" key={almacen.id}>
                         <h2>{almacen.nombre}</h2>
+                        <Link to={`/${idUser}/${almacen.id}`} className='btn btn-info'>Acceder</Link>
+                        <button onClick={ () => salirAlmacen(almacen.id)}>Salir</button>
                     </div>
                 ))}
             </div>
