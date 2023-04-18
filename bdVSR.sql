@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: vsr
 -- ------------------------------------------------------
@@ -30,7 +30,7 @@ CREATE TABLE `almacens` (
   `propietario` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `almacens` (
 
 LOCK TABLES `almacens` WRITE;
 /*!40000 ALTER TABLE `almacens` DISABLE KEYS */;
-INSERT INTO `almacens` VALUES (1,'padel',NULL,NULL,2),(2,'consolas',NULL,NULL,4),(3,'peliculas',NULL,NULL,1),(4,'ropa',NULL,NULL,3);
+INSERT INTO `almacens` VALUES (1,'padel',NULL,NULL,2),(2,'consolas',NULL,NULL,4),(3,'peliculas',NULL,'2023-04-18',1),(4,'ropa',NULL,NULL,3);
 /*!40000 ALTER TABLE `almacens` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -57,11 +57,7 @@ CREATE TABLE `invitados` (
   `createdAt` date DEFAULT NULL,
   `updatedAt` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-<<<<<<< HEAD
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-=======
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
->>>>>>> 0b9f0150dd63f4337a0fcbe990876c1b63d1996e
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,11 +66,7 @@ CREATE TABLE `invitados` (
 
 LOCK TABLES `invitados` WRITE;
 /*!40000 ALTER TABLE `invitados` DISABLE KEYS */;
-<<<<<<< HEAD
-INSERT INTO `invitados` VALUES (1,1,1,NULL,NULL),(2,3,1,NULL,NULL),(3,2,2,NULL,NULL),(4,1,2,NULL,NULL),(5,3,2,NULL,NULL),(6,4,3,NULL,NULL),(7,2,4,NULL,NULL),(8,2,4,NULL,NULL);
-=======
-INSERT INTO `invitados` VALUES (1,4,1,'2022-04-04','2022-05-04'),(2,1,4,'2023-04-04','2023-05-04'),(3,7,4,NULL,NULL),(8,2,27,'2023-04-17','2023-04-17'),(9,4,27,'2023-04-17','2023-04-17'),(10,2,29,'2023-04-17','2023-04-17'),(11,2,30,'2023-04-17','2023-04-17'),(12,6,30,'2023-04-17','2023-04-17'),(13,2,36,'2023-04-17','2023-04-17'),(14,6,1,'2023-04-18','2023-04-18');
->>>>>>> 0b9f0150dd63f4337a0fcbe990876c1b63d1996e
+INSERT INTO `invitados` VALUES (1,1,1,NULL,NULL),(2,3,1,NULL,NULL),(3,2,2,NULL,NULL),(4,1,2,NULL,NULL),(5,3,2,NULL,NULL),(6,4,3,NULL,NULL),(7,2,4,NULL,NULL);
 /*!40000 ALTER TABLE `invitados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -97,11 +89,7 @@ CREATE TABLE `objetos` (
   `propietario` int DEFAULT NULL,
   `condiciones` varchar(400) DEFAULT NULL,
   PRIMARY KEY (`id`)
-<<<<<<< HEAD
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-=======
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
->>>>>>> 0b9f0150dd63f4337a0fcbe990876c1b63d1996e
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -110,10 +98,7 @@ CREATE TABLE `objetos` (
 
 LOCK TABLES `objetos` WRITE;
 /*!40000 ALTER TABLE `objetos` DISABLE KEYS */;
-<<<<<<< HEAD
-=======
-INSERT INTO `objetos` VALUES (1,'coche','coche de lucas','casa lucas',NULL,NULL,'2023-04-17',1,4,'como te estrelles vera'),(2,'play','play de lucas','casa lucas',NULL,NULL,NULL,1,4,NULL),(3,'xbox','xbox de lucas','casa lucas',NULL,NULL,NULL,1,1,NULL),(4,'hola','Hola caracola','Mi casa','','2023-04-18','2023-04-18',1,1,'-Comer papas');
->>>>>>> 0b9f0150dd63f4337a0fcbe990876c1b63d1996e
+INSERT INTO `objetos` VALUES (12,'fight club','Pelicula fight club','casa de yuste','','2023-04-18','2023-04-18',3,1,'No usarlo mas de 1 seman');
 /*!40000 ALTER TABLE `objetos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -133,7 +118,7 @@ CREATE TABLE `reservas` (
   `usuarioReserva` int NOT NULL,
   `objetoReserva` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -142,7 +127,7 @@ CREATE TABLE `reservas` (
 
 LOCK TABLES `reservas` WRITE;
 /*!40000 ALTER TABLE `reservas` DISABLE KEYS */;
-INSERT INTO `reservas` VALUES (1,'2022-02-02','2023-02-02',NULL,NULL,1,1);
+INSERT INTO `reservas` VALUES (1,'2022-02-02','2023-02-02',NULL,NULL,1,1),(2,'2023-04-03','2023-04-05','2023-04-18','2023-04-18',4,12),(4,'2023-04-06','2023-04-08','2023-04-18','2023-04-18',4,12),(29,'2023-04-19','2023-04-22','2023-04-18','2023-04-18',1,12),(30,'2023-04-26','2023-04-29','2023-04-18','2023-04-18',1,17),(31,'2023-04-25','2023-04-28','2023-04-18','2023-04-18',1,12),(32,'2023-04-28','2023-04-30','2023-04-18','2023-04-18',1,12);
 /*!40000 ALTER TABLE `reservas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -165,7 +150,7 @@ CREATE TABLE `usuarios` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `idUsuario_UNIQUE` (`id`),
   UNIQUE KEY `nombreUsuario_UNIQUE` (`nombreUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -174,7 +159,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'yuste','yuste@uma.es','yuste','alvaro','yuste moreno',NULL,NULL),(2,'iker','iker@uma.es','iker','iker','galvez castillo',NULL,NULL),(3,'rocio','rocio@uma.es','rocio','rocio','gomez mancebo',NULL,NULL),(4,'paproka','paproka@uma.es','paproka','pablo','alarcon carrion',NULL,NULL);
+INSERT INTO `usuarios` VALUES (1,'yuste','yuste@uma.es','yuste','alvaro','yuste moreno',NULL,'2023-04-18'),(2,'iker','iker@uma.es','iker','iker','galvez castillo',NULL,NULL),(3,'rocio','rocio@uma.es','rocio','rocio','gomez mancebo',NULL,NULL),(4,'paproka','paproka@uma.es','paproka','pablo','alarcon carrion',NULL,'2023-04-18');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -187,8 +172,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-<<<<<<< HEAD
--- Dump completed on 2023-04-18 16:43:23
-=======
--- Dump completed on 2023-04-18 13:01:25
->>>>>>> 0b9f0150dd63f4337a0fcbe990876c1b63d1996e
+-- Dump completed on 2023-04-18 23:06:10

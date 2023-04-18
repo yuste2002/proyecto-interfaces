@@ -63,6 +63,11 @@ const CompCreateAlmacen = () => {
         setInvitados(nuevoInvitados)
     }
 
+    const volverAtras = (e) => {
+        e.preventDefault()
+        navigate(-1)
+    }
+
     return(
         <div className='container'>
             <div className='row'>
@@ -106,7 +111,8 @@ const CompCreateAlmacen = () => {
                                 </table>
                             </div>
                         </div>
-                        <button type='submit' className='btn btn-primary btn-lg'>Crear nuevo almacen</button>
+                        <button type='submit' className='btn btn-primary btn-lg'>Crear nuevo almacen</button><br/>
+                        <button onClick={volverAtras} className='btn btn-secondary mt-2'>Volver atrás</button>
                     </form>
                 </div>
             </div>

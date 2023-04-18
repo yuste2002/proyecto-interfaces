@@ -77,6 +77,11 @@ const CompEditObjeto = () => {
         navigate(`/${idUser}/${objeto.almacenAsociado}`)
     }
 
+    const volverAtras = (e) => {
+        e.preventDefault()
+        navigate(-1)
+    }
+
     return(
         <div className="container">
             <div className="row">
@@ -138,7 +143,8 @@ const CompEditObjeto = () => {
                                 type="text"
                                 className="form-control"/>
                         </div>
-                        <button type="submit" className='btn btn-primary'>Guardar</button>
+                        <button type="submit" className='btn btn-primary'>Guardar</button> <br/>
+                        <button onClick={volverAtras} className='btn btn-secondary mt-2'>Volver atrás</button>
                     </form>
                 </div>
             </div>

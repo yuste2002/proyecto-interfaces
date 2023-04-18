@@ -1,13 +1,14 @@
 import React from 'react'
 import { Calendar, momentLocalizer } from 'react-big-calendar'
 import moment from 'moment'
-import { useParams, Link, useNavigate } from "react-router-dom"
+import { useParams, Link, useNavigate, Navigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import axios from 'axios'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 
 require('moment/locale/es.js');
 const localizer = momentLocalizer(moment)
+const fechaActual = moment().toDate()
 
 const URIreservas = "http://localhost:8000/reservas/"
 const URIobjetos = "http://localhost:8000/objetos/"
@@ -16,6 +17,7 @@ const URIusuarios = "http://localhost:8000/usuarios/"
 const CompReservaObjeto = () => {
     const {idUser} = useParams()
     const {idObjeto} = useParams()
+    const navigate = useNavigate()
     const [objeto, setObjeto] = useState('')
     useEffect( () => {
         getObjeto()
@@ -27,6 +29,7 @@ const CompReservaObjeto = () => {
         setObjeto(objeto)
         getObjeto()
     }
+
     const [usuarios, setUsuarios] = useState([])
     useEffect( () => {
         getUsuario()
@@ -47,7 +50,6 @@ const CompReservaObjeto = () => {
     const getUsuarioActual = async () => {
         const res = await axios.get(URIusuarios+idUser)
         const usuario = res.data
-        console.log(usuario)
         setUsuarioActual(usuario)
         getUsuarioActual()
     }
@@ -58,7 +60,15 @@ const CompReservaObjeto = () => {
       const obtenerReservas = async () => {
           const respuesta = await axios.get(URIreservas)
           const data = respuesta.data
-          setReservas(data)
+
+        /**
+         * Aqui filtro para que en el calendario solo se muestren las reservas futuras, ya que es lo
+         * que le interesa al usuario. Las reservas del pasado son irrelevantes.
+         * Tambien filtro para que solo me muestre las reservas de mi objeto
+         */
+        let reserv = data.filter(reserva => fechaActual < moment(reserva.fechaInicio).toDate() && reserva.objetoReserva == idObjeto)
+
+        setReservas(reserv)
       }
   
       obtenerReservas()
@@ -70,12 +80,35 @@ const CompReservaObjeto = () => {
 
     const reservar = async (e) => {
         e.preventDefault()
-        axios.post(URIreservas, {
-            fechaInicio: fechaInicio,
-            fechaFin: fechaFin,
-            usuarioReserva: idUser,
-            objetoReserva: idObjeto
+
+        if(fechaActual < moment(fechaInicio).toDate() && moment(fechaInicio).isBefore(moment(fechaFin)) && (!coincide(fechaInicio, fechaFin))) {     //La fecha inicio es posterior a la actual
+            axios.post(URIreservas, {
+                fechaInicio: fechaInicio,
+                fechaFin: fechaFin,
+                usuarioReserva: idUser,
+                objetoReserva: idObjeto
+            })
+        }
+
+        navigate(`/objeto/${idObjeto}/${idUser}`)
+        
+    }
+
+    function coincide(inicio, fin) {
+        let coincide = false
+
+        /**
+         * Comparo primero que no coincida por el inicio
+         * Despues comparo que no coincidan por el final
+         * Me falta comparar que no sean exactamente la misma fecha
+         */
+        reservas.forEach(reserva => {
+            if( moment(reserva.fechaInicio).isBefore(moment(inicio)) && moment(inicio).isBefore(moment(reserva.fechaFin)) ||
+                moment(reserva.fechaInicio).isBefore(moment(fin)) && moment(fin).isBefore(moment(reserva.fechaFin))) {
+                coincide = true
+            }
         })
+        return coincide
     }
 
     const eventos = reservas.map(reserva => ({
@@ -85,6 +118,7 @@ const CompReservaObjeto = () => {
         end: reserva.fechaFin,
         description: objeto.nombre
       }));
+
   return (
     <div>
       <Calendar

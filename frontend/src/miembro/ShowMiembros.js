@@ -42,7 +42,11 @@ const CompShowMiembros = () => {
     const getPropietario = async () => {
         const res = await axios.get(URIalmacen + idAlmacen)
         let almacen = res.data
-        setPropietario(almacen.propietario)
+
+        const res2 = await axios.get(`${URIusuarios}${almacen.propietario}`)
+        let propietario = res2.data
+
+        setPropietario(propietario.nombreUsuario)
     }
 
     const getMiembros = async () => {
@@ -101,7 +105,7 @@ const CompShowMiembros = () => {
             </div>
             <div className="row mb-2">
                         <div className="col badge rounded-pill bg-primary">
-                            <h3>{propietario}</h3>
+                            <h3>{propietario} (propietario)</h3>
                         </div>
                     </div>
             { miembros.map ( (miembro) => (

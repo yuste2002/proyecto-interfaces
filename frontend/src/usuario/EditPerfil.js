@@ -1,7 +1,7 @@
 
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, Link } from 'react-router-dom'
 
 const URIuser = 'http://localhost:8000/usuarios/'
 
@@ -35,8 +35,9 @@ const CompEditPerfil = () => {
         setApellid(usuarioOriginal.data.apellido)
     }
 
-    const editar = async () => {
-        
+    const editar = async (e) => {
+        e.preventDefault()
+
         await axios.put(URIuser + idUser, {
             nombreUsuario: username,
             correo: email,
@@ -45,7 +46,12 @@ const CompEditPerfil = () => {
             apellido: apellid
         })
 
-        navigate(`/${idUser}`)
+        navigate(-1)
+    }
+
+    const volverAtras = (e) => {
+        e.preventDefault()
+        navigate(-1)
     }
 
     return(
@@ -103,7 +109,8 @@ const CompEditPerfil = () => {
                                 className='form-control'
                             />
                         </div>
-                        <button type='submit' className='btn btn-primary'>Confirmar Cambios</button>
+                        <button type='submit' className='btn btn-primary'>Confirmar Cambios</button> <br/>
+                        <button onClick={volverAtras} className='btn btn-secondary mt-2'>Volver atrás</button>
                     </form>
                 </div>
             </div>

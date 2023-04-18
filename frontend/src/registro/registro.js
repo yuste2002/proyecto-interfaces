@@ -28,6 +28,11 @@ const CompRegistro = () =>{
         navigate(`/`)
     }
 
+    const volverAtras = (e) => {
+        e.preventDefault()
+        navigate(-1)
+    }
+
     return(
         <div className='container'>
             <div className='row'>
@@ -83,7 +88,8 @@ const CompRegistro = () =>{
                                 className='form-control'
                             />
                         </div>
-                        <button type='submit' className='btn btn-primary'>Registrarse</button>
+                        <button type='submit' className='btn btn-primary'>Registrarse</button> <br/>
+                        <button onClick={volverAtras} className='btn btn-secondary mt-2'>Volver atrás</button>
                     </form>
                 </div>
             </div>

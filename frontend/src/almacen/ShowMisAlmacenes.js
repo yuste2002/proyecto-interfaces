@@ -3,6 +3,8 @@ import { useParams, Link } from "react-router-dom"
 import axios from 'axios'
 
 const URIalmacen = 'http://localhost:8000/almacenes/'
+const URIinvitacion = 'http://localhost:8000/invitaciones/'
+const URIobjeto = 'http://localhost:8000/objetos/'
 
 const CompShowMisAlmacenes = () => {
     //Pillo el id del usuario desde la url
@@ -21,7 +23,23 @@ const CompShowMisAlmacenes = () => {
     }
 
     const deleteAlmacen = async (id) => {
-        //HAY QUE HACER EL BORRADO EN CASCADA DE LOS OBJETOS ASOCIADOS AL ALMACEN   
+        //Borrado en cascada de los objetosAsociados al almacen 
+        const resObj = await axios.get(URIobjeto)
+        let objetos = resObj.data
+        let objetosAsociados = objetos.filter(objeto => objeto.almacenAsociado === id)
+        //Por cada objeto tengo que borrar sus reservas asociadas (luego)
+        objetosAsociados.map(async (objeto) => {
+            await axios.delete(`${URIobjeto}${objeto.id}`)
+        })
+
+        //Borrado en cascada de las invitaciones asociadas al almacen
+        const resInv = await axios.get(URIinvitacion)
+        let invitaciones = resInv.data
+        let invitacionesAsociadas = invitaciones.filter(invitacion => invitacion.almacen === id)
+        invitacionesAsociadas.map(async (invitacion) => {
+            await axios.delete(`${URIinvitacion}${invitacion.id}`)
+        })
+
         await axios.delete(`${URIalmacen}${id}`)
         getAlmacenes()
     }
