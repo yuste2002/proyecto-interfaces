@@ -12,7 +12,7 @@ const CompShowObjetos = () => {
     const [objetos, setObjetos] = useState([])
     useEffect( () => {
         getObjetos()
-    },[])
+    },objetos)
 
     const [propietarioAlmacen, setPropietarioAlmacen] = useState(false) 
     useEffect( () => {
@@ -37,6 +37,12 @@ const CompShowObjetos = () => {
         setObjetos(objetosFiltrados)
     }
 
+    const deleteObjeto = async (id) => {
+        //HAY QUE HACER EL BORRADO EN CASCADA DE LOS OBJETOS ASOCIADOS AL ALMACEN   
+        await axios.delete(`${URIobjetos}${id}`)
+        getObjetos()
+    }
+
     return (
         <div className="container">
             <div className="row">
@@ -52,7 +58,10 @@ const CompShowObjetos = () => {
                     <div className="row">
                         <div className="col badge rounded-pill bg-primary" key={objeto.id}>
                             <h3>{objeto.nombre}</h3>
-                            {propietarioAlmacen || objeto.propietario == idUser ? <Link to={`/objeto/${objeto.id}/${idUser}`} className='btn btn-primary mt-2 mb-2'>Editar</Link> : null}
+                            <div className="col">
+                            <Link to={`/objeto/${objeto.id}/${idUser}`} className='btn btn-outline-dark btn-primary mt-2 mb-2'>Reservar o gestionar</Link>
+                            {propietarioAlmacen || objeto.propietario == idUser ? <div><button onClick={()=>deleteObjeto(objeto.id)}><i class="fa-sharp fa-solid fa-trash"></i></button></div> : null}
+                            </div>
                         </div>
                     </div>
                 ))}
