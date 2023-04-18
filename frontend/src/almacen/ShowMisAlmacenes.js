@@ -43,7 +43,7 @@ const CompShowMisAlmacenes = () => {
                 { almacenes.map ( (almacen) => (
                     <div className="col badge rounded-pill bg-primary" key={almacen.id}>
                         <h2>{almacen.nombre}</h2>
-                        <Link to={`/${idUser}/${almacen.id}`} className='btn btn-info'>Editar</Link> 
+                        <Link to={`/${idUser}/${almacen.id}`} className='btn btn-info'>Acceder</Link> 
                         <button onClick={ ()=>deleteAlmacen(almacen.id)}><i class="fa-sharp fa-solid fa-trash"></i></button>
                     </div>
                 ))}
