@@ -4,6 +4,12 @@
 -- ------------------------------------------------------
 -- Server version	8.0.32
 
+-- -----------------------------------------------------
+-- Schema vsr
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `vsr` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+USE `vsr` ;
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;

@@ -48,7 +48,7 @@ function AlmacenBloque () {
                         </div>
                         <div className="col-md-2"></div>
                         <div className="col-md-5">
-                            <h1>MostrarMiembros</h1>
+                            <CompShowMiembros/>
                         </div>
                     </div>
                 </div>

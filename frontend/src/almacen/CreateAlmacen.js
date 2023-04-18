@@ -2,7 +2,6 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-
 const URIalmacen = 'http://localhost:8000/almacenes/'
 const URIusuario = 'http://localhost:8000/usuarios/'
 const URIinvitacion = 'http://localhost:8000/invitaciones/'
