@@ -73,11 +73,13 @@ const CompShowMiembros = () => {
         let usuarios = res.data
         let usuarioYes = usuarios.find(usuario => usuario.correo === email)
 
-        await axios.post(URIinvitaciones, {
-            almacen: parseInt(idAlmacen),
-            usuario: usuarioYes.id
-        })
-        setMiembros([...miembros,usuarioYes.nombreUsuario])
+        if (miembros.find(usuario => usuario === usuarioYes.nombreUsuario) == undefined){
+            await axios.post(URIinvitaciones, {
+                almacen: parseInt(idAlmacen),
+                usuario: usuarioYes.id
+            })
+            setMiembros([...miembros,usuarioYes.nombreUsuario])
+        }
         setEmail("")
     }
 
