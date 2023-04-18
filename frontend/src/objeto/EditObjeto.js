@@ -99,7 +99,7 @@ const CompEditObjeto = () => {
                             <input
                                 value={nombre}
                                 type="text"
-                                className="form-control"
+                                className="form-control bg-light"
                                 readonly
                             />
                             }
@@ -113,7 +113,7 @@ const CompEditObjeto = () => {
                                 className="form-control"/> :
                                 <textarea cols={30} rows={5} 
                                     value={condiciones} 
-                                    className="form-control" readonly/>
+                                    className="form-control bg-light" readonly/>
                             }
                             
                         </div>
@@ -126,7 +126,7 @@ const CompEditObjeto = () => {
                                 className="form-control"/> :
                                 <textarea cols={30} rows={5} 
                                     value={descripcion} 
-                                    className="form-control" readonly/>
+                                    className="form-control bg-light" readonly/>
                             }
                             
                         </div>

@@ -47,23 +47,20 @@ const CompShowObjetos = () => {
 
     return (
         <div className="container">
-            {navigate(`/${idUser}/${idAlmacen}`)}
             <div className="row">
                 <div className="col-md-1">
                     <h2>Objetos</h2>
                 </div>
-                <div className="col-md-10"/>
-                <div className="col-md-1">
-                    <h4>Buscador</h4>
-                </div>
+                <div className="col-md-11"/>
             </div>
             { objetos.map ( (objeto) => (
                     <div className="row">
-                        <div className="col badge rounded-pill bg-primary" key={objeto.id}>
+                        <div className="col badge rounded-pill bg-primary mb-2" key={objeto.id}>
                             <h3>{objeto.nombre}</h3>
                             <div className="col">
-                            <Link to={`/objeto/${objeto.id}/${idUser}`} className='btn btn-outline-dark btn-primary mt-2 mb-2'>Reservar o gestionar</Link>
-                            {propietarioAlmacen || objeto.propietario == idUser ? <div><button onClick={()=>deleteObjeto(objeto.id)}><i class="fa-sharp fa-solid fa-trash"></i></button></div> : null}
+                            <Link to={`/objeto/${objeto.id}/${idUser}`} className='btn btn-info mt-2 mb-2'>Reservar o gestionar</Link>
+                            {propietarioAlmacen || objeto.propietario == idUser ? 
+                            <button className="ms-2" onClick={()=>deleteObjeto(objeto.id)}><i class="fa-sharp fa-solid fa-trash"></i></button> : null}
                             </div>
                         </div>
                     </div>

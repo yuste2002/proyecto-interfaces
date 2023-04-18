@@ -29,10 +29,7 @@ const CompShowMisAlmacenes = () => {
     return(
         <div className="container">
             <div className="row">
-                <div className="col-md-1">
-                    <h1>buscador</h1>
-                </div>
-                <div className="col-md-10">
+                <div className="col-md-11">
                     <h1>Mis Almacenes</h1>
                 </div>
                 <div className="col-md-1">
@@ -41,10 +38,10 @@ const CompShowMisAlmacenes = () => {
             </div>
             <div className="row">
                 { almacenes.map ( (almacen) => (
-                    <div className="col badge rounded-pill bg-primary" key={almacen.id}>
+                    <div className="col badge rounded-pill bg-primary m-2" key={almacen.id}>
                         <h2>{almacen.nombre}</h2>
                         <Link to={`/${idUser}/${almacen.id}`} className='btn btn-info'>Acceder</Link> 
-                        <button onClick={ ()=>deleteAlmacen(almacen.id)}><i class="fa-sharp fa-solid fa-trash"></i></button>
+                        <button className="ms-2" onClick={ ()=>deleteAlmacen(almacen.id)}><i class="fa-sharp fa-solid fa-trash"></i></button>
                     </div>
                 ))}
             </div>

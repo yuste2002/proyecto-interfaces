@@ -33,7 +33,17 @@ const CompShowMiembros = () => {
         }
         
     }
-    
+
+    const [propietario, setPropietario] = useState('')
+    useEffect( () => {
+        getPropietario()
+    },'')
+
+    const getPropietario = async () => {
+        const res = await axios.get(URIalmacen + idAlmacen)
+        let almacen = res.data
+        setPropietario(almacen.propietario)
+    }
 
     const getMiembros = async () => {
         const res1 = await axios.get(URIinvitaciones)
@@ -59,7 +69,6 @@ const CompShowMiembros = () => {
         let usuarios = res.data
         let usuarioYes = usuarios.find(usuario => usuario.correo === email)
 
-
         await axios.post(URIinvitaciones, {
             almacen: parseInt(idAlmacen),
             usuario: usuarioYes.id
@@ -84,16 +93,17 @@ const CompShowMiembros = () => {
 
     return(
         <div className="container">
-            {navigate(`/${idUser}/${idAlmacen}`)}
             <div className="row">
                 <div className="col-md-1">
                     <h2>Miembros</h2>
                 </div>
-                <div className="col-md-10"/>
-                <div className="col-md-1">
-                    <h4>Buscador</h4>
-                </div>
+                <div className="col-md-11"/>
             </div>
+            <div className="row mb-2">
+                        <div className="col badge rounded-pill bg-primary">
+                            <h3>{propietario}</h3>
+                        </div>
+                    </div>
             { miembros.map ( (miembro) => (
                     <div className="row mb-2">
                         <div className="col badge rounded-pill bg-primary">
@@ -104,15 +114,16 @@ const CompShowMiembros = () => {
             ))
             }
             {propietarioAlmacen ? 
-            <div className="mb-2">
+            <div className="mb-2 mt-3">
                 <form onSubmit={invitar}>
-                    <label className='form-label'>Nombre</label>
+                    <label className='form-label'>Invitar miembro</label>
                     <input
                     value={email}
                     onChange={ (e) => setEmail(e.target.value)}
                     type="text"
-                    className='form-control'/>
-                    <button type='submit' className='btn btn-primary'>Invitar</button>
+                    className='form-control'
+                    placeholder="usuario@ejemplo.com"/>
+                    <button type='submit' className='btn btn-primary mt-3'>Invitar</button>
                 </form>
             </div> 
             : null}
