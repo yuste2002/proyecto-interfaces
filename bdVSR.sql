@@ -1,14 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: vsr
 -- ------------------------------------------------------
 -- Server version	8.0.32
-
--- -----------------------------------------------------
--- Schema vsr
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `vsr` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
-USE `vsr` ;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -58,12 +52,12 @@ DROP TABLE IF EXISTS `invitados`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `invitados` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `usuario` varchar(45) DEFAULT NULL,
-  `almacen` varchar(45) DEFAULT NULL,
+  `usuario` int DEFAULT NULL,
+  `almacen` int DEFAULT NULL,
   `createdAt` date DEFAULT NULL,
   `updatedAt` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,7 +66,7 @@ CREATE TABLE `invitados` (
 
 LOCK TABLES `invitados` WRITE;
 /*!40000 ALTER TABLE `invitados` DISABLE KEYS */;
-INSERT INTO `invitados` VALUES (1,'4','1','2022-04-04','2022-05-04'),(2,'1','4','2023-04-04','2023-05-04'),(3,'7','4',NULL,NULL),(8,'2','27','2023-04-17','2023-04-17'),(9,'4','27','2023-04-17','2023-04-17'),(10,'2','29','2023-04-17','2023-04-17'),(11,'2','30','2023-04-17','2023-04-17'),(12,'6','30','2023-04-17','2023-04-17'),(13,'2','36','2023-04-17','2023-04-17');
+INSERT INTO `invitados` VALUES (1,4,1,'2022-04-04','2022-05-04'),(2,1,4,'2023-04-04','2023-05-04'),(3,7,4,NULL,NULL),(8,2,27,'2023-04-17','2023-04-17'),(9,4,27,'2023-04-17','2023-04-17'),(10,2,29,'2023-04-17','2023-04-17'),(11,2,30,'2023-04-17','2023-04-17'),(12,6,30,'2023-04-17','2023-04-17'),(13,2,36,'2023-04-17','2023-04-17'),(14,6,1,'2023-04-18','2023-04-18');
 /*!40000 ALTER TABLE `invitados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -95,7 +89,7 @@ CREATE TABLE `objetos` (
   `propietario` int DEFAULT NULL,
   `condiciones` varchar(400) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -104,7 +98,7 @@ CREATE TABLE `objetos` (
 
 LOCK TABLES `objetos` WRITE;
 /*!40000 ALTER TABLE `objetos` DISABLE KEYS */;
-INSERT INTO `objetos` VALUES (1,'coche','coche de lucas','casa lucas',NULL,NULL,'2023-04-17',1,4,'como te estrelles vera'),(2,'play','play de lucas','casa lucas',NULL,NULL,NULL,1,4,NULL),(3,'xbox','xbox de lucas','casa lucas',NULL,NULL,NULL,1,1,NULL);
+INSERT INTO `objetos` VALUES (1,'coche','coche de lucas','casa lucas',NULL,NULL,'2023-04-17',1,4,'como te estrelles vera'),(2,'play','play de lucas','casa lucas',NULL,NULL,NULL,1,4,NULL),(3,'xbox','xbox de lucas','casa lucas',NULL,NULL,NULL,1,1,NULL),(4,'hola','Hola caracola','Mi casa','','2023-04-18','2023-04-18',1,1,'-Comer papas');
 /*!40000 ALTER TABLE `objetos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -178,4 +172,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-18  1:40:59
+-- Dump completed on 2023-04-18 13:01:25

@@ -25,6 +25,7 @@ const CompCreateAlmacen = () => {
     }
 
     const crearAlmacen = async (e) => {
+        e.preventDefault()
         const almacen = await axios.get(URIalmacen)
         let almacenesData = almacen.data
         const almacenNotAdded = almacenesData.find(almacen => name === almacen.nombre)

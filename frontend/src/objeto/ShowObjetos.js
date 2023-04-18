@@ -56,6 +56,7 @@ const CompShowObjetos = () => {
                         </div>
                     </div>
                 ))}
+            <Link to={`/${idAlmacen}/${idUser}/createObjeto`} className='btn btn-primary mt-2 mb-2'>Añadir</Link>
         </div>
     )
 }
