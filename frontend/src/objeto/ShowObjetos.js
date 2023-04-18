@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom"
+import { useParams, Link, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import axios from 'axios'
 
@@ -8,6 +8,7 @@ const URIalmacen = "http://localhost:8000/almacenes/"
 const CompShowObjetos = () => {
     const {idAlmacen} = useParams()
     const {idUser} = useParams()
+    const navigate = useNavigate()
     
     const [objetos, setObjetos] = useState([])
     useEffect( () => {
@@ -31,6 +32,7 @@ const CompShowObjetos = () => {
 
 
     const getObjetos = async () => {
+        
         const res = await axios.get(URIobjetos)
         let objetos = res.data
         let objetosFiltrados = objetos.filter(objeto => objeto.almacenAsociado == idAlmacen)
@@ -45,6 +47,7 @@ const CompShowObjetos = () => {
 
     return (
         <div className="container">
+            {navigate(`/${idUser}/${idAlmacen}`)}
             <div className="row">
                 <div className="col-md-1">
                     <h2>Objetos</h2>

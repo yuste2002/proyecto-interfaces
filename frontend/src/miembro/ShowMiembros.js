@@ -84,6 +84,7 @@ const CompShowMiembros = () => {
 
     return(
         <div className="container">
+            {navigate(`/${idUser}/${idAlmacen}`)}
             <div className="row">
                 <div className="col-md-1">
                     <h2>Miembros</h2>
