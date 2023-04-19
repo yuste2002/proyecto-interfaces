@@ -111,6 +111,8 @@ const CompEditPerfil = () => {
                         </div>
                         <button type='submit' className='btn btn-primary'>Confirmar Cambios</button> <br/>
                         <button onClick={volverAtras} className='btn btn-secondary mt-2'>Volver atrás</button>
+                        <Link to={`/`} className='btn btn-danger ms-2 mt-2'>Cerrar sesión</Link> 
+
                     </form>
                 </div>
             </div>

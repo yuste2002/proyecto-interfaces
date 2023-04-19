@@ -89,7 +89,7 @@ const CompRegistro = () =>{
                             />
                         </div>
                         <button type='submit' className='btn btn-primary'>Registrarse</button> <br/>
-                        <button onClick={volverAtras} className='btn btn-secondary mt-2'>Volver atrás</button>
+                        <button onClick={volverAtras} className='btn btn-secondary mt-2'>Volver atrás</button> <br/>
                     </form>
                 </div>
             </div>
