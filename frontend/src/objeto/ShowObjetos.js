@@ -2,6 +2,8 @@ import { useParams, Link, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import axios from 'axios'
 
+
+
 const URIobjetos = "http://localhost:8000/objetos/"
 const URIalmacen = "http://localhost:8000/almacenes/"
 
@@ -53,18 +55,22 @@ const CompShowObjetos = () => {
                 </div>
                 <div className="col-md-11"/>
             </div>
-            { objetos.map ( (objeto) => (
-                    <div className="row">
-                        <div className="col badge rounded-pill bg-primary mb-2" key={objeto.id}>
-                            <h3>{objeto.nombre}</h3>
-                            <div className="col">
-                            <Link to={`/objeto/${objeto.id}/${idUser}`} className='btn btn-info mt-2 mb-2'>Reservar o gestionar</Link>
-                            {propietarioAlmacen || objeto.propietario == idUser ? 
-                            <button className="ms-2" onClick={()=>deleteObjeto(objeto.id)}><i class="fa-sharp fa-solid fa-trash"></i></button> : null}
+            <div className="row">
+                <div className="col" style={{overflow: 'auto'}}>
+                    { objetos.map ( (objeto) => (
+                        <div className="row">
+                            <div className="col badge rounded-pill bg-primary mb-2" key={objeto.id}>
+                                <h3>{objeto.nombre}</h3>
+                                <div className="col">
+                                <Link to={`/objeto/${objeto.id}/${idUser}`} className='btn btn-info mt-2 mb-2'>Reservar o gestionar</Link>
+                                {propietarioAlmacen || objeto.propietario == idUser ? 
+                                <button className="ms-2" onClick={()=>deleteObjeto(objeto.id)}><i class="fa-sharp fa-solid fa-trash"></i></button> : null}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
+            </div>
             <Link to={`/${idAlmacen}/${idUser}/createObjeto`} className='btn btn-primary mt-2 mb-2'>Añadir</Link>
         </div>
     )

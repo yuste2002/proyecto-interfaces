@@ -8,6 +8,7 @@ const URIalmacen = 'http://localhost:8000/almacenes/'
 //NO SE SI FURULA   
 
 const CompShowCompartidos = () => {
+    let i = 0
     const {idUser} = useParams()
 
     const [almacens, setAlmacens] = useState([])
@@ -62,6 +63,7 @@ const CompShowCompartidos = () => {
                 </div>
             </div>
             <div className="row">
+                <h1>{i}</h1>
                 { almacens.map ( (almacen) => (
                     <div className="col badge rounded-pill bg-primary m-2" key={almacen.id}>
                         <h2>{almacen.nombre}</h2>

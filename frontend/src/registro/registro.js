@@ -50,6 +50,7 @@ const CompRegistro = () =>{
                                 onChange={ (e) => setNombreUs(e.target.value)}
                                 type="text"
                                 className='form-control'
+                                style={{ width: 'auto', margin: '0 auto' }}
                             />
                         </div>
                         <div className='mb-3'>
@@ -59,6 +60,7 @@ const CompRegistro = () =>{
                                 onChange={ (e) => setCorreo(e.target.value)}
                                 type="text"
                                 className='form-control'
+                                style={{ width: 'auto', margin: '0 auto' }}
                             />
                         </div>
                         <div className='mb-3'>
@@ -68,6 +70,7 @@ const CompRegistro = () =>{
                                 onChange={ (e) => setPassword(e.target.value)}
                                 type="password"
                                 className='form-control'
+                                style={{ width: 'auto', margin: '0 auto' }}
                             />
                         </div>
                         <div className='mb-3'>
@@ -77,6 +80,7 @@ const CompRegistro = () =>{
                                 onChange={ (e) => setNombre(e.target.value)}
                                 type="text"
                                 className='form-control'
+                                style={{ width: 'auto', margin: '0 auto' }}
                             />
                         </div>
                         <div className='mb-3'>
@@ -86,6 +90,7 @@ const CompRegistro = () =>{
                                 onChange={ (e) => setApellido(e.target.value)}
                                 type="text"
                                 className='form-control'
+                                style={{ width: 'auto', margin: '0 auto' }}
                             />
                         </div>
                         <button type='submit' className='btn btn-primary'>Registrarse</button> <br/>
