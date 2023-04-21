@@ -46,6 +46,7 @@ const CompLogin = () => {
     }
 
     return(
+        //Necesario remodelar
         <div className='container'>
             <div className='row'>
                 <div className='col'>

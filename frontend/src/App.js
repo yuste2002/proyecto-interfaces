@@ -2,8 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
-import Login from "./login/Login"
-import Registro from "./registro/Registro"
+import Login from "./login/login"
+import Registro from "./registro/registro"
 import InicioUsuario from "./almacen/ShowMisAlmacenes"
 import CreateAlmacen from "./almacen/CreateAlmacen"
 import EditUsuario from "./usuario/EditPerfil"
