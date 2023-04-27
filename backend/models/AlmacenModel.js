@@ -10,7 +10,8 @@ import { DataTypes } from "sequelize";
 //Definimos el modelo, 'trastero' debe de ser el nombre de la tabla en la base de datos
 const AlmacenModel = db.define('almacen', {
     nombre: { type: DataTypes.STRING },
-    propietario: { type: DataTypes.STRING}
+    propietario: { type: DataTypes.STRING},
+    foto: {type: DataTypes.STRING}
 })
 
 export default AlmacenModel

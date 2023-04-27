@@ -54,12 +54,20 @@ const CompShowMisAlmacenes = () => {
                     <Link to={`/${idUser}/editUser`} className='btn btn-primary mt-2 mb-2'><i class="fa-solid fa-user-ninja"></i></Link>
                 </div>
             </div>
-            <div className="row">
+            <div className="row row-cols-4">
                 { almacenes.map ( (almacen) => (
-                    <div className="col badge rounded-pill bg-primary m-2" key={almacen.id}>
-                        <h2>{almacen.nombre}</h2>
-                        <Link to={`/${idUser}/${almacen.id}`} className='btn btn-info'>Acceder</Link> 
-                        <button className="ms-2" onClick={ ()=>deleteAlmacen(almacen.id)}><i class="fa-sharp fa-solid fa-trash"></i></button>
+                    <div className="col" key={almacen.id}>
+                        <div className="card text-center mb-4">
+                            {almacen.foto == undefined ? 
+                            <img src={process.env.PUBLIC_URL + 'proyecto-interfaces\frontend\src\imagenes\almacenDefault.jpg'} style={{width: '250px', height:'250px', objectFit:'contain'}} className="card-img-top img-fluid"></img>:
+                            <img src={`${almacen.foto}`} style={{width: '250px', height:'250px', objectFit:'contain'}} className="card-img-top img-fluid"></img>
+                            }
+                            <div className="card-body">
+                                <h2 className="card-title">{almacen.nombre}</h2>
+                                <Link to={`/${idUser}/${almacen.id}`} className='btn btn-info'>Acceder</Link> 
+                                <button className="ms-2 btn btn-danger" onClick={ ()=>deleteAlmacen(almacen.id)}>Borrar</button>
+                            </div>
+                        </div>
                     </div>
                 ))}
             </div>
