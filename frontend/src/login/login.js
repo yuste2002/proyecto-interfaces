@@ -63,6 +63,7 @@ const CompLogin = () => {
                                 onChange={ (e) => setUser(e.target.value)}
                                 type="text"
                                 className='form-control'
+                                style={{ width: 'auto', margin: '0 auto' }}
                             />
                         </div>
                         <div className='mb-3'>
@@ -72,6 +73,7 @@ const CompLogin = () => {
                                 onChange={ (e) => setPassword(e.target.value)}
                                 type="password"
                                 className='form-control'
+                                style={{ width: 'auto', margin: '0 auto' }}
                             />
                         </div>
                         <button type='submit' className='btn btn-primary'>Iniciar Sesion</button>
