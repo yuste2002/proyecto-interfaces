@@ -8,17 +8,17 @@ const CompBloqueIzquierdo = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-12">
-                        <Link to={`/${idUser}/createAlmacen`} className='btn mt-4 mb-2' style={{backgroundColor:'#54A6F0', color: 'black', width: '200px'}}><i class="fa-duotone fa-plus"></i> Nuevo Almacen</Link>
+                        <Link to={`/${idUser}/createAlmacen`} className='btn mt-4 mb-2' style={{backgroundColor:'#fff4e3', color: 'black', width: '200px'}}><i class="fa-duotone fa-plus"></i> Nuevo Almacen</Link>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-12">
-                        <Link to={`/${idUser}`} className='btn btn-primary mt-2 mb-2' style={{backgroundColor:'#54A6F0', color: 'black', width: '200px'}} >Mis almacenes</Link>
+                        <Link to={`/${idUser}`} className='btn mt-2 mb-2' style={{backgroundColor:'#fff4e3', color: 'black', width: '200px'}} >Mis almacenes</Link>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-12">
-                        <Link to={`/${idUser}/compartidos`} className='btn btn-primary mt-2 mb-2' style={{backgroundColor:'#54A6F0', color: 'black', width: '200px'}}>Compartidos conmigo</Link>
+                        <Link to={`/${idUser}/compartidos`} className='btn mt-2 mb-2' style={{backgroundColor:'#fff4e3', color: 'black', width: '200px'}}>Compartidos conmigo</Link>
                     </div>
                 </div>
             </div>

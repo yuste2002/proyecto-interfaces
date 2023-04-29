@@ -4,18 +4,18 @@ import { Link, useParams } from "react-router-dom"
 import Navbar from "../navbar/navbar.js"
 
 function CompartidosBloque () {
-    
+    const {idUser} = useParams()
     return(
         <div>
-            <Navbar></Navbar>
+            <Navbar idUser={idUser}></Navbar>
             <div className="container-fluid h-100">
                 <div className="row">
-                    <div className="col-md-2" style={{backgroundColor: '#e6e6e6'}}>
+                    <div className="col-md-2 gradient-down">
                         <div>
                             <CompBloqueIzquierdo></CompBloqueIzquierdo>
                         </div>
                     </div>
-                    <div className="container col-md-10">
+                    <div className="col-md-10 fondo">
                         <CompShowCompartidos></CompShowCompartidos>
                     </div>
                 </div>

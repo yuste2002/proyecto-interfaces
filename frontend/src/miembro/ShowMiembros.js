@@ -1,6 +1,8 @@
 import { useParams, useNavigate} from "react-router-dom"
 import { useEffect, useState } from "react"
 import axios from 'axios'
+import fotoUsuario from '../imagenes/usuario.jpg'
+import fotoPropietario from '../imagenes/propietario.jpg'
 
 const URIinvitaciones = "http://localhost:8000/invitaciones/"
 const URIusuarios = "http://localhost:8000/usuarios/"
@@ -107,30 +109,74 @@ const CompShowMiembros = () => {
                 <div className="col-md-11"/>
             </div>
             <div className="row mb-2">
-                        <div className="col badge rounded-pill bg-primary">
-                            <h3>{propietario} (propietario)</h3>
+                <div className="col">
+                    <div className="card text-center">
+                        <div className="card-body">
+                            <div className="row">
+                                <div className="col-md-4">
+                                    <img src={fotoPropietario} style={{width: '80px', height: '80px', objectFit:'contain'}} className="card-img-top img-fluid"></img>
+                                </div>
+                                <div className="col-md-8">
+                                <div className="row mt-3">
+                                        <div className="col-md-1"></div>
+                                        <div className="col-md-8">
+                                        <h3>{propietario} (propietario)</h3>
+                                        </div>
+                                        <div className="col-md-1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
             { miembros.map ( (miembro) => (
-                    <div className="row mb-2">
-                        <div className="col badge rounded-pill bg-primary">
-                            <h3>{miembro}</h3>
-                            {propietarioAlmacen ? <button onClick={ () => expulsarMiembro(miembro)}>Expulsar</button> : null}
+                <div className="col" key={miembro.id}>
+                    <div className="card text-center mb-4">
+                        <div className="card-body">
+                            <div className="row">
+                                <div className="col-md-4">
+                                    <img src={fotoUsuario} style={{width: '80px', height: '80px', objectFit:'contain'}} className="card-img-top img-fluid"></img>
+                                </div>
+                                <div className="col-md-8">
+                                    <div className="row mt-3">
+                                        <div className="col-md-2"></div>
+                                        <div className="col-md-6">
+                                            <h3>{miembro}</h3>
+                                        </div>
+                                        <div className="col-md-2">
+                                            {propietarioAlmacen ? <button className="btn"  style={{backgroundColor:'#EF726B'}} onClick={ () => expulsarMiembro(miembro)}>Expulsar</button> : null}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </div>
             ))
             }
             {propietarioAlmacen ? 
             <div className="mb-2 mt-3">
                 <form onSubmit={invitar}>
                     <label className='form-label'>Invitar miembro</label>
-                    <input
-                    value={email}
-                    onChange={ (e) => setEmail(e.target.value)}
-                    type="text"
-                    className='form-control'
-                    placeholder="usuario@ejemplo.com"/>
-                    <button type='submit' className='btn btn-primary mt-3'>Invitar</button>
+                    <div className="row">
+                        <div className="col-md-2"></div>
+                        <div className="col-md-6">
+                            <input
+                            value={email}
+                            onChange={ (e) => setEmail(e.target.value)}
+                            type="text"
+                            className='form-control'
+                            placeholder="usuario@ejemplo.com"
+                            style={{ width: '300px'}}
+                            />
+                        </div>
+                        <div className="col-md-2">
+                            <button type='submit' className='btn' style={{background:'#54A6F0'}}>Invitar</button>
+                        </div>
+                        <div className="col-md-2"></div>
+                    </div>
                 </form>
             </div> 
             : null}

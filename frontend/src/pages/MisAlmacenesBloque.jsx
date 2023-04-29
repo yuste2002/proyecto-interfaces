@@ -8,13 +8,13 @@ function MisAlmacenesBloque () {
 
     return(
         <div>
-            <Navbar></Navbar>
+            <Navbar idUser={idUser}></Navbar>
             <div className="container-fluid h-100">
                 <div className="row">
-                    <div className="col-md-2" style={{backgroundColor: '#e6e6e6'}}>
+                    <div className="col-md-2 gradient-down">
                         <CompBloqueIzquierdo></CompBloqueIzquierdo>
                     </div>
-                    <div className="col-md-10">
+                    <div className="col-md-10 fondo">
                         <CompShowMisAlmacenes></CompShowMisAlmacenes>
                     </div>
                 </div>

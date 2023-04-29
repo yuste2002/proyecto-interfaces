@@ -77,7 +77,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #D3D3D3;
+  background: linear-gradient(to right, #bf7b44, 90%, #fff4e3);
   padding: 15px;
 }
 
@@ -87,5 +87,24 @@
   margin-right: 30px;
   margin-left: 10px;
   border-radius: 50%;
+}
+
+.gradient-down{
+  background: linear-gradient(to bottom, #bf7b44, #fff4e3);
+}
+
+.fondo{
+ background: #fff4e3;
+}
+
+@media screen and (max-width:1350px) {
+  .row>*{
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-top: var(--bs-gutter-y);
+  }
 }
 

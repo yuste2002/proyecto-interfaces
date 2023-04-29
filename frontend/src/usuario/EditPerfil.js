@@ -55,7 +55,7 @@ const CompEditPerfil = () => {
     }
 
     return(
-        <div className='container'>
+        <div className='container-fluid'>
             <div className='row'>
                 <div className='col'>
                     <h3>Editar Perfil</h3>
@@ -65,7 +65,7 @@ const CompEditPerfil = () => {
                 <div className='col'>
                     <form onSubmit={editar}>
                         <div className='mb-3'>
-                            <label className='form-label'>Nombre de usuario</label>
+                            <label className='form-label'>Nombre de usuario*</label>
                             <input
                                 defaultValue={username}
                                 onChange={ (e) => setUsername(e.target.value)}
@@ -76,7 +76,7 @@ const CompEditPerfil = () => {
                             />
                         </div>
                         <div className='mb-3'>
-                            <label className='form-label'>Correo electronico</label>
+                            <label className='form-label'>Correo electronico*</label>
                             <input
                                 defaultValue={email}
                                 onChange={ (e) => setEmail(e.target.value)}
@@ -87,18 +87,18 @@ const CompEditPerfil = () => {
                             />
                         </div>
                         <div className='mb-3'>
-                            <label className='form-label'>Contraseña</label>
+                            <label className='form-label'>Contraseña*</label>
                             <input
                                 defaultValue={password}
                                 onChange={ (e) => setPassword(e.target.value)}
-                                type="text"
+                                type="password"
                                 className='form-control'
                                 style={{ width: 'auto', margin: '0 auto' }}
                                 required='true'
                             />
                         </div>
                         <div className='mb-3'>
-                            <label className='form-label'>Nombre</label>
+                            <label className='form-label'>Nombre*</label>
                             <input
                                 defaultValue={name}
                                 onChange={ (e) => setName(e.target.value)}

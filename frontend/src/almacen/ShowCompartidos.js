@@ -60,11 +60,8 @@ const CompShowCompartidos = () => {
     return(
         <div className="container">
             <div className="row">
-                <div className="col-md-11">
+                <div className="col">
                     <h1>Compartidos Conmigo</h1>
-                </div>
-                <div className="col-md-1">
-                    <Link to={`/${idUser}/editUser`} className='btn btn-primary mt-2 mb-2'><i class="fa-solid fa-user-ninja"></i></Link>
                 </div>
             </div>
             <div className="row row-cols-4">
@@ -78,7 +75,7 @@ const CompShowCompartidos = () => {
                             <div className="card-body">
                                 <h2 className="card-title">{almacen.nombre}</h2>
                                 <Link to={`/${idUser}/${almacen.id}`} className='btn' style={{backgroundColor:'#54A6F0', color: 'black'}}>Acceder</Link> 
-                                <button className="ms-2" style={{backgroundColor:'#EF726B'}} onClick={ () => salirAlmacen(almacen.id)}>Salir</button>
+                                <button className="ms-2 btn" style={{backgroundColor:'#EF726B'}} onClick={ () => salirAlmacen(almacen.id)}>Salir</button>
                             </div>
                         </div>
                     </div>

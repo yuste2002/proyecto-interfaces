@@ -55,39 +55,44 @@ function AlmacenBloque () {
 
     return(
         <div>
-            <Navbar></Navbar>
-            <div className="container">
+            <Navbar idUser={idUser}></Navbar>
+            <div className="container-fluid h-100">
                 <div className="row">
-                    <div className="col-md-2">
+                    <div className="col-md-2 gradient-down">
                         <CompBloqueIzquierdo></CompBloqueIzquierdo>
                     </div>
-                    <div className="col-md-10">
+                    <div className="col-md-10 fondo">
                         <div className="row">
                             <div className="col-md-3"></div>
                             <div className="col-md-6">
                                 {almacen && <h2 className="mt-2">{almacen.nombre}</h2>}
                                 {propietarioAlmacen ? <form onSubmit={editarNombreAlmacen}>
-                                    <input 
-                                        value={nombreAlmacen}
-                                        onChange={ (e) => setNombreAlmacen(e.target.value)}
-                                        type="text"
-                                        className="form-control form-control-sm"
-                                        placeholder="(Nuevo nombre)"
-                                        />
-                                    <button type='submit' className="ms-2 btn mt-1" style={{backgroundColor:'#4175A3'}}>Cambiar</button>
+                                <div className="row">
+                                    <div className="col-md-2"></div>
+                                        <div className="col-md-6">
+                                        <input 
+                                            value={nombreAlmacen}
+                                            onChange={ (e) => setNombreAlmacen(e.target.value)}
+                                            type="text"
+                                            className="form-control"
+                                            placeholder="(Nuevo nombre)"
+                                            style={{ width: '300px'}}
+                                            />
+                                        </div>
+                                        <div className="col-md-2">
+                                            <button type='submit' className="ms-2 btn" style={{backgroundColor:'#54A6F0'}}>Cambiar</button>
+                                        </div>
+                                        <div className="col-md-2"></div>
+                                    </div>
                                 </form> : null}
                             </div>
-                            <div className="col-md-2"></div>
-                            <div className="col-md-1">
-                                <Link to={`/${idUser}/editUser`} className='btn btn-primary mt-2 mb-2'><i class="fa-solid fa-user-ninja"></i></Link>
-                            </div>
+                            <div className="col-md-3"></div>
                         </div>
-                        <div className="row">
-                            <div className="col-md-5 mt-3">
+                        <div className="row mt-4">
+                            <div className="col-md-6 mt-3">
                                 <CompShowObjetos></CompShowObjetos>
                             </div>
-                            <div className="col-md-2"></div>
-                            <div className="col-md-5 mt-3">
+                            <div className="col-md-6 mt-3">
                                 <CompShowMiembros/>
                             </div>
                         </div>

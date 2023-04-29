@@ -120,13 +120,13 @@ const CompReservaObjeto = () => {
       }));
 
   return (
-    <div>
+    <div className='mt-3'>
       <Calendar
         localizer={localizer}
         events={eventos}
         startAccessor="start"
         endAccessor="end"
-        style={{ height: 420 }}
+        style={{ height: 420, backgroundColor: 'white'}}
       />
       <form onSubmit={reservar}>
         <div className="mb-3">

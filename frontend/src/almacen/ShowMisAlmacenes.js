@@ -59,11 +59,8 @@ const CompShowMisAlmacenes = () => {
     return(
         <div className="container">
             <div className="row">
-                <div className="col-md-11">
+                <div className="col">
                     <h1>Mis Almacenes</h1>
-                </div>
-                <div className="col-md-1">
-                    <Link to={`/${idUser}/editUser`} className='btn btn-primary mt-2 mb-2'><i class="fa-solid fa-user-ninja"></i></Link>
                 </div>
             </div>
             <div className="row row-cols-4">
