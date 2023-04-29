@@ -46,44 +46,58 @@ const CompLogin = () => {
     }
 
     return(
-        //Necesario remodelar
-        <div className='container'>
-            <div className='row'>
-                <div className='col'>
-                    <h3>Inicio de sesion</h3>
-                </div>
-            </div>
-            <div className='row'>
-                <div className='col'>
-                    <form onSubmit={inicioSesion}>
-                        <div className='mb-3'>
-                            <label className='form-label'>Nombre de usuario</label>
-                            <input
-                                value={user}
-                                onChange={ (e) => setUser(e.target.value)}
-                                type="text"
-                                className='form-control'
-                                style={{ width: 'auto', margin: '0 auto' }}
-                            />
+        <div className='d-flex align-items-center vh-100'>
+            <div className='container'>
+                <div className='row'>
+                    <div className='col-lg-8'>
+                        <div className='card'>
+                            <h1>Compartir es ahorrar</h1>
                         </div>
-                        <div className='mb-3'>
-                            <label className='form-label'>Contraseña</label>
-                            <input
-                                value={password}
-                                onChange={ (e) => setPassword(e.target.value)}
-                                type="password"
-                                className='form-control'
-                                style={{ width: 'auto', margin: '0 auto' }}
-                            />
+                    </div>
+                    <div className='col-lg-4'>
+                        <div className='card text-bg-light mb-3'>
+                            <div className='container mt-2 mb-2'>
+                                <div className='row'>
+                                    <div className='col'>
+                                        <h3>Inicio de sesion</h3>
+                                    </div>
+                                </div>
+                                <div className='row'>
+                                    <div className='col'>
+                                        <form onSubmit={inicioSesion}>
+                                            <div className='mb-3'>
+                                                <label className='form-label'>Nombre de usuario</label>
+                                                <input
+                                                    value={user}
+                                                    onChange={ (e) => setUser(e.target.value)}
+                                                    type="text"
+                                                    className='form-control'
+                                                    style={{ width: 'auto', margin: '0 auto' }}
+                                                />
+                                            </div>
+                                            <div className='mb-3'>
+                                                <label className='form-label'>Contraseña</label>
+                                                <input
+                                                    value={password}
+                                                    onChange={ (e) => setPassword(e.target.value)}
+                                                    type="password"
+                                                    className='form-control'
+                                                    style={{ width: 'auto', margin: '0 auto' }}
+                                                />
+                                            </div>
+                                            <button type='submit' className='btn btn-primary'>Iniciar Sesion</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div className='row'>
+                                    <div className='col mt-3'>
+                                        <h3>¿No tienes cuenta? <Link to="/registro" className='btn btn-info'>Registrate</Link></h3>
+                                        
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <button type='submit' className='btn btn-primary'>Iniciar Sesion</button>
-                    </form>
-                </div>
-            </div>
-            <div className='row'>
-                <div className='col mt-3'>
-                    <h3>¿No tienes cuenta? <Link to="/registro" className='btn btn-info'>Registrate</Link></h3>
-                    
+                    </div>
                 </div>
             </div>
         </div>
