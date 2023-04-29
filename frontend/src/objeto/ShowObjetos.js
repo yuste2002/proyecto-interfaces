@@ -42,8 +42,11 @@ const CompShowObjetos = () => {
     }
 
     const deleteObjeto = async (id) => {
-        //HAY QUE HACER EL BORRADO EN CASCADA DE LOS OBJETOS ASOCIADOS AL ALMACEN   
-        await axios.delete(`${URIobjetos}${id}`)
+        const confirmarBorrar = window.confirm("¿Estás seguro de que quieres borrar este objeto?");
+        if (confirmarBorrar) {
+            //HAY QUE HACER EL BORRADO EN CASCADA DE LOS OBJETOS ASOCIADOS AL ALMACEN   
+            await axios.delete(`${URIobjetos}${id}`)
+        }
         getObjetos()
     }
 

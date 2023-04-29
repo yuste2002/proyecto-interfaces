@@ -1,4 +1,4 @@
-import CompShowMisAlmacenes from "../almacen/ShowMisAlmacenes.jsx"
+import CompShowMisAlmacenes from "../almacen/ShowMisAlmacenes.js"
 import CompBloqueIzquierdo from "../bloqueIzquierdo/bloqueIzquierdo.js"
 import { Link, useParams } from "react-router-dom"
 

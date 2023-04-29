@@ -45,10 +45,13 @@ const CompShowCompartidos = () => {
     }
 
     const salirAlmacen = async (id) => {
-        const res = await axios.get(URIinvitacion)
-        let invitados = res.data
-        let invitacion = invitados.find(invitado => invitado.usuario == idUser && invitado.almacen == id)
-        await axios.delete(`${URIinvitacion}${invitacion.id}`)
+        const confirmarSalir = window.confirm("¿Estás seguro de que quieres salir de este almacén?");
+        if (confirmarSalir) {
+            const res = await axios.get(URIinvitacion)
+            let invitados = res.data
+            let invitacion = invitados.find(invitado => invitado.usuario == idUser && invitado.almacen == id)
+            await axios.delete(`${URIinvitacion}${invitacion.id}`)
+        }
         getAlmacens()
     }
 

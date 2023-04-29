@@ -4,6 +4,11 @@ import axios from 'axios'
 //que ofrece la libreria react
 import {useState, useEffect} from 'react'
 import { Link, useNavigate} from 'react-router-dom'
+import fotoPortada from '../imagenes/logoEpico.jpg'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../App.css'
+import classnames from 'classnames';
+
 
 const URIuser = 'http://localhost:8000/usuarios/'
 
@@ -50,9 +55,7 @@ const CompLogin = () => {
             <div className='container'>
                 <div className='row'>
                     <div className='col-lg-8'>
-                        <div className='card'>
-                            <h1>Compartir es ahorrar</h1>
-                        </div>
+                        <img src={fotoPortada} style={{width: '600px', height:'600px', objectFit:'contain'}} className="card-img-top img-fluid"></img>
                     </div>
                     <div className='col-lg-4'>
                         <div className='card text-bg-light mb-3'>
@@ -85,13 +88,13 @@ const CompLogin = () => {
                                                     style={{ width: 'auto', margin: '0 auto' }}
                                                 />
                                             </div>
-                                            <button type='submit' className='btn btn-primary'>Iniciar Sesion</button>
+                                            <button type='submit' className='btn' style={{backgroundColor:'#54A6F0', color: 'black'}}>Iniciar Sesion</button>
                                         </form>
                                     </div>
                                 </div>
                                 <div className='row'>
                                     <div className='col mt-3'>
-                                        <h3>¿No tienes cuenta? <Link to="/registro" className='btn btn-info'>Registrate</Link></h3>
+                                        <h3>¿No tienes cuenta? <Link to="/registro" className='btn' style={{backgroundColor:'#EF726B'}}>Registrate</Link></h3>
                                         
                                     </div>
                                 </div>
