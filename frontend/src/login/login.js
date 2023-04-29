@@ -7,7 +7,6 @@ import { Link, useNavigate} from 'react-router-dom'
 import fotoPortada from '../imagenes/logoEpico.jpg'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css'
-import classnames from 'classnames';
 
 
 const URIuser = 'http://localhost:8000/usuarios/'

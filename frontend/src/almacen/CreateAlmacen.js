@@ -85,6 +85,7 @@ const CompCreateAlmacen = () => {
                                 onChange={ (e) => setName(e.target.value)}
                                 type="text"
                                 className='form-control'
+                                style={{ width: 'auto', margin: '0 auto' }}
                             />
                             <div className='mb-3 mt-3'>
                             <label className='form-label'>Compartir con</label> <br/>
@@ -94,6 +95,7 @@ const CompCreateAlmacen = () => {
                                 type="email"
                                 className='form-control'
                                 placeholder='usuario@ejemplo.com'
+                                style={{ width: 'auto', margin: '0 auto' }}
                             />
                             <button onClick={nuevoInvitado} className='btn btn-info mt-1'>Compartir</button>
                             </div>

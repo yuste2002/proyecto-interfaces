@@ -77,8 +77,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #4175A3;
-  padding: 20px;
+  background-color: #D3D3D3;
+  padding: 15px;
 }
 
 .navbar__logo img {
@@ -88,3 +88,4 @@
   margin-left: 10px;
   border-radius: 50%;
 }
+

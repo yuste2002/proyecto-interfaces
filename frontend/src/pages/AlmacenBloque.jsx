@@ -3,6 +3,7 @@ import axios from 'axios'
 import CompBloqueIzquierdo from "../bloqueIzquierdo/bloqueIzquierdo";
 import CompShowObjetos from "../objeto/ShowObjetos";
 import CompShowMiembros from "../miembro/ShowMiembros";
+import Navbar from "../navbar/navbar";
 
 import { useParams, Link } from "react-router-dom"
 
@@ -53,39 +54,42 @@ function AlmacenBloque () {
     }
 
     return(
-        <div className="container">
-            <div className="row">
-                <div className="col-md-2">
-                    <CompBloqueIzquierdo></CompBloqueIzquierdo>
-                </div>
-                <div className="col-md-10">
-                    <div className="row">
-                        <div className="col-md-3"></div>
-                        <div className="col-md-6">
-                            {almacen && <h2 className="mt-2">{almacen.nombre}</h2>}
-                            {propietarioAlmacen ? <form onSubmit={editarNombreAlmacen}>
-                                <input 
-                                    value={nombreAlmacen}
-                                    onChange={ (e) => setNombreAlmacen(e.target.value)}
-                                    type="text"
-                                    className="form-control form-control-sm"
-                                    placeholder="(Nuevo nombre)"
-                                    />
-                                <button type='submit' className='btn btn-info mt-1'>Cambiar</button>
-                            </form> : null}
-                        </div>
-                        <div className="col-md-2"></div>
-                        <div className="col-md-1">
-                            <Link to={`/${idUser}/editUser`} className='btn btn-primary mt-2 mb-2'><i class="fa-solid fa-user-ninja"></i></Link>
-                        </div>
+        <div>
+            <Navbar></Navbar>
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-2">
+                        <CompBloqueIzquierdo></CompBloqueIzquierdo>
                     </div>
-                    <div className="row">
-                        <div className="col-md-5 mt-3">
-                            <CompShowObjetos></CompShowObjetos>
+                    <div className="col-md-10">
+                        <div className="row">
+                            <div className="col-md-3"></div>
+                            <div className="col-md-6">
+                                {almacen && <h2 className="mt-2">{almacen.nombre}</h2>}
+                                {propietarioAlmacen ? <form onSubmit={editarNombreAlmacen}>
+                                    <input 
+                                        value={nombreAlmacen}
+                                        onChange={ (e) => setNombreAlmacen(e.target.value)}
+                                        type="text"
+                                        className="form-control form-control-sm"
+                                        placeholder="(Nuevo nombre)"
+                                        />
+                                    <button type='submit' className='btn btn-info mt-1'>Cambiar</button>
+                                </form> : null}
+                            </div>
+                            <div className="col-md-2"></div>
+                            <div className="col-md-1">
+                                <Link to={`/${idUser}/editUser`} className='btn btn-primary mt-2 mb-2'><i class="fa-solid fa-user-ninja"></i></Link>
+                            </div>
                         </div>
-                        <div className="col-md-2"></div>
-                        <div className="col-md-5 mt-3">
-                            <CompShowMiembros/>
+                        <div className="row">
+                            <div className="col-md-5 mt-3">
+                                <CompShowObjetos></CompShowObjetos>
+                            </div>
+                            <div className="col-md-2"></div>
+                            <div className="col-md-5 mt-3">
+                                <CompShowMiembros/>
+                            </div>
                         </div>
                     </div>
                 </div>

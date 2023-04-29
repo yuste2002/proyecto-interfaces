@@ -1,6 +1,8 @@
 import { useParams, Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import axios from 'axios'
+import almacenDefault from '../imagenes/almacenDefault.jpg'
+
 
 const URIinvitacion = 'http://localhost:8000/invitaciones/'
 const URIalmacen = 'http://localhost:8000/almacenes/'
@@ -65,13 +67,20 @@ const CompShowCompartidos = () => {
                     <Link to={`/${idUser}/editUser`} className='btn btn-primary mt-2 mb-2'><i class="fa-solid fa-user-ninja"></i></Link>
                 </div>
             </div>
-            <div className="row">
-                <h1>{i}</h1>
+            <div className="row row-cols-4">
                 { almacens.map ( (almacen) => (
-                    <div className="col badge rounded-pill bg-primary m-2" key={almacen.id}>
-                        <h2>{almacen.nombre}</h2>
-                        <Link to={`/${idUser}/${almacen.id}`} className='btn btn-info'>Acceder</Link>
-                        <button className="ms-2" onClick={ () => salirAlmacen(almacen.id)}>Salir</button>
+                    <div className="col" key={almacen.id}>
+                        <div className="card text-center mb-4">
+                            {almacen.foto == undefined ? 
+                            <img src={almacenDefault} style={{width: '100%', height:'100%', objectFit:'contain'}} className="card-img-top img-fluid"></img>:
+                            <img src={almacen.foto} style={{width: '100%', height:'100%', objectFit:'contain'}} className="card-img-top img-fluid"></img>
+                            }
+                            <div className="card-body">
+                                <h2 className="card-title">{almacen.nombre}</h2>
+                                <Link to={`/${idUser}/${almacen.id}`} className='btn' style={{backgroundColor:'#54A6F0', color: 'black'}}>Acceder</Link> 
+                                <button className="ms-2" style={{backgroundColor:'#EF726B'}} onClick={ () => salirAlmacen(almacen.id)}>Salir</button>
+                            </div>
+                        </div>
                     </div>
                 ))}
             </div>

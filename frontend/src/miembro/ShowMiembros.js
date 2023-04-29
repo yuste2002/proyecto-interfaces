@@ -92,9 +92,7 @@ const CompShowMiembros = () => {
             let usuarios = res2.data
             let usuario = usuarios.find(usuario => usuario.nombreUsuario == nombreUsuario)
             let invitacion = invitados.find(invitado => invitado.usuario == usuario.id && invitado.almacen == idAlmacen)
-            console.log(invitados)
-            console.log(invitacion)
-            console.log(invitacion.id)
+    
             await axios.delete(`${URIinvitaciones}${invitacion.id}`)
         }
         getMiembros()

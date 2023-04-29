@@ -6,6 +6,7 @@ import axios from 'axios'
 
 const URIobjetos = "http://localhost:8000/objetos/"
 const URIalmacen = "http://localhost:8000/almacenes/"
+const URIreservas = "http://localhost:8000/reservas/"
 
 const CompShowObjetos = () => {
     const {idAlmacen} = useParams()
@@ -15,12 +16,12 @@ const CompShowObjetos = () => {
     const [objetos, setObjetos] = useState([])
     useEffect( () => {
         getObjetos()
-    },objetos)
+    },[])
 
     const [propietarioAlmacen, setPropietarioAlmacen] = useState(false) 
     useEffect( () => {
         getPropietarioAlmacen()
-    }, false)
+    },[])
 
     const getPropietarioAlmacen = async () => {
         const res = await axios.get(URIalmacen + idAlmacen)
@@ -34,7 +35,6 @@ const CompShowObjetos = () => {
 
 
     const getObjetos = async () => {
-        
         const res = await axios.get(URIobjetos)
         let objetos = res.data
         let objetosFiltrados = objetos.filter(objeto => objeto.almacenAsociado == idAlmacen)
@@ -45,6 +45,13 @@ const CompShowObjetos = () => {
         const confirmarBorrar = window.confirm("¿Estás seguro de que quieres borrar este objeto?");
         if (confirmarBorrar) {
             //HAY QUE HACER EL BORRADO EN CASCADA DE LOS OBJETOS ASOCIADOS AL ALMACEN   
+            //Antes de borrar el objeto borro sus reservas asociadas
+            const resRes = await axios.get(URIreservas)
+            let reservas = resRes.data
+            let reservasFiltradas = reservas.filter(reserva => reserva.objetoReserva == id)
+            reservasFiltradas.map(async (reserva) => {
+                await axios.delete(`${URIreservas}${reserva.id}`)
+            })
             await axios.delete(`${URIobjetos}${id}`)
         }
         getObjetos()
