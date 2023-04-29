@@ -7,9 +7,9 @@ function ObjetoBloque() {
     return (
         <div>
             <Navbar></Navbar>
-            <div className="container">
+            <div className="container-fluid h-100">
                 <div className="row">
-                    <div className="col-md-2">
+                    <div className="col-md-2" style={{backgroundColor: '#e6e6e6'}}>
                         <CompBloqueIzquierdo></CompBloqueIzquierdo>
                     </div>
                     <div className="col-md-5">

@@ -1,7 +1,7 @@
 import { useParams, Link, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import axios from 'axios'
-
+import objetoDefault from '../imagenes/objectDefault.jpg'
 
 
 const URIobjetos = "http://localhost:8000/objetos/"
@@ -65,23 +65,30 @@ const CompShowObjetos = () => {
                 </div>
                 <div className="col-md-11"/>
             </div>
-            <div className="row">
-                <div className="col" style={{overflow: 'auto'}}>
-                    { objetos.map ( (objeto) => (
-                        <div className="row">
-                            <div className="col badge rounded-pill bg-primary mb-2" key={objeto.id}>
-                                <h3>{objeto.nombre}</h3>
-                                <div className="col">
-                                <Link to={`/objeto/${objeto.id}/${idUser}`} className='btn btn-info mt-2 mb-2'>Reservar o gestionar</Link>
-                                {propietarioAlmacen || objeto.propietario == idUser ? 
-                                <button className="ms-2" onClick={()=>deleteObjeto(objeto.id)}><i class="fa-sharp fa-solid fa-trash"></i></button> : null}
+            <div className="row row-cols-1">
+                { objetos.map ( (objeto) => (
+                    <div className="col" key={objeto.id}>
+                        <div className="card text-center mb-4">
+                            <div className="card-body">
+                                <div className="row">
+                                    <div className="col-md-4">
+                                        <img src={objetoDefault} style={{width: '150px', height: '150px', objectFit:'contain'}} className="card-img-top img-fluid"></img>
+                                    </div>
+                                    <div className="col-md-8 mt-4">
+                                        <h3>{objeto.nombre}</h3>
+                                        <div className="col">
+                                            <Link to={`/objeto/${objeto.id}/${idUser}`} className='btn' style={{backgroundColor:'#54A6F0', color: 'black'}}>Ver Objeto</Link>
+                                            {propietarioAlmacen || objeto.propietario == idUser ? 
+                                            <button className="ms-2 btn" style={{backgroundColor:'#EF726B'}} onClick={()=>deleteObjeto(objeto.id)}>Borrar</button> : null}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    ))}
-                </div>
+                    </div>
+                ))}
             </div>
-            <Link to={`/${idAlmacen}/${idUser}/createObjeto`} className='btn btn-primary mt-2 mb-2'>Añadir</Link>
+            <Link to={`/${idAlmacen}/${idUser}/createObjeto`} className='btn' style={{backgroundColor:'#54A6F0', color: 'black'}}>Añadir</Link>
         </div>
     )
 }

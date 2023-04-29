@@ -71,6 +71,8 @@ const CompEditPerfil = () => {
                                 onChange={ (e) => setUsername(e.target.value)}
                                 type="text"
                                 className='form-control'
+                                style={{ width: 'auto', margin: '0 auto' }}
+                                required='true'
                             />
                         </div>
                         <div className='mb-3'>
@@ -80,6 +82,8 @@ const CompEditPerfil = () => {
                                 onChange={ (e) => setEmail(e.target.value)}
                                 type="text"
                                 className='form-control'
+                                style={{ width: 'auto', margin: '0 auto' }}
+                                required='true'
                             />
                         </div>
                         <div className='mb-3'>
@@ -89,6 +93,8 @@ const CompEditPerfil = () => {
                                 onChange={ (e) => setPassword(e.target.value)}
                                 type="text"
                                 className='form-control'
+                                style={{ width: 'auto', margin: '0 auto' }}
+                                required='true'
                             />
                         </div>
                         <div className='mb-3'>
@@ -98,6 +104,8 @@ const CompEditPerfil = () => {
                                 onChange={ (e) => setName(e.target.value)}
                                 type="text"
                                 className='form-control'
+                                style={{ width: 'auto', margin: '0 auto' }}
+                                required='true'
                             />
                         </div>
                         <div className='mb-3'>
@@ -107,6 +115,7 @@ const CompEditPerfil = () => {
                                 onChange={ (e) => setApellid(e.target.value)}
                                 type="text"
                                 className='form-control'
+                                style={{ width: 'auto', margin: '0 auto' }}
                             />
                         </div>
                         <button type='submit' className='btn btn-primary'>Confirmar Cambios</button> <br/>

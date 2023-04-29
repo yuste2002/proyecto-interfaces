@@ -44,43 +44,47 @@ const CompRegistro = () =>{
                 <div className='col'>
                     <form onSubmit={registro}>
                         <div className='mb-3'>
-                            <label className='form-label'>Nombre de usuario</label>
+                            <label className='form-label'>Nombre de usuario*</label>
                             <input
                                 value={nombreUs}
                                 onChange={ (e) => setNombreUs(e.target.value)}
                                 type="text"
                                 className='form-control'
                                 style={{ width: 'auto', margin: '0 auto' }}
+                                required='true'
                             />
                         </div>
                         <div className='mb-3'>
-                            <label className='form-label'>Correo electronico</label>
+                            <label className='form-label'>Correo electronico*</label>
                             <input
                                 value={correo}
                                 onChange={ (e) => setCorreo(e.target.value)}
                                 type="text"
                                 className='form-control'
                                 style={{ width: 'auto', margin: '0 auto' }}
+                                required='true'
                             />
                         </div>
                         <div className='mb-3'>
-                            <label className='form-label'>Contraseña</label>
+                            <label className='form-label'>Contraseña*</label>
                             <input
                                 value={password}
                                 onChange={ (e) => setPassword(e.target.value)}
                                 type="password"
                                 className='form-control'
                                 style={{ width: 'auto', margin: '0 auto' }}
+                                required='true'
                             />
                         </div>
                         <div className='mb-3'>
-                            <label className='form-label'>Nombre</label>
+                            <label className='form-label'>Nombre*</label>
                             <input
                                 value={nombre}
                                 onChange={ (e) => setNombre(e.target.value)}
                                 type="text"
                                 className='form-control'
                                 style={{ width: 'auto', margin: '0 auto' }}
+                                required='true'
                             />
                         </div>
                         <div className='mb-3'>

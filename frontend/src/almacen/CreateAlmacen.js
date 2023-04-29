@@ -11,6 +11,7 @@ const CompCreateAlmacen = () => {
     const [invitados, setInvitados] = useState([])
     const [invitado, setInvitado] = useState('')
     const [correoUsuario, setCorreoUsuario] = useState('')
+    const [foto, setFoto] = useState('')
 
     const {idUser} = useParams()
     const navigate = useNavigate()
@@ -47,6 +48,7 @@ const CompCreateAlmacen = () => {
             })
         }
         navigate(`/${idUser}`)
+        
     }
 
     const nuevoInvitado = (e) => {
@@ -79,13 +81,14 @@ const CompCreateAlmacen = () => {
                 <div className='col'>
                     <form onSubmit={crearAlmacen}>
                         <div className='mb-3 mt-3'>
-                            <label className='form-label'>Nombre</label>
+                            <label className='form-label'>Nombre*</label>
                             <input
                                 value={name}
                                 onChange={ (e) => setName(e.target.value)}
                                 type="text"
                                 className='form-control'
                                 style={{ width: 'auto', margin: '0 auto' }}
+                                required='true'
                             />
                             <div className='mb-3 mt-3'>
                             <label className='form-label'>Compartir con</label> <br/>
@@ -96,6 +99,14 @@ const CompCreateAlmacen = () => {
                                 className='form-control'
                                 placeholder='usuario@ejemplo.com'
                                 style={{ width: 'auto', margin: '0 auto' }}
+                            />
+                            <label className='form-label'>Enlace foto</label> <br/>
+                            <input
+                                value={foto}
+                                onChange={ (e) => setFoto(e.target.value)}
+                                type="text"
+                                className='form-control'
+                                style={{ width: '700px', margin: '0 auto' }}
                             />
                             <button onClick={nuevoInvitado} className='btn btn-info mt-1'>Compartir</button>
                             </div>

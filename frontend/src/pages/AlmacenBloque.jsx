@@ -74,7 +74,7 @@ function AlmacenBloque () {
                                         className="form-control form-control-sm"
                                         placeholder="(Nuevo nombre)"
                                         />
-                                    <button type='submit' className='btn btn-info mt-1'>Cambiar</button>
+                                    <button type='submit' className="ms-2 btn mt-1" style={{backgroundColor:'#4175A3'}}>Cambiar</button>
                                 </form> : null}
                             </div>
                             <div className="col-md-2"></div>

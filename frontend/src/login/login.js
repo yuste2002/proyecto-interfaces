@@ -15,6 +15,7 @@ const URIuser = 'http://localhost:8000/usuarios/'
 const CompLogin = () => {
     const [user, setUser] = useState('')
     const [password, setPassword] = useState('')
+    const [error, setError] = useState(null)
 
     const navigate = useNavigate()
 
@@ -37,16 +38,10 @@ const CompLogin = () => {
             if(usuarioEncontrado != undefined) {
                 navigate(`/${usuarioEncontrado.id}`)
             } else {
-                window.location.reload(false)
+                setError('Usuario o contraseña incorrecta.')
             }
         })
         
-        //INICIO SESION PAPRO
-        /*
-        const usuario = await axios.get(`${URIuser}/nombreUsuario/${user}/contrasena/${password}`)
-        console.log(usuario.data)
-        navigate(`/${usuario.data.id}`)
-        */
     }
 
     return(
@@ -87,6 +82,15 @@ const CompLogin = () => {
                                                     style={{ width: 'auto', margin: '0 auto' }}
                                                 />
                                             </div>
+                                            {error && (
+                                                <div className='row'>
+                                                    <div className='col'>
+                                                        <div className='alert alert-danger' role='alert'>
+                                                            {error}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )}
                                             <button type='submit' className='btn' style={{backgroundColor:'#54A6F0', color: 'black'}}>Iniciar Sesion</button>
                                         </form>
                                     </div>
