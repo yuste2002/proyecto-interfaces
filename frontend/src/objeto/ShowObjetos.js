@@ -15,13 +15,23 @@ const CompShowObjetos = () => {
     
     const [objetos, setObjetos] = useState([])
     useEffect( () => {
-        getObjetos()
-    },[])
+            getObjetos()
+        
+    },[objetos])
+
+    const getObjetos = async () => {
+        const res = await axios.get(URIobjetos)
+        let objetos = res.data
+        let objetosFiltrados = objetos.filter(objeto => objeto.almacenAsociado == idAlmacen)
+        setObjetos(objetosFiltrados)
+    }
 
     const [propietarioAlmacen, setPropietarioAlmacen] = useState(false) 
     useEffect( () => {
-        getPropietarioAlmacen()
-    },[])
+            getPropietarioAlmacen()
+        
+            
+    },propietarioAlmacen)
 
     const getPropietarioAlmacen = async () => {
         const res = await axios.get(URIalmacen + idAlmacen)
@@ -33,14 +43,7 @@ const CompShowObjetos = () => {
         }
     }
 
-
-    const getObjetos = async () => {
-        const res = await axios.get(URIobjetos)
-        let objetos = res.data
-        let objetosFiltrados = objetos.filter(objeto => objeto.almacenAsociado == idAlmacen)
-        setObjetos(objetosFiltrados)
-    }
-
+    
     const deleteObjeto = async (id) => {
         const confirmarBorrar = window.confirm("¿Estás seguro de que quieres borrar este objeto?");
         if (confirmarBorrar) {

@@ -18,39 +18,8 @@ const CompShowMiembros = () => {
 
     const [miembros,setMiembros] = useState([])
     useEffect( () => {
-        getMiembros()
-    },miembros)
-
-    const [propietarioAlmacen, setPropietarioAlmacen] = useState(false) 
-    useEffect( () => {
-        getPropietarioAlmacen()
-    }, false)
-
-    const getPropietarioAlmacen = async () => {
-        const res = await axios.get(URIalmacen + idAlmacen)
-        let almacen = res.data
-        if(almacen.propietario == idUser) {
-            setPropietarioAlmacen(true)
-        } else {
-            setPropietarioAlmacen(false)
-        }
-        
-    }
-
-    const [propietario, setPropietario] = useState('')
-    useEffect( () => {
-        getPropietario()
-    },'')
-
-    const getPropietario = async () => {
-        const res = await axios.get(URIalmacen + idAlmacen)
-        let almacen = res.data
-
-        const res2 = await axios.get(`${URIusuarios}${almacen.propietario}`)
-        let propietario = res2.data
-
-        setPropietario(propietario.nombreUsuario)
-    }
+            getMiembros()
+    },)
 
     const getMiembros = async () => {
         const res1 = await axios.get(URIinvitaciones)
@@ -70,22 +39,58 @@ const CompShowMiembros = () => {
         setMiembros(member)
     }
 
+    const [propietarioAlmacen, setPropietarioAlmacen] = useState(false) 
+    useEffect( () => {
+        getPropietarioAlmacen()
+    }, )
+
+    const getPropietarioAlmacen = async () => {
+        const res = await axios.get(URIalmacen + idAlmacen)
+        let almacen = res.data
+        if(almacen.propietario == idUser) {
+            setPropietarioAlmacen(true)
+        } else {
+            setPropietarioAlmacen(false)
+        }
+        
+    }
+
+    const [propietario, setPropietario] = useState('')
+    useEffect( () => {
+            getPropietario()
+    },)
+
+    const getPropietario = async () => {
+        const res = await axios.get(URIalmacen + idAlmacen)
+        let almacen = res.data
+
+        const res2 = await axios.get(`${URIusuarios}${almacen.propietario}`)
+        let propietario = res2.data
+
+        setPropietario(propietario.nombreUsuario)
+    }
+
     const invitar = async (e) => {
         e.preventDefault()
         const res = await axios.get(URIusuarios)
         let usuarios = res.data
         let usuarioYes = usuarios.find(usuario => usuario.correo === email)
 
-        if (usuarioYes != undefined && (miembros.find(usuario => usuario === usuarioYes.nombreUsuario) == undefined)){
+        if (usuarioYes != undefined && (miembros.find(usuario => usuario === usuarioYes.nombreUsuario) == undefined) && idUser != usuarioYes.id){
             await axios.post(URIinvitaciones, {
                 almacen: parseInt(idAlmacen),
                 usuario: usuarioYes.id
             })
             setMiembros([...miembros,usuarioYes.nombreUsuario])
-        }else{
-            setError('El usuario introducido ya está en el almacen o es inexistente.')
+            setError(null)
+        }else if (usuarioYes == undefined){
+            setError('El usuario introducido no existe')
         }
-
+        else if (idUser == usuarioYes.id){
+            setError('No puedes compartir contigo mismo')
+        }else if (miembros.find(usuario => usuario === usuarioYes.nombreUsuario) != undefined){
+            setError('El usuario ya está invitado')
+        }
 
         setEmail("")
     }

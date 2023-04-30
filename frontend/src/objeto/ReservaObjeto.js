@@ -18,16 +18,16 @@ const CompReservaObjeto = () => {
     const {idUser} = useParams()
     const {idObjeto} = useParams()
     const navigate = useNavigate()
+
     const [objeto, setObjeto] = useState('')
     useEffect( () => {
         getObjeto()
     })
 
-    const getObjeto = async() => {
+    const getObjeto = async () => {
         const res = await axios.get(URIobjetos+idObjeto)
         const objeto = res.data
         setObjeto(objeto)
-        getObjeto()
     }
 
     const [usuarios, setUsuarios] = useState([])
@@ -39,7 +39,6 @@ const CompReservaObjeto = () => {
         const res = await axios.get(URIusuarios)
         const usuario = res.data
         setUsuarios(usuario)
-        getUsuario()
     }
 
     const [usuarioActual, setUsuarioActual] = useState('')
@@ -51,12 +50,12 @@ const CompReservaObjeto = () => {
         const res = await axios.get(URIusuarios+idUser)
         const usuario = res.data
         setUsuarioActual(usuario)
-        getUsuarioActual()
+
     }
 
     const [reservas, setReservas] = useState([])
   
-    useEffect(() => {
+    useEffect(() => { obtenerReservas() })
       const obtenerReservas = async () => {
           const respuesta = await axios.get(URIreservas)
           const data = respuesta.data
@@ -65,14 +64,13 @@ const CompReservaObjeto = () => {
          * Aqui filtro para que en el calendario solo se muestren las reservas futuras, ya que es lo
          * que le interesa al usuario. Las reservas del pasado son irrelevantes.
          * Tambien filtro para que solo me muestre las reservas de mi objeto
+         * 
          */
-        let reserv = data.filter(reserva => fechaActual < moment(reserva.fechaInicio).toDate() && reserva.objetoReserva == idObjeto)
+        let reserv = data.filter(reserva => moment(reserva.fechaInicio).isSameOrAfter(moment().startOf('day')) && reserva.objetoReserva == idObjeto)
 
         setReservas(reserv)
       }
-  
-      obtenerReservas()
-    }, [])
+      
 
     const[fechaInicio, setFechaInicio] = useState()
     
@@ -81,7 +79,7 @@ const CompReservaObjeto = () => {
     const reservar = async (e) => {
         e.preventDefault()
 
-        if(fechaActual < moment(fechaInicio).toDate() && moment(fechaInicio).isBefore(moment(fechaFin)) && (!coincide(fechaInicio, fechaFin))) {     //La fecha inicio es posterior a la actual
+        if(moment(fechaInicio).isSameOrAfter(moment().startOf('day')) && moment(fechaInicio).isBefore(moment(fechaFin)) && (!coincide(fechaInicio, fechaFin))) {     //La fecha inicio es posterior a la actual
             axios.post(URIreservas, {
                 fechaInicio: fechaInicio,
                 fechaFin: fechaFin,
@@ -89,8 +87,7 @@ const CompReservaObjeto = () => {
                 objetoReserva: idObjeto
             })
         }
-
-        navigate(`/objeto/${idObjeto}/${idUser}`)
+        obtenerReservas()
         
     }
 
@@ -103,8 +100,8 @@ const CompReservaObjeto = () => {
          * Me falta comparar que no sean exactamente la misma fecha
          */
         reservas.forEach(reserva => {
-            if( moment(reserva.fechaInicio).isBefore(moment(inicio)) && moment(inicio).isBefore(moment(reserva.fechaFin)) ||
-                moment(reserva.fechaInicio).isBefore(moment(fin)) && moment(fin).isBefore(moment(reserva.fechaFin))) {
+            if( moment(reserva.fechaInicio).isSameOrBefore(moment(inicio)) && moment(inicio).isSameOrBefore(moment(reserva.fechaFin)) ||
+                moment(reserva.fechaInicio).isSameOrBefore(moment(fin)) && moment(fin).isSameOrBefore(moment(reserva.fechaFin))) {
                 coincide = true
             }
         })
@@ -121,13 +118,16 @@ const CompReservaObjeto = () => {
 
   return (
     <div className='mt-3'>
-      <Calendar
-        localizer={localizer}
-        events={eventos}
-        startAccessor="start"
-        endAccessor="end"
-        style={{ height: 420, backgroundColor: 'white'}}
-      />
+        <div className="calendar-container">
+            <Calendar
+            localizer={localizer}
+            events={eventos}
+            startAccessor="start"
+            endAccessor="end"
+            style={{ height: 420, backgroundColor: 'white'}}
+            />
+        </div>
+      
       <form onSubmit={reservar}>
         <div className="mb-3">
         <label className='form-label'>Fecha inicio</label>
