@@ -5,7 +5,7 @@ const CompBloqueIzquierdo = () => {
 
     return(
         <div>
-            <div className="container">
+            <div className="container largoMin">
                 <div className="row">
                     <div className="col-12">
                         <Link to={`/${idUser}/createAlmacen`} className='btn mt-4 mb-2' style={{backgroundColor:'#fff4e3', color: 'black', width: '200px'}}><i class="fa-duotone fa-plus"></i> Nuevo Almacen</Link>

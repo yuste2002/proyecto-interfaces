@@ -26,7 +26,7 @@ import ObjetoBloque from './pages/ObjetoBloque';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App fondoOut">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login/>}/>

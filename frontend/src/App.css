@@ -97,14 +97,17 @@
  background: #fff4e3;
 }
 
-@media screen and (max-width:1350px) {
-  .row>*{
-    flex-shrink: 0;
-    width: 100%;
-    max-width: 100%;
-    padding-right: calc(var(--bs-gutter-x) * .5);
-    padding-left: calc(var(--bs-gutter-x) * .5);
-    margin-top: var(--bs-gutter-y);
-  }
+
+.fondoOut{
+  background: #fff4e3;
+  height: 100vmin;
+}
+
+.fondoCompartidos{
+  background: #b5986c59;
+}
+
+.largoMin{
+  height: 50vmin;
 }
 

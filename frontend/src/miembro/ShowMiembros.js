@@ -14,6 +14,7 @@ const CompShowMiembros = () => {
     const {idAlmacen} = useParams()
     const [email,setEmail] = useState('')
     const navigate = useNavigate()
+    const [error, setError] = useState(null)
 
     const [miembros,setMiembros] = useState([])
     useEffect( () => {
@@ -75,13 +76,17 @@ const CompShowMiembros = () => {
         let usuarios = res.data
         let usuarioYes = usuarios.find(usuario => usuario.correo === email)
 
-        if (miembros.find(usuario => usuario === usuarioYes.nombreUsuario) == undefined){
+        if (usuarioYes != undefined && (miembros.find(usuario => usuario === usuarioYes.nombreUsuario) == undefined)){
             await axios.post(URIinvitaciones, {
                 almacen: parseInt(idAlmacen),
                 usuario: usuarioYes.id
             })
             setMiembros([...miembros,usuarioYes.nombreUsuario])
+        }else{
+            setError('El usuario introducido ya está en el almacen o es inexistente.')
         }
+
+
         setEmail("")
     }
 
@@ -162,7 +167,7 @@ const CompShowMiembros = () => {
                     <label className='form-label'>Invitar miembro</label>
                     <div className="row">
                         <div className="col-md-2"></div>
-                        <div className="col-md-6">
+                        <div className="col-md-6 mb-3 d-flex justify-content-center align-items-center">
                             <input
                             value={email}
                             onChange={ (e) => setEmail(e.target.value)}
@@ -175,7 +180,17 @@ const CompShowMiembros = () => {
                         <div className="col-md-2">
                             <button type='submit' className='btn' style={{background:'#54A6F0'}}>Invitar</button>
                         </div>
-                        <div className="col-md-2"></div>
+                    </div>
+                    <div className="row">
+                            {error && (
+                            <div className='row'>
+                                <div className='col'>
+                                    <div className='alert alert-danger' role='alert'>
+                                        {error}
+                                    </div>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </form>
             </div> 

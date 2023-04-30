@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import '../App.css';
 
 const URIalmacen = 'http://localhost:8000/almacenes/'
 const URIusuario = 'http://localhost:8000/usuarios/'
@@ -12,6 +13,7 @@ const CompCreateAlmacen = () => {
     const [invitado, setInvitado] = useState('')
     const [correoUsuario, setCorreoUsuario] = useState('')
     const [foto, setFoto] = useState('')
+    const [error, setError] = useState(null)
 
     const {idUser} = useParams()
     const navigate = useNavigate()
@@ -51,10 +53,21 @@ const CompCreateAlmacen = () => {
         
     }
 
-    const nuevoInvitado = (e) => {
+    const nuevoInvitado = async (e) => {
         e.preventDefault()
-        if (correoUsuario !== invitado){
+        const res = await axios.get(URIusuario)
+        let usuarios = res.data
+        let usuarioYes = usuarios.find(usuario => usuario.correo === invitado)
+
+        if (usuarioYes != undefined && correoUsuario !== invitado && (invitados.find(inv => inv === invitado) == undefined)){
             setInvitados([...invitados, invitado])
+            setError(null)
+        }else if(correoUsuario === invitado){
+            setError('No puedes compartir contigo mismo')
+        }else if((invitados.find(inv => inv === invitado) != undefined)){
+            setError('El usuario ya está en la lista')
+        }else if(usuarioYes == undefined){
+            setError('El usuario introducido no existe')
         }
         setInvitado('')
     }
@@ -71,7 +84,8 @@ const CompCreateAlmacen = () => {
     }
 
     return(
-        <div className='container'>
+        
+        <div className='container fondoOut'>
             <div className='row'>
                 <div className='col mt-3'>
                     <h1>NUEVO ALMACEN</h1>
@@ -90,6 +104,14 @@ const CompCreateAlmacen = () => {
                                 style={{ width: 'auto', margin: '0 auto' }}
                                 required='true'
                             />
+                            <label className='form-label mt-3'>Enlace foto</label> <br/>
+                            <input
+                                value={foto}
+                                onChange={ (e) => setFoto(e.target.value)}
+                                type="text"
+                                className='form-control'
+                                style={{ width: '700px', margin: '0 auto' }}
+                            />
                             <div className='mb-3 mt-3'>
                             <label className='form-label'>Compartir con</label> <br/>
                             <input
@@ -100,28 +122,37 @@ const CompCreateAlmacen = () => {
                                 placeholder='usuario@ejemplo.com'
                                 style={{ width: 'auto', margin: '0 auto' }}
                             />
-                            <label className='form-label'>Enlace foto</label> <br/>
-                            <input
-                                value={foto}
-                                onChange={ (e) => setFoto(e.target.value)}
-                                type="text"
-                                className='form-control'
-                                style={{ width: '700px', margin: '0 auto' }}
-                            />
-                            <button onClick={nuevoInvitado} className='btn btn-info mt-1'>Compartir</button>
+                            <button onClick={nuevoInvitado} className='btn btn-info mt-3'>Compartir</button>
+                            <div className="row">
+                            {error && (
+                            <div className='row'>
+                                <div className='col'>
+                                    <div className='alert alert-danger mt-4' role='alert'>
+                                        {error}
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <table border={1}>
-                                    {invitados.map((inv) => (
-                                        <tr>
-                                            <td key={inv}>
-                                                {inv}
-                                                <button className='ms-2' onClick={ (e) =>deleteInvitado(e, inv)}><i class="fa-solid fa-trash"></i></button>
-                                            </td>
-                                            
-                                        </tr>
-                                    ))}
-                                </table>
+                        )}
+                    </div>
+                            </div>
+
+                            <div className='row'>
+                                <div className='col-xl-4'></div>
+                                    <div className='col-xl-4'>
+                                        <div style={{width:'50 vmin', justifyContent:'center',alignItems:'center'}}>
+                                            <ul className="list-group">
+                                                {invitados.map((inv) => (
+                                                    <li className="list-group-item d-flex justify-content-between align-items-center" key={inv}>
+                                                    {inv}
+                                                    <button className="btn" style={{backgroundColor:'#EF726B'}} onClick={(e) => deleteInvitado(e, inv)}>
+                                                        <i className="fa-solid fa-trash"></i>
+                                                    </button>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                <div className='col-xl-4'></div>
                             </div>
                         </div>
                         <button type='submit' className='btn btn-primary btn-lg'>Crear nuevo almacen</button><br/>

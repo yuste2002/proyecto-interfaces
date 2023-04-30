@@ -58,18 +58,18 @@ function AlmacenBloque () {
             <Navbar idUser={idUser}></Navbar>
             <div className="container-fluid h-100">
                 <div className="row">
-                    <div className="col-md-2 gradient-down">
+                    <div className="col-xxl-2 gradient-down">
                         <CompBloqueIzquierdo></CompBloqueIzquierdo>
                     </div>
-                    <div className="col-md-10 fondo">
+                    <div className="col-xxl-10 fondo">
                         <div className="row">
                             <div className="col-md-3"></div>
-                            <div className="col-md-6">
+                            <div className="col-xl-6">
                                 {almacen && <h2 className="mt-2">{almacen.nombre}</h2>}
                                 {propietarioAlmacen ? <form onSubmit={editarNombreAlmacen}>
                                 <div className="row">
                                     <div className="col-md-2"></div>
-                                        <div className="col-md-6">
+                                        <div className="col-md-6 mb-3 d-flex justify-content-center align-items-center">
                                         <input 
                                             value={nombreAlmacen}
                                             onChange={ (e) => setNombreAlmacen(e.target.value)}
