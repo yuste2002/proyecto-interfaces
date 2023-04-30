@@ -22,7 +22,7 @@ const CompReservaObjeto = () => {
     const [objeto, setObjeto] = useState('')
     useEffect( () => {
         getObjeto()
-    })
+    }, '')
 
     const getObjeto = async () => {
         const res = await axios.get(URIobjetos+idObjeto)
@@ -33,7 +33,7 @@ const CompReservaObjeto = () => {
     const [usuarios, setUsuarios] = useState([])
     useEffect( () => {
         getUsuario()
-    },usuarios)
+    },[])
 
     const getUsuario = async () => {
         const res = await axios.get(URIusuarios)
@@ -44,18 +44,19 @@ const CompReservaObjeto = () => {
     const [usuarioActual, setUsuarioActual] = useState('')
     useEffect( () => {
         getUsuarioActual()
-    })
+    },'')
 
     const getUsuarioActual = async () => {
         const res = await axios.get(URIusuarios+idUser)
         const usuario = res.data
         setUsuarioActual(usuario)
-
     }
 
     const [reservas, setReservas] = useState([])
   
-    useEffect(() => { obtenerReservas() })
+    useEffect(() => { 
+        obtenerReservas() 
+    },[])
       const obtenerReservas = async () => {
           const respuesta = await axios.get(URIreservas)
           const data = respuesta.data
@@ -87,8 +88,8 @@ const CompReservaObjeto = () => {
                 objetoReserva: idObjeto
             })
         }
-        obtenerReservas()
-        
+        //obtenerReservas() 
+        window.location.reload()
     }
 
     function coincide(inicio, fin) {
@@ -118,34 +119,55 @@ const CompReservaObjeto = () => {
 
   return (
     <div className='mt-3'>
+            <div className="row">
+                <div className="col">
+                    <h1>CALENDARIO RESERVAS</h1>
+                </div>
+            </div>
         <div className="calendar-container">
             <Calendar
             localizer={localizer}
             events={eventos}
             startAccessor="start"
             endAccessor="end"
-            style={{ height: 420, backgroundColor: 'white'}}
-            />
+            style={{ height: 385, backgroundColor: 'white'}}
+        />
         </div>
       
       <form onSubmit={reservar}>
         <div className="mb-3">
-        <label className='form-label'>Fecha inicio</label>
-                <input
-                    value={fechaInicio}
-                    onChange={ (e) => setFechaInicio(e.target.value)}
-                    type="date"
-                    className="form-control"
-                />
+            <div className='row'>
+                <div className='col-md-3'></div>
+                <div className='col-md-6'>
+                <label className='form-label'>Fecha inicio</label>
+                    <input
+                        value={fechaInicio}
+                        onChange={ (e) => setFechaInicio(e.target.value)}
+                        type="date"
+                        className="form-control"
+                    />
+                </div>
+                <div className='col-md-3'></div>
+            </div>
+            
         </div>
         <div className="mb-3">
-        <label className='form-label'>Fecha fin</label>
-                <input
-                    value={fechaFin}
-                    type="date"
-                    onChange={ (e) => setFechaFin(e.target.value)}
-                    className="form-control"
-                />
+            <div className='row'>
+                    <div className='col-md-3'></div>
+                    <div className='col-md-6'>
+                        <label className='form-label'>Fecha fin</label>
+                            <input
+                                value={fechaFin}
+                                type="date"
+                                onChange={ (e) => setFechaFin(e.target.value)}
+                                className="form-control"
+                            />
+                    </div>
+                    <div className='col-md-3'></div>
+            </div>
+
+
+        
         </div>
         <button type="submit" className='btn btn-primary'>Reservar</button>
       </form>

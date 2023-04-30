@@ -16,8 +16,7 @@ const CompShowObjetos = () => {
     const [objetos, setObjetos] = useState([])
     useEffect( () => {
             getObjetos()
-        
-    },[objetos])
+    },[])
 
     const getObjetos = async () => {
         const res = await axios.get(URIobjetos)
@@ -28,10 +27,8 @@ const CompShowObjetos = () => {
 
     const [propietarioAlmacen, setPropietarioAlmacen] = useState(false) 
     useEffect( () => {
-            getPropietarioAlmacen()
-        
-            
-    },propietarioAlmacen)
+            getPropietarioAlmacen()      
+    },[])
 
     const getPropietarioAlmacen = async () => {
         const res = await axios.get(URIalmacen + idAlmacen)

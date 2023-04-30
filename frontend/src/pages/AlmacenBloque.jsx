@@ -17,7 +17,7 @@ function AlmacenBloque () {
     const [propietarioAlmacen, setPropietarioAlmacen] = useState(false) 
     useEffect( () => {
         getPropietarioAlmacen()
-    }, false)
+    }, [])
 
     const getPropietarioAlmacen = async () => {
         const res = await axios.get(URIalmacen + idAlmacen)
@@ -33,7 +33,7 @@ function AlmacenBloque () {
     const [almacen, setAlmacen] = useState()
     useEffect(() => {
         getAlmacen()
-    },)
+    },'')
 
     const [nombreAlmacen, setNombreAlmacen] = useState()
     

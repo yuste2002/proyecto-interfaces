@@ -14,10 +14,10 @@ function ObjetoBloque() {
                     <div className="col-xxl-2 gradient-down">
                         <CompBloqueIzquierdo></CompBloqueIzquierdo>
                     </div>
-                    <div className="col-xxl-5 fondo">
+                    <div className="col-xxl-5 border-end border-dark fondo">
                         <CompReservaObjeto></CompReservaObjeto>
                     </div>
-                    <div className="col-xxl-5 fondo">
+                    <div className="col-xxl-5 border-start border-dark fondo">
                         <CompEditObjeto></CompEditObjeto>
                     </div>
                 </div>

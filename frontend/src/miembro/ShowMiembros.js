@@ -19,7 +19,7 @@ const CompShowMiembros = () => {
     const [miembros,setMiembros] = useState([])
     useEffect( () => {
             getMiembros()
-    },)
+    },[])
 
     const getMiembros = async () => {
         const res1 = await axios.get(URIinvitaciones)
@@ -42,7 +42,7 @@ const CompShowMiembros = () => {
     const [propietarioAlmacen, setPropietarioAlmacen] = useState(false) 
     useEffect( () => {
         getPropietarioAlmacen()
-    }, )
+    }, [])
 
     const getPropietarioAlmacen = async () => {
         const res = await axios.get(URIalmacen + idAlmacen)
@@ -58,7 +58,7 @@ const CompShowMiembros = () => {
     const [propietario, setPropietario] = useState('')
     useEffect( () => {
             getPropietario()
-    },)
+    },'')
 
     const getPropietario = async () => {
         const res = await axios.get(URIalmacen + idAlmacen)
