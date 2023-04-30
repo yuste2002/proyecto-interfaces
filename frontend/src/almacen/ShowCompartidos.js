@@ -60,7 +60,7 @@ const CompShowCompartidos = () => {
     return(
         <div className="container">
             <div className="row">
-                <div className="col">
+                <div className="col p-4">
                     <h1>Compartidos Conmigo</h1>
                 </div>
             </div>

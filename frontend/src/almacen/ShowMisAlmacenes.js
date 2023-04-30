@@ -26,7 +26,7 @@ const CompShowMisAlmacenes = () => {
     }
 
     const deleteAlmacen = async (id) => {
-        const confirmarBorrado = window.confirm("¿Estás seguro de que quieres borrar este almacén?");
+        const confirmarBorrado = window.confirm("¿Estás seguro de que quieres borrar este almacén? Se borrarán junto a él todos los objetos y reservas que le pertenezcan.");
         if (confirmarBorrado) {
             //Borrado en cascada de los objetosAsociados al almacen 
             const resObj = await axios.get(URIobjeto)
@@ -59,7 +59,7 @@ const CompShowMisAlmacenes = () => {
     return(
         <div className="container">
             <div className="row">
-                <div className="col">
+                <div className="col p-4">
                     <h1>Mis Almacenes</h1>
                 </div>
             </div>

@@ -51,6 +51,7 @@ function AlmacenBloque () {
             nombre: nombreAlmacen
         })
         setNombreAlmacen('')
+        window.location.reload()
     }
 
     return(

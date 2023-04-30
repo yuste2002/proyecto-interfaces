@@ -45,14 +45,14 @@ const CompLogin = () => {
     }
 
     return(
-        <div className='d-flex align-items-center vh-100'>
+        <div className='d-flex align-items-center vh-100 fondoLogin'>
             <div className='container'>
                 <div className='row'>
                     <div className='col-lg-8'>
                         <img src={fotoPortada} style={{width: '600px', height:'600px', objectFit:'contain'}} className="card-img-top img-fluid"></img>
                     </div>
                     <div className='col-lg-4'>
-                        <div className='card text-bg-light mb-3'>
+                        <div className='card mb-3' style={{backgroundColor:'rgba(255, 255, 255, 0.7)', marginTop:'30%'}}>
                             <div className='container mt-2 mb-2'>
                                 <div className='row'>
                                     <div className='col'>

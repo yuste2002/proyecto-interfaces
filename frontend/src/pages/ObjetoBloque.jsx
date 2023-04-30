@@ -26,4 +26,4 @@ function ObjetoBloque() {
     )
 }
 
-export default ObjetoBloque
+export default ObjetoBloque 

@@ -143,7 +143,7 @@ const CompShowMiembros = () => {
             </div>
             { miembros.map ( (miembro) => (
                 <div className="col" key={miembro.id}>
-                    <div className="card text-center mb-4">
+                    <div className="card text-center mb-2">
                         <div className="card-body">
                             <div className="row">
                                 <div className="col-md-4">

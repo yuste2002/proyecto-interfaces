@@ -10,6 +10,7 @@ require('moment/locale/es.js');
 const localizer = momentLocalizer(moment)
 const fechaActual = moment().toDate()
 
+
 const URIreservas = "http://localhost:8000/reservas/"
 const URIobjetos = "http://localhost:8000/objetos/"
 const URIusuarios = "http://localhost:8000/usuarios/"
@@ -17,7 +18,7 @@ const URIusuarios = "http://localhost:8000/usuarios/"
 const CompReservaObjeto = () => {
     const {idUser} = useParams()
     const {idObjeto} = useParams()
-    const navigate = useNavigate()
+    const [error, setError] = useState(null)
 
     const [objeto, setObjeto] = useState('')
     useEffect( () => {
@@ -87,9 +88,10 @@ const CompReservaObjeto = () => {
                 usuarioReserva: idUser,
                 objetoReserva: idObjeto
             })
+            window.location.reload()
+        } else {
+            setError('Seleccione una fecha de reserva válida')
         }
-        //obtenerReservas() 
-        window.location.reload()
     }
 
     function coincide(inicio, fin) {
@@ -169,7 +171,16 @@ const CompReservaObjeto = () => {
 
         
         </div>
-        <button type="submit" className='btn btn-primary'>Reservar</button>
+        <button type="submit" className='btn mb-2' style={{backgroundColor:'#54A6F0', color: 'black'}}>Reservar</button>
+        {error && (
+            <div className='row'>
+                <div className='col'>
+                    <div className='alert alert-danger' role='alert'>
+                        {error}
+                    </div>
+                </div>
+            </div>
+        )}
       </form>
     </div>
   )
