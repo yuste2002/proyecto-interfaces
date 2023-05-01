@@ -124,9 +124,9 @@ const CompEditPerfil = () => {
                                                     style={{ width: 'auto', margin: '0 auto' }}
                                                 />
                                             </div>
-                                            <button type='submit' className='btn' style={{backgroundColor:'#54A6F0', color: 'black'}}>Confirmar Cambios</button> <br/>
+                                            <button type='submit' className='btn primario mt-3'>Confirmar Cambios</button> <br/>
                                             <button onClick={volverAtras} className='btn btn-secondary mt-2'>Volver atrás</button>
-                                            <Link to={`/`} className='btn ms-2 mt-2' style={{backgroundColor:'#EF726B', color: 'black'}}>Cerrar sesión</Link> 
+                                            <Link to={`/`} className='btn ms-2 mt-2 rojo'>Cerrar sesión</Link> 
                                         </form>
                                     </div>
                                 </div>

@@ -171,7 +171,7 @@ const CompReservaObjeto = () => {
 
         
         </div>
-        <button type="submit" className='btn mb-2' style={{backgroundColor:'#54A6F0', color: 'black'}}>Reservar</button>
+        <button type="submit" className='btn mb-2 primario'>Reservar</button>
         {error && (
             <div className='row'>
                 <div className='col'>

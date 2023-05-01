@@ -74,8 +74,8 @@ const CompShowCompartidos = () => {
                             }
                             <div className="card-body">
                                 <h2 className="card-title">{almacen.nombre}</h2>
-                                <Link to={`/${idUser}/${almacen.id}`} className='btn' style={{backgroundColor:'#54A6F0', color: 'black'}}>Acceder</Link> 
-                                <button className="ms-2 btn" style={{backgroundColor:'#EF726B'}} onClick={ () => salirAlmacen(almacen.id)}>Salir</button>
+                                <Link to={`/${idUser}/${almacen.id}`} className='btn primario'>Acceder</Link> 
+                                <button className="ms-2 btn rojo"onClick={ () => salirAlmacen(almacen.id)}>Salir</button>
                             </div>
                         </div>
                     </div>

@@ -68,18 +68,21 @@ const CompShowObjetos = () => {
             <div className="row row-cols-1">
                 { objetos.map ( (objeto) => (
                     <div className="col" key={objeto.id}>
-                        <div className="card text-center mb-4">
-                            <div className="card-body">
-                                <div className="row">
+                        <div className="card mb-4">
+                            <div className="card-body" >
+                                <div className="row align-items-center">
                                     <div className="col-md-4">
-                                        <img src={objetoDefault} style={{width: '150px', height: '150px', objectFit:'contain'}} className="card-img-top img-fluid"></img>
+                                        {objeto.foto == "" || objeto.foto == undefined ? 
+                                        <img src={objetoDefault} style={{width: '70%', borderRadius:'5px'}} className="card-img-top img-fluid"></img>:
+                                        <img src={objeto.foto} style={{width: '70%', borderRadius:'5px'}} className="card-img-top img-fluid"></img>
+                                        }
                                     </div>
-                                    <div className="col-md-8 mt-4">
+                                    <div className="col-md-8">
                                         <h3>{objeto.nombre}</h3>
                                         <div className="col">
-                                            <Link to={`/objeto/${objeto.id}/${idUser}`} className='btn' style={{backgroundColor:'#54A6F0', color: 'black'}}>Ver Objeto</Link>
+                                            <Link to={`/objeto/${objeto.id}/${idUser}`} className='btn primario'>Ver Objeto</Link>
                                             {propietarioAlmacen || objeto.propietario == idUser ? 
-                                            <button className="ms-2 btn" style={{backgroundColor:'#EF726B'}} onClick={()=>deleteObjeto(objeto.id)}>Borrar</button> : null}
+                                            <button className="ms-2 btn rojo" onClick={()=>deleteObjeto(objeto.id)}>Borrar</button> : null}
                                         </div>
                                     </div>
                                 </div>
@@ -88,7 +91,7 @@ const CompShowObjetos = () => {
                     </div>
                 ))}
             </div>
-            <Link to={`/${idAlmacen}/${idUser}/createObjeto`} className='btn' style={{backgroundColor:'#54A6F0', color: 'black'}}>Añadir</Link>
+            <Link to={`/${idAlmacen}/${idUser}/createObjeto`} className='btn primario'>Añadir objeto</Link>
         </div>
     )
 }

@@ -63,18 +63,18 @@ const CompShowMisAlmacenes = () => {
                     <h1>Mis Almacenes</h1>
                 </div>
             </div>
-            <div className="row row-cols-4">
+            <div className="row row-cols-4 align-items-center">
                 { almacenes.map ( (almacen) => (
                     <div className="col" key={almacen.id}>
                         <div className="card text-center mb-4">
-                            {almacen.foto == undefined ? 
+                            {almacen.foto == "" || almacen.foto == undefined ? 
                             <img src={almacenDefault} style={{width: '100%', height:'100%', objectFit:'contain'}} className="card-img-top img-fluid"></img>:
                             <img src={almacen.foto} style={{width: '100%', height:'100%', objectFit:'contain'}} className="card-img-top img-fluid"></img>
                             }
                             <div className="card-body">
                                 <h2 className="card-title">{almacen.nombre}</h2>
-                                <Link to={`/${idUser}/${almacen.id}`} className='btn' style={{backgroundColor:'#54A6F0', color: 'black'}}>Acceder</Link> 
-                                <button className="ms-2 btn" style={{backgroundColor:'#EF726B'}} onClick={ ()=>deleteAlmacen(almacen.id)}>Borrar</button>
+                                <Link to={`/${idUser}/${almacen.id}`} className='btn primario'>Acceder</Link> 
+                                <button className="ms-2 btn rojo"onClick={ ()=>deleteAlmacen(almacen.id)}>Borrar</button>
                             </div>
                         </div>
                     </div>

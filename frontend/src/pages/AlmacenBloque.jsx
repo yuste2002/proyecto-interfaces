@@ -69,21 +69,21 @@ function AlmacenBloque () {
                                 {almacen && <h2 className="mt-2">{almacen.nombre}</h2>}
                                 {propietarioAlmacen ? <form onSubmit={editarNombreAlmacen}>
                                 <div className="row">
-                                    <div className="col-md-2"></div>
-                                        <div className="col-md-6 mb-3 d-flex justify-content-center align-items-center">
+                                    <div className="col-md-3"></div>
+                                        <div className="col-md-5 mb-3 d-flex justify-content-center align-items-center">
                                         <input 
                                             value={nombreAlmacen}
                                             onChange={ (e) => setNombreAlmacen(e.target.value)}
                                             type="text"
                                             className="form-control"
                                             placeholder="(Nuevo nombre)"
-                                            style={{ width: '300px'}}
+                                            style={{ width: '100%'}}
                                             />
                                         </div>
-                                        <div className="col-md-2">
-                                            <button type='submit' className="ms-2 btn" style={{backgroundColor:'#54A6F0'}}>Cambiar</button>
+                                        <div className="col-md-1">
+                                            <button type='submit' className="ms-2 btn primario">Cambiar</button>
                                         </div>
-                                        <div className="col-md-2"></div>
+                                        <div className="col-md-3"></div>
                                     </div>
                                 </form> : null}
                             </div>

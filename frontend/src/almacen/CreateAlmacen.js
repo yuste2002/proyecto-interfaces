@@ -35,7 +35,8 @@ const CompCreateAlmacen = () => {
         if (almacenNotAdded === undefined){  //No hay un almacen con este nombre
             axios.post(URIalmacen, {
                 nombre: name, 
-                propietario: idUser
+                propietario: idUser,
+                foto: foto
             })
             invitados.forEach(async inv => {
                 const res = await axios.get(URIusuario)
@@ -84,83 +85,102 @@ const CompCreateAlmacen = () => {
     }
 
     return(
-        
-        <div className='container fondoOut'>
-            <div className='row'>
-                <div className='col mt-3'>
-                    <h1>NUEVO ALMACEN</h1>
-                </div>
-            </div>
-            <div className='row'>
-                <div className='col'>
-                    <form onSubmit={crearAlmacen}>
-                        <div className='mb-3 mt-3'>
-                            <label className='form-label'>Nombre*</label>
-                            <input
-                                value={name}
-                                onChange={ (e) => setName(e.target.value)}
-                                type="text"
-                                className='form-control'
-                                style={{ width: 'auto', margin: '0 auto' }}
-                                required='true'
-                            />
-                            <label className='form-label mt-3'>Enlace foto</label> <br/>
-                            <input
-                                value={foto}
-                                onChange={ (e) => setFoto(e.target.value)}
-                                type="text"
-                                className='form-control'
-                                style={{ width: '700px', margin: '0 auto' }}
-                            />
-                            <div className='mb-3 mt-3'>
-                            <label className='form-label'>Compartir con</label> <br/>
-                            <input
-                                value={invitado}
-                                onChange={ (e) => setInvitado(e.target.value)}
-                                type="email"
-                                className='form-control'
-                                placeholder='usuario@ejemplo.com'
-                                style={{ width: 'auto', margin: '0 auto' }}
-                            />
-                            <button onClick={nuevoInvitado} className='btn btn-info mt-3'>Compartir</button>
-                            <div className="row">
-                            {error && (
-                            <div className='row'>
-                                <div className='col'>
-                                    <div className='alert alert-danger mt-4' role='alert'>
-                                        {error}
+        <div className='d-flex align-items-center vh-100 fondoLogin container-fluid'>
+            <div className='container'>
+                <div className='row'>
+                    <div className='col-md-2'></div>
+                    <div className='col-md-8'>
+                        <div className='card' style={{padding: '20px', backgroundColor:'rgba(255, 255, 255, 0.8)'}}>
+                            <div className='container-fluid'>
+                                <div className='row'>
+                                    <div className='col mt-3'>
+                                        <h1>NUEVO ALMACEN</h1>
+                                    </div>
+                                </div>
+                                <div className='row'>
+                                    <div className='col'>
+                                        <form onSubmit={crearAlmacen}>
+                                            <div className='mb-3 mt-3'>
+                                                <label className='form-label'>Nombre*</label>
+                                                <input
+                                                    value={name}
+                                                    onChange={ (e) => setName(e.target.value)}
+                                                    type="text"
+                                                    className='form-control'
+                                                    style={{ width: '40%', margin: '0 auto' }}
+                                                    required='true'
+                                                />
+                                                <label className='form-label mt-3'>Enlace foto</label> <br/>
+                                                <input
+                                                    value={foto}
+                                                    onChange={ (e) => setFoto(e.target.value)}
+                                                    type="text"
+                                                    className='form-control'
+                                                    style={{ width: '60%', margin: '0 auto' }}
+                                                />
+                                                <div className='mb-3 mt-3'>
+                                                    <label className='form-label'>Compartir con</label> <br/>
+                                                    <div className='row'>
+                                                        <div className='col-md-3'></div>
+                                                        <div className='col-md-5 d-flex justify-content-center align-items-center'>
+                                                            <input
+                                                            value={invitado}
+                                                            onChange={ (e) => setInvitado(e.target.value)}
+                                                            type="email"
+                                                            className='form-control'
+                                                            placeholder='usuario@ejemplo.com'
+                                                            style={{ width: '100%'}}
+                                                            />
+                                                        </div>
+                                                        <div className='col-md-1 align-items-start'>
+                                                            <button onClick={nuevoInvitado} className='btn btn-info'>Compartir</button>
+                                                        </div>
+                                                        <div className='col-md-3'></div>
+                                                    </div>
+                                                    <div className="row">
+                                                        {error && (
+                                                        <div className='row'>
+                                                            <div className='col'>
+                                                                <div className='alert alert-danger mt-4' role='alert'>
+                                                                    {error}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                                <div className='row'>
+                                                    <div className='col-xl-4'></div>
+                                                    <div className='col-xl-4'>
+                                                        <div style={{width:'50 vmin', justifyContent:'center',alignItems:'center'}}>
+                                                            <ul className="list-group">
+                                                                {invitados.map((inv) => (
+                                                                    <li className="list-group-item d-flex justify-content-between align-items-center" key={inv}>
+                                                                    {inv}
+                                                                    <button className="btn rojo" onClick={(e) => deleteInvitado(e, inv)}>
+                                                                        <i className="fa-solid fa-trash"></i>
+                                                                    </button>
+                                                                    </li>
+                                                                ))}
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div className='col-xl-4'></div>
+                                                </div>
+                                            </div>
+                                            <button type='submit' className='btn btn-lg primario' >Crear nuevo almacen</button><br/>
+                                            <button onClick={volverAtras} className='btn btn-secondary mt-2'>Volver atrás</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-                        )}
-                    </div>
-                            </div>
-
-                            <div className='row'>
-                                <div className='col-xl-4'></div>
-                                    <div className='col-xl-4'>
-                                        <div style={{width:'50 vmin', justifyContent:'center',alignItems:'center'}}>
-                                            <ul className="list-group">
-                                                {invitados.map((inv) => (
-                                                    <li className="list-group-item d-flex justify-content-between align-items-center" key={inv}>
-                                                    {inv}
-                                                    <button className="btn" style={{backgroundColor:'#EF726B'}} onClick={(e) => deleteInvitado(e, inv)}>
-                                                        <i className="fa-solid fa-trash"></i>
-                                                    </button>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                <div className='col-xl-4'></div>
-                            </div>
                         </div>
-                        <button type='submit' className='btn btn-primary btn-lg'>Crear nuevo almacen</button><br/>
-                        <button onClick={volverAtras} className='btn btn-secondary mt-2'>Volver atrás</button>
-                    </form>
+                    </div>
+                    <div className='col-md-2'></div>
                 </div>
             </div>
         </div>
+        
     )
 }
 

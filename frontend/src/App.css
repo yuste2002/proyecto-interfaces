@@ -77,7 +77,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(to right, #bf7b44, 90%, #fff4e3);
+  background: #bb5751 ;
   padding: 15px;
 }
 
@@ -90,7 +90,7 @@
 }
 
 .gradient-down{
-  background: linear-gradient(to bottom, #bf7b44, #fff4e3);
+  background: linear-gradient(to bottom, #bb5751 , #ffb452);
 }
 
 .fondo{
@@ -113,4 +113,13 @@
 
 .fondoLogin{
   background-image: radial-gradient(circle at 31.78% 48.41%, #ffd679 0, #ffc776 12.5%, #fbb674 25%, #eca371 37.5%, #d8906c 50%, #c27e67 62.5%, #af6f62 75%, #9e645e 87.5%, #8f5a5a 100%);
+}
+
+.primario {
+  background-color: #54A6F0 !important;
+  color: black
+}
+
+.rojo{
+  background-color: #EF726B !important;
 }

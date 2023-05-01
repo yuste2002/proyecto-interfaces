@@ -122,12 +122,12 @@ const CompShowMiembros = () => {
                 <div className="col">
                     <div className="card text-center">
                         <div className="card-body">
-                            <div className="row">
+                            <div className="row align-items-center">
                                 <div className="col-md-4">
                                     <img src={fotoPropietario} style={{width: '80px', height: '80px', objectFit:'contain'}} className="card-img-top img-fluid"></img>
                                 </div>
                                 <div className="col-md-8">
-                                <div className="row mt-3">
+                                <div className="row">
                                         <div className="col-md-1"></div>
                                         <div className="col-md-8">
                                         <h3>{propietario} (propietario)</h3>
@@ -145,18 +145,18 @@ const CompShowMiembros = () => {
                 <div className="col" key={miembro.id}>
                     <div className="card text-center mb-2">
                         <div className="card-body">
-                            <div className="row">
+                            <div className="row align-items-center">
                                 <div className="col-md-4">
                                     <img src={fotoUsuario} style={{width: '80px', height: '80px', objectFit:'contain'}} className="card-img-top img-fluid"></img>
                                 </div>
                                 <div className="col-md-8">
-                                    <div className="row mt-3">
+                                    <div className="row">
                                         <div className="col-md-2"></div>
                                         <div className="col-md-6">
                                             <h3>{miembro}</h3>
                                         </div>
                                         <div className="col-md-2">
-                                            {propietarioAlmacen ? <button className="btn"  style={{backgroundColor:'#EF726B'}} onClick={ () => expulsarMiembro(miembro)}>Expulsar</button> : null}
+                                            {propietarioAlmacen ? <button className="btn primario" onClick={ () => expulsarMiembro(miembro)}>Expulsar</button> : null}
                                         </div>
                                     </div>
                                 </div>
@@ -171,15 +171,15 @@ const CompShowMiembros = () => {
                 <form onSubmit={invitar}>
                     <label className='form-label'>Invitar miembro</label>
                     <div className="row">
-                        <div className="col-md-2"></div>
-                        <div className="col-md-6 mb-3 d-flex justify-content-center align-items-center">
+                        <div className="col-md-3"></div>
+                        <div className="col-md-5 mb-3 d-flex justify-content-center align-items-center">
                             <input
                             value={email}
                             onChange={ (e) => setEmail(e.target.value)}
                             type="text"
                             className='form-control'
                             placeholder="usuario@ejemplo.com"
-                            style={{ width: '300px'}}
+                            style={{ width: '100%'}}
                             />
                         </div>
                         <div className="col-md-2">

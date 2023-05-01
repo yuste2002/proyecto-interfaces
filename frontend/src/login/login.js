@@ -70,6 +70,7 @@ const CompLogin = () => {
                                                     type="text"
                                                     className='form-control'
                                                     style={{ width: 'auto', margin: '0 auto' }}
+                                                    required='true'
                                                 />
                                             </div>
                                             <div className='mb-3'>
@@ -80,6 +81,7 @@ const CompLogin = () => {
                                                     type="password"
                                                     className='form-control'
                                                     style={{ width: 'auto', margin: '0 auto' }}
+                                                    required='true'
                                                 />
                                             </div>
                                             {error && (
@@ -91,13 +93,13 @@ const CompLogin = () => {
                                                     </div>
                                                 </div>
                                             )}
-                                            <button type='submit' className='btn' style={{backgroundColor:'#54A6F0', color: 'black'}}>Iniciar Sesion</button>
+                                            <button type='submit' className='btn primario'>Iniciar Sesion</button>
                                         </form>
                                     </div>
                                 </div>
                                 <div className='row'>
                                     <div className='col mt-3'>
-                                        <h3>¿No tienes cuenta? <Link to="/registro" className='btn' style={{backgroundColor:'#EF726B'}}>Registrate</Link></h3>
+                                        <h3>¿No tienes cuenta? <Link to="/registro" className='btn rojo'>Registrate</Link></h3>
                                         
                                     </div>
                                 </div>

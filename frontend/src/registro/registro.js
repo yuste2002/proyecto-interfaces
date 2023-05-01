@@ -16,20 +16,31 @@ const CompRegistro = () =>{
     const [password, setPassword] = useState('')
     const [nombre, setNombre] = useState('')
     const [apellido, setApellido] = useState('')
+    const [error, setError] = useState(null)
 
     const navigate = useNavigate()
 
     async function registro (e) {
         e.preventDefault()
-
-        await axios.post(URIuser, {
-            nombreUsuario:nombreUs, 
-            correo:correo, 
-            contrasena:password,
-            nombre:nombre,
-            apellido:apellido
-        })
-        navigate(`/`)
+        const res = await axios.get(URIuser)
+        let users = res.data
+        const existeNombre = users.find(usuario => nombreUs == usuario.nombreUsuario)
+        const existeCorreo = users.find(usuario => correo == usuario.correo)
+        if (existeNombre == undefined && existeCorreo == undefined) {
+            await axios.post(URIuser, {
+                nombreUsuario:nombreUs, 
+                correo:correo, 
+                contrasena:password,
+                nombre:nombre,
+                apellido:apellido
+            })
+            navigate(`/`)
+        } else if (existeNombre == undefined){
+            setError('Correo electrónico ya registrado')
+        } else {
+            setError('Nombre de usuario ya registrado')
+        }   
+        
     }
 
     const volverAtras = (e) => {
@@ -80,7 +91,7 @@ const CompRegistro = () =>{
                         </div>
                     </div>
                     <div className='col-md-4'>
-                        <div className='card text-bg-light'>
+                        <div className='card text-bg-light' style={{height:'100%'}}>
                             <div className='card-body'>
                                 <div className='container'>
                                     <div className='row'>
@@ -103,7 +114,7 @@ const CompRegistro = () =>{
                                                     />
                                                 </div>
                                                 <div className='mb-3'>
-                                                    <label className='form-label'>Correo electronico*</label>
+                                                    <label className='form-label'>Correo electrónico*</label>
                                                     <input
                                                         value={correo}
                                                         onChange={ (e) => setCorreo(e.target.value)}
@@ -135,7 +146,7 @@ const CompRegistro = () =>{
                                                         required='true'
                                                     />
                                                 </div>
-                                                <div className='mb-3'>
+                                                <div className='mb-5'>
                                                     <label className='form-label'>Apellido</label>
                                                     <input
                                                         value={apellido}
@@ -145,7 +156,16 @@ const CompRegistro = () =>{
                                                         style={{ width: 'auto', margin: '0 auto' }}
                                                     />
                                                 </div>
-                                                <button type='submit' className='btn mt-5' style={{backgroundColor:'#54A6F0'}}>Registrarse</button> <br/>
+                                                {error && (
+                                                <div className='row'>
+                                                    <div className='col'>
+                                                        <div className='alert alert-danger' role='alert'>
+                                                            {error}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                )}
+                                                <button type='submit' className='btn primario'>Registrarse</button> <br/>
                                                 <button onClick={volverAtras} className='btn btn-secondary mt-2'>Volver atrás</button> <br/>
                                             </form>
                                         </div>
@@ -157,7 +177,6 @@ const CompRegistro = () =>{
                 </div>
             </div>
         </div>
-        
     )
 }
 
