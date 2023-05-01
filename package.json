@@ -4,5 +4,8 @@
     "moment": "^2.29.4",
     "react-big-calendar": "^1.6.9",
     "react-bootstrap-icons": "^1.10.3"
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
   }
 }
