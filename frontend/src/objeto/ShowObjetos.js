@@ -58,7 +58,7 @@ const CompShowObjetos = () => {
     }
 
     return (
-        <div className="container">
+        <div className="container mb-4">
             <div className="row">
                 <div className="col-md-1">
                     <h2>Objetos</h2>

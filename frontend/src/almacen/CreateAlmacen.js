@@ -14,7 +14,6 @@ const CompCreateAlmacen = () => {
     const [correoUsuario, setCorreoUsuario] = useState('')
     const [foto, setFoto] = useState('')
     const [error, setError] = useState(null)
-
     const {idUser} = useParams()
     const navigate = useNavigate()
 
@@ -29,19 +28,19 @@ const CompCreateAlmacen = () => {
 
     const crearAlmacen = async (e) => {
         e.preventDefault()
-        const almacen = await axios.get(URIalmacen)
-        let almacenesData = almacen.data
-        const almacenNotAdded = almacenesData.find(almacen => name === almacen.nombre)
-        if (almacenNotAdded === undefined){  //No hay un almacen con este nombre
+        const res = await axios.get(URIalmacen)
+        let almacenesData = res.data
+        const alamacenExiste = almacenesData.find(almacen => name == almacen.nombre && almacen.propietario == idUser)   
+        if (alamacenExiste == undefined){  //No hay un almacen con este nombre
             axios.post(URIalmacen, {
                 nombre: name, 
                 propietario: idUser,
                 foto: foto
-            })
+            })  
             invitados.forEach(async inv => {
                 const res = await axios.get(URIusuario)
                 let users = res.data
-                const existe = users.find(usuario => inv === usuario.correo)
+                const existe = users.find(usuario => inv == usuario.correo)
                 if(existe !== undefined) {
                     axios.post(URIinvitacion, {
                         usuario: existe.id,
@@ -49,9 +48,10 @@ const CompCreateAlmacen = () => {
                     })
                 }
             })
+            navigate(`/${idUser}`)
+        } else {
+            setError('Ya existe un almacen con este nombre.')
         }
-        navigate(`/${idUser}`)
-        
     }
 
     const nuevoInvitado = async (e) => {

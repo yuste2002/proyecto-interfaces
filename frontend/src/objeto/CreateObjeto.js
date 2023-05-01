@@ -13,19 +13,27 @@ const CompCreateObjetos = () => {
     const [descripcion, setDescripcion] = useState('')
     const [ubicacion, setUbicacion] = useState('')
     const [condiciones, setCondiciones] = useState('')
+    const [error, setError] = useState(null)
 
     const crearObjeto = async (e) => {
         e.preventDefault()
-        axios.post((URIobjetos), {
-            nombre: nombre,
-            descripcion: descripcion,
-            ubicacion: ubicacion,
-            condiciones: condiciones,
-            foto: foto,
-            almacenAsociado: idAlmacen,
-            propietario: idUser
-        })
-        navigate(`/${idUser}/${idAlmacen}`)
+        const res = await axios.get(URIobjetos)
+        let objetos = res.data
+        const objetoExiste = objetos.find(objeto => nombre == objeto.nombre && objeto.almacenAsociado == idAlmacen) 
+        if (objetoExiste == undefined) {
+            axios.post((URIobjetos), {
+                nombre: nombre,
+                descripcion: descripcion,
+                ubicacion: ubicacion,
+                condiciones: condiciones,
+                foto: foto,
+                almacenAsociado: idAlmacen,
+                propietario: idUser
+            })
+            navigate(`/${idUser}/${idAlmacen}`)
+        } else {
+            setError('Ya existe un objeto con este nombre.')
+        }
     }
 
     const volverAtras = (e) => {
@@ -96,6 +104,15 @@ const CompCreateObjetos = () => {
                                                     style={{ width: '50%', margin: '0 auto' }}
                                                     required='true'/>
                                             </div>
+                                            {error && (
+                                                        <div className='row'>
+                                                            <div className='col'>
+                                                                <div className='alert alert-danger mt-4' role='alert'>
+                                                                    {error}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        )}
                                             <button type="submit" className='btn primario' >Añadir</button> <br/>
                                             <button onClick={volverAtras} className='btn btn-secondary mt-2'>Volver atrás</button>
                                         </form>

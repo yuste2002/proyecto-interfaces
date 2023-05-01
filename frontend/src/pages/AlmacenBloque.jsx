@@ -13,6 +13,7 @@ function AlmacenBloque () {
     
     const {idUser} = useParams()
     const {idAlmacen} = useParams()
+    const [error, setError] = useState(null)
 
     const [propietarioAlmacen, setPropietarioAlmacen] = useState(false) 
     useEffect( () => {
@@ -46,12 +47,19 @@ function AlmacenBloque () {
     
     const editarNombreAlmacen = async (e) => {
         e.preventDefault()
-
-        await axios.put(URIalmacen + idAlmacen, {
-            nombre: nombreAlmacen
-        })
-        setNombreAlmacen('')
-        window.location.reload()
+        const res = await axios.get(URIalmacen)
+        let almacenesData = res.data
+        const alamacenExiste = almacenesData.find(almacen => nombreAlmacen == almacen.nombre && almacen.propietario == idUser)
+        if (alamacenExiste == undefined) {
+            await axios.put(URIalmacen + idAlmacen, {
+                nombre: nombreAlmacen
+            })
+            setNombreAlmacen('')
+            window.location.reload()
+        } else {
+            setError('Ya existe un almacen con este nombre.')
+        }
+        
     }
 
     return(
@@ -66,11 +74,11 @@ function AlmacenBloque () {
                         <div className="row">
                             <div className="col-md-3"></div>
                             <div className="col-xl-6">
-                                {almacen && <h2 className="mt-2">{almacen.nombre}</h2>}
+                                {almacen && <h1 className="mt-2">Almacen: {almacen.nombre}</h1>}
                                 {propietarioAlmacen ? <form onSubmit={editarNombreAlmacen}>
-                                <div className="row">
-                                    <div className="col-md-3"></div>
-                                        <div className="col-md-5 mb-3 d-flex justify-content-center align-items-center">
+                                <div className="row mt-4 align-items-center">
+                                    <div className="col-md-2"></div>
+                                    <div className="col-md-5">
                                         <input 
                                             value={nombreAlmacen}
                                             onChange={ (e) => setNombreAlmacen(e.target.value)}
@@ -78,16 +86,29 @@ function AlmacenBloque () {
                                             className="form-control"
                                             placeholder="(Nuevo nombre)"
                                             style={{ width: '100%'}}
-                                            />
-                                        </div>
-                                        <div className="col-md-1">
-                                            <button type='submit' className="ms-2 btn primario">Cambiar</button>
-                                        </div>
-                                        <div className="col-md-3"></div>
+                                        />
                                     </div>
+                                    <div className="col-md-3">
+                                        <button type='submit' className="ms-2 btn primario">Cambiar nombre</button>
+                                    </div>
+                                    <div className="col-md-2"></div>
+                                </div>
                                 </form> : null}
                             </div>
                             <div className="col-md-3"></div>
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                                {error && (
+                                <div className='row'>
+                                    <div className='col'>
+                                        <div className='alert alert-danger mt-4' role='alert'>
+                                            {error}
+                                        </div>
+                                    </div>
+                                </div>
+                                )}
+                            </div>
                         </div>
                         <div className="row mt-4">
                             <div className="col-md-6 mt-3">
