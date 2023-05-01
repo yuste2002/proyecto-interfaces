@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/proyecto-interfaces/static/css/main.55c4f749.css",
+    "main.js": "/proyecto-interfaces/static/js/main.037e474c.js",
+    "static/js/787.cda612ba.chunk.js": "/proyecto-interfaces/static/js/787.cda612ba.chunk.js",
+    "static/media/logoEpico.jpg": "/proyecto-interfaces/static/media/logoEpico.97f3eafcac0830f380a0.jpg",
+    "static/media/almacenDefault.jpg": "/proyecto-interfaces/static/media/almacenDefault.80c734a11c3e6d7a36e7.jpg",
+    "static/media/propietario.jpg": "/proyecto-interfaces/static/media/propietario.e836312cc6900fa5d5cf.jpg",
+    "static/media/objectDefault.jpg": "/proyecto-interfaces/static/media/objectDefault.53f02e107e7addcf11a4.jpg",
+    "static/media/usuario.jpg": "/proyecto-interfaces/static/media/usuario.6c49f8ccbd62c64709b0.jpg",
+    "static/media/logoNavBar.jpg": "/proyecto-interfaces/static/media/logoNavBar.5d6ed9785818e4e3021b.jpg",
+    "static/media/logo.svg": "/proyecto-interfaces/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/proyecto-interfaces/index.html",
+    "main.55c4f749.css.map": "/proyecto-interfaces/static/css/main.55c4f749.css.map",
+    "main.037e474c.js.map": "/proyecto-interfaces/static/js/main.037e474c.js.map",
+    "787.cda612ba.chunk.js.map": "/proyecto-interfaces/static/js/787.cda612ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.55c4f749.css",
+    "static/js/main.037e474c.js"
+  ]
+}
