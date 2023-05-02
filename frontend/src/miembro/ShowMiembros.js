@@ -156,7 +156,7 @@ const CompShowMiembros = () => {
                                             <h3>{miembro}</h3>
                                         </div>
                                         <div className="col-md-2">
-                                            {propietarioAlmacen ? <button className="btn primario" onClick={ () => expulsarMiembro(miembro)}>Expulsar</button> : null}
+                                            {propietarioAlmacen ? <button className="btn rojo" onClick={ () => expulsarMiembro(miembro)}>Expulsar</button> : null}
                                         </div>
                                     </div>
                                 </div>
