@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import '../App.css';
+import * as bootstrap from 'bootstrap';
 
 const URIalmacen = 'http://localhost:8000/almacenes/'
 const URIusuario = 'http://localhost:8000/usuarios/'
@@ -84,6 +85,16 @@ const CompCreateAlmacen = () => {
         navigate(-1)
     }
 
+    const toastTrigger = document.getElementById('liveToastBtn')
+const toastLiveExample = document.getElementById('liveToast')
+
+if (toastTrigger) {
+  const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+  toastTrigger.addEventListener('click', () => {
+    toastBootstrap.show()
+  })
+}
+
     return(
         <div className='d-flex align-items-center vh-100 fondoLogin container-fluid'>
             <div className='container'>
@@ -95,6 +106,23 @@ const CompCreateAlmacen = () => {
                                 <div className='row'>
                                     <div className='col mt-3'>
                                         <h1>NUEVO ALMACEN</h1>
+
+                                        <button type="button" class="btn btn-light btn-outline-secondary" id="liveToastBtn">INFO</button>
+                                            <div class="toast-container position-fixed bottom-0 start-0 p-3">
+                                                <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                                                    <div class="toast-header">
+                                                        <strong class="me-auto">VSR</strong>
+                                                        <small>Creación de Almacen</small>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="toast-body">
+                                                        Creará un almacen dandole un nombre y una url de imagen que aparecerá posteriormente en 
+                                                        sus almacenes. Podrá compartirlo con correos electrónicos de sus amigos y les aparecerá
+                                                        en sus almacenes compartidos.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
                                     </div>
                                 </div>
                                 <div className='row'>

@@ -56,9 +56,9 @@ const CompRegistro = () =>{
                         <div className='row'>
                             <div className='col'>
                                 <div className='card' style={{padding: '20px', backgroundColor:'rgba(255, 255, 255, 0.7)'}}>
-                                    <h1 style={{fontSize: '2.5rem', color: '#333'}}>¿Qué es VSR?</h1>
+                                    <h1 style={{fontSize: '2.5rem', color: '#333'}} tabindex="0">¿Qué es VSR?</h1>
                                     <div className='d-flex text-start'>
-                                        <p style={{fontSize: '1.25rem', color: '#555'}}>VSR es una aplicación diseñada para crear almacenes virtuales compartidos entre familiares, amigos y conocidos, permitiéndoles gestionar inventarios de distintos ámbitos y sus respectivos objetos. Con VSR, los usuarios tienen la capacidad de cambiar objetos, editar su descripción, condiciones de uso y ubicación reciente, y también pueden reservar los objetos por un tiempo determinado. En resumen, VSR es una solución de gestión de inventario en línea altamente personalizable y colaborativa.</p>
+                                        <p style={{fontSize: '1.25rem', color: '#555'}} tabindex="0">VSR es una aplicación diseñada para crear almacenes virtuales compartidos entre familiares, amigos y conocidos, permitiéndoles gestionar inventarios de distintos ámbitos y sus respectivos objetos. Con VSR, los usuarios tienen la capacidad de cambiar objetos, editar su descripción, condiciones de uso y ubicación reciente, y también pueden reservar los objetos por un tiempo determinado. En resumen, VSR es una solución de gestión de inventario en línea altamente personalizable y colaborativa.</p>
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +96,7 @@ const CompRegistro = () =>{
                                 <div className='container'>
                                     <div className='row'>
                                         <div className='col'>
-                                            <h3>Registro</h3>
+                                            <h1 tabindex="0">Registro</h1>
                                         </div>
                                     </div>
                                     <div className='row'>
@@ -111,6 +111,8 @@ const CompRegistro = () =>{
                                                         className='form-control'
                                                         style={{ width: 'auto', margin: '0 auto' }}
                                                         required='true'
+                                                        tabindex="0"
+                                                        aria-label="Ingrese su nombre de usuario"
                                                     />
                                                 </div>
                                                 <div className='mb-3'>
@@ -122,6 +124,8 @@ const CompRegistro = () =>{
                                                         className='form-control'
                                                         style={{ width: 'auto', margin: '0 auto' }}
                                                         required='true'
+                                                        tabindex="0"
+                                                        aria-label="Ingrese su correo electronico"
                                                     />
                                                 </div>
                                                 <div className='mb-3'>
@@ -133,6 +137,8 @@ const CompRegistro = () =>{
                                                         className='form-control'
                                                         style={{ width: 'auto', margin: '0 auto' }}
                                                         required='true'
+                                                        tabindex="0"
+                                                        aria-label="Ingrese una contraseña"
                                                     />
                                                 </div>
                                                 <div className='mb-3'>
@@ -144,6 +150,8 @@ const CompRegistro = () =>{
                                                         className='form-control'
                                                         style={{ width: 'auto', margin: '0 auto' }}
                                                         required='true'
+                                                        tabindex="0"
+                                                        aria-label="Ingrese su nombre"
                                                     />
                                                 </div>
                                                 <div className='mb-5'>
@@ -154,6 +162,8 @@ const CompRegistro = () =>{
                                                         type="text"
                                                         className='form-control'
                                                         style={{ width: 'auto', margin: '0 auto' }}
+                                                        tabindex="0"
+                                                        aria-label="Ingrese su apellido"
                                                     />
                                                 </div>
                                                 {error && (
@@ -165,8 +175,8 @@ const CompRegistro = () =>{
                                                     </div>
                                                 </div>
                                                 )}
-                                                <button type='submit' className='btn primario'>Registrarse</button> <br/>
-                                                <button onClick={volverAtras} className='btn btn-secondary mt-2'>Volver atrás</button> <br/>
+                                                <button type='submit' className='btn primario' tabindex="0">Registrarse</button> <br/>
+                                                <button onClick={volverAtras} className='btn btn-secondary mt-2' tabindex="0">Volver atrás</button> <br/>
                                             </form>
                                         </div>
                                     </div>
