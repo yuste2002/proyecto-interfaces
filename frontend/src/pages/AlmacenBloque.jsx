@@ -67,10 +67,7 @@ function AlmacenBloque () {
             <Navbar idUser={idUser}></Navbar>
             <div className="container-fluid h-100">
                 <div className="row">
-                    <div className="col-xxl-2 gradient-down">
-                        <CompBloqueIzquierdo></CompBloqueIzquierdo>
-                    </div>
-                    <div className="col-xxl-10 fondo">
+                    <div className="col fondo">
                         <div className="row">
                             <div className="col-md-3"></div>
                             <div className="col-xl-6">

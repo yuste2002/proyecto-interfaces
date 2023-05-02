@@ -11,13 +11,10 @@ function ObjetoBloque() {
             <Navbar idUser={idUser}></Navbar>
             <div className="container-fluid h-100">
                 <div className="row">
-                    <div className="col-xxl-2 gradient-down">
-                        <CompBloqueIzquierdo></CompBloqueIzquierdo>
-                    </div>
-                    <div className="col-xxl-5 border-end border-dark fondo">
+                    <div className="col-xxl-6 border-end border-dark fondo">
                         <CompReservaObjeto></CompReservaObjeto>
                     </div>
-                    <div className="col-xxl-5 border-start border-dark fondo">
+                    <div className="col-xxl-6 border-start border-dark fondo">
                         <CompEditObjeto></CompEditObjeto>
                     </div>
                 </div>

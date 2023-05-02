@@ -10,12 +10,7 @@ function CompartidosBloque () {
             <Navbar idUser={idUser}></Navbar>
             <div className="container-fluid h-100">
                 <div className="row">
-                    <div className="col-xxl-2 gradient-down">
-                        <div>
-                            <CompBloqueIzquierdo></CompBloqueIzquierdo>
-                        </div>
-                    </div>
-                    <div className="col-xxl-10 fondo">
+                    <div className="col fondo">
                         <CompShowCompartidos></CompShowCompartidos>
                     </div>
                 </div>
