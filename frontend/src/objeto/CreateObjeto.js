@@ -105,14 +105,14 @@ const CompCreateObjetos = () => {
                                                     required='true'/>
                                             </div>
                                             {error && (
-                                                        <div className='row'>
-                                                            <div className='col'>
-                                                                <div className='alert alert-danger mt-4' role='alert'>
-                                                                    {error}
-                                                                </div>
-                                                            </div>
+                                                <div className='row'>
+                                                    <div className='col'>
+                                                        <div className='alert alert-danger mt-4' role='alert'>
+                                                            {error}
                                                         </div>
-                                                        )}
+                                                    </div>
+                                                </div>
+                                            )}
                                             <button type="submit" className='btn primario' >Añadir</button> <br/>
                                             <button onClick={volverAtras} className='btn btn-secondary mt-2'>Volver atrás</button>
                                         </form>
