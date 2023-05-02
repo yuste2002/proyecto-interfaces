@@ -122,6 +122,7 @@ const CompEditObjeto = () => {
                                         onChange={ (e) => setNombre(e.target.value)}
                                         type="text"
                                         className="form-control"
+                                        aria-label="Ingrese el nombre del objeto"
                                         /> :
                                         <input
                                             value={nombre}

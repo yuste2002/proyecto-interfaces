@@ -73,8 +73,8 @@ const CompShowObjetos = () => {
                                 <div className="row align-items-center">
                                     <div className="col-md-4">
                                         {objeto.foto == "" || objeto.foto == undefined ? 
-                                        <img src={objetoDefault} style={{width: '70%', borderRadius:'5px'}} className="card-img-top img-fluid"></img>:
-                                        <img src={objeto.foto} style={{width: '70%', borderRadius:'5px'}} className="card-img-top img-fluid"></img>
+                                        <img alt="Foto objeto predeterminada" src={objetoDefault} style={{width: '70%', borderRadius:'5px'}} className="card-img-top img-fluid"></img>:
+                                        <img alt="Foto objeto personalizada" src={objeto.foto} style={{width: '70%', borderRadius:'5px'}} className="card-img-top img-fluid"></img>
                                         }
                                     </div>
                                     <div className="col-md-8">

@@ -66,7 +66,7 @@ const CompRegistro = () =>{
                         <div className='row mt-4'>
                             <div className='col-md-4'>
                                 <div className='card'>
-                                    <img src={fotoAlmacen} style={{width: '100%', height:'100%', objectFit:'contain'}} className="card-img-top img-fluid"></img>
+                                    <img alt='foto almacen' src={fotoAlmacen} style={{width: '100%', height:'100%', objectFit:'contain'}} className="card-img-top img-fluid"></img>
                                     <div className='card-title mt-2'>
                                         <h5>Almacenes</h5>
                                     </div>
@@ -74,7 +74,7 @@ const CompRegistro = () =>{
                             </div>
                             <div className='col-md-4'>
                                 <div className='card'>
-                                    <img src={fotoObjeto} style={{width: '100%', height:'100%', objectFit:'contain'}} className="card-img-top img-fluid"></img>
+                                    <img alt='foto objeto' src={fotoObjeto} style={{width: '100%', height:'100%', objectFit:'contain'}} className="card-img-top img-fluid"></img>
                                     <div className='card-title mt-2'>
                                         <h5>Objetos</h5>
                                     </div>
@@ -82,7 +82,7 @@ const CompRegistro = () =>{
                             </div>
                             <div className='col-md-4'>
                                 <div className='card'>
-                                    <img src={fotoUsuario} style={{width: '100%', height:'100%', objectFit:'contain'}} className="card-img-top img-fluid"></img>
+                                    <img alt='foto usuario' src={fotoUsuario} style={{width: '100%', height:'100%', objectFit:'contain'}} className="card-img-top img-fluid"></img>
                                     <div className='card-title mt-2'>
                                         <h5>Usuarios</h5>
                                     </div>
