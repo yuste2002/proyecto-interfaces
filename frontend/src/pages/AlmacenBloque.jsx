@@ -3,7 +3,7 @@ import axios from 'axios'
 import CompBloqueIzquierdo from "../bloqueIzquierdo/bloqueIzquierdo";
 import CompShowObjetos from "../objeto/ShowObjetos";
 import CompShowMiembros from "../miembro/ShowMiembros";
-import Navbar from "../navbar/navbar";
+import NavbarPer from "../navbar/navbar";
 
 import { useParams, Link } from "react-router-dom"
 
@@ -64,7 +64,7 @@ function AlmacenBloque () {
 
     return(
         <div>
-            <Navbar idUser={idUser}></Navbar>
+            <NavbarPer idUser={idUser}></NavbarPer>
             <div className="container-fluid h-100">
                 <div className="row">
                     <div className="col fondo">

@@ -123,7 +123,7 @@ const CompReservaObjeto = () => {
     <div className='mt-3'>
             <div className="row">
                 <div className="col">
-                    <h1>CALENDARIO RESERVAS</h1>
+                    <h1 tabindex="0">CALENDARIO RESERVAS</h1>
                 </div>
             </div>
         <div className="calendar-container">
@@ -133,6 +133,7 @@ const CompReservaObjeto = () => {
             startAccessor="start"
             endAccessor="end"
             style={{ height: 385, backgroundColor: 'white'}}
+            tabindex="-1"
         />
         </div>
       
@@ -141,12 +142,13 @@ const CompReservaObjeto = () => {
             <div className='row'>
                 <div className='col-md-3'></div>
                 <div className='col-md-6'>
-                <label className='form-label'>Fecha inicio</label>
+                <label className='form-label' tabindex="0">Fecha inicio</label>
                     <input
                         value={fechaInicio}
                         onChange={ (e) => setFechaInicio(e.target.value)}
                         type="date"
                         className="form-control"
+                        aria-label="Ingrese la fecha de inicio de la reserva"
                     />
                 </div>
                 <div className='col-md-3'></div>
@@ -157,12 +159,13 @@ const CompReservaObjeto = () => {
             <div className='row'>
                     <div className='col-md-3'></div>
                     <div className='col-md-6'>
-                        <label className='form-label'>Fecha fin</label>
+                        <label className='form-label' tabindex="0">Fecha fin</label>
                             <input
                                 value={fechaFin}
                                 type="date"
                                 onChange={ (e) => setFechaFin(e.target.value)}
                                 className="form-control"
+                                aria-label="Ingrese la fecha de fin de la reserva"
                             />
                     </div>
                     <div className='col-md-3'></div>
@@ -171,7 +174,7 @@ const CompReservaObjeto = () => {
 
         
         </div>
-        <button type="submit" className='btn mb-2 primario'>Reservar</button>
+        <button type="submit" className='btn mb-2 primario' tabindex="0">Reservar</button>
         {error && (
             <div className='row'>
                 <div className='col'>

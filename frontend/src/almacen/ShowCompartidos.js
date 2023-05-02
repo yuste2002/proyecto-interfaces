@@ -61,7 +61,7 @@ const CompShowCompartidos = () => {
         <div className="container">
             <div className="row">
                 <div className="col p-4">
-                    <h1>Compartidos Conmigo</h1>
+                    <h1 tabindex="0">Compartidos Conmigo</h1>
                 </div>
             </div>
             <div className="row row-cols-4">
@@ -69,13 +69,13 @@ const CompShowCompartidos = () => {
                     <div className="col" key={almacen.id}>
                         <div className="card text-center mb-4">
                             {almacen.foto == undefined ? 
-                            <img src={almacenDefault} style={{width: '100%', height:'100%', objectFit:'contain'}} className="card-img-top img-fluid"></img>:
-                            <img src={almacen.foto} style={{width: '100%', height:'100%', objectFit:'contain'}} className="card-img-top img-fluid"></img>
+                            <img src={almacenDefault} alt='Imagen almacen' style={{width: '100%', height:'100%', objectFit:'contain'}} className="card-img-top img-fluid"></img>:
+                            <img src={almacen.foto} alt='Imagen almacen' style={{width: '100%', height:'100%', objectFit:'contain'}} className="card-img-top img-fluid"></img>
                             }
                             <div className="card-body">
-                                <h2 className="card-title">{almacen.nombre}</h2>
+                                <h2 className="card-title" tabindex="0">{almacen.nombre}</h2>
                                 <Link to={`/${idUser}/${almacen.id}`} className='btn primario'>Acceder</Link> 
-                                <button className="ms-2 btn rojo"onClick={ () => salirAlmacen(almacen.id)}>Salir</button>
+                                <button tabindex="0" className="ms-2 btn rojo"onClick={ () => salirAlmacen(almacen.id)}>Salir</button>
                             </div>
                         </div>
                     </div>

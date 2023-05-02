@@ -104,8 +104,8 @@ const CompEditObjeto = () => {
         <div className="container mt-3">
             <div className="row">
                 <div className="col">
-                    <h1>FICHA DE OBJETO</h1>
-                    <h5>Objeto de: {dueno.nombre}</h5>
+                    <h1 tabindex="0">FICHA DE OBJETO</h1>
+                    <h5  tabindex="0">Objeto de: {dueno.nombre}</h5>
                 </div>
             </div>
             <div className="row">
@@ -115,7 +115,7 @@ const CompEditObjeto = () => {
                             <div className="row">
                                     <div className='col-md-3'></div>
                                     <div className='col-md-6'>
-                                    <label className='form-label'>Nombre</label>
+                                    <label className='form-label' tabindex="0">Nombre</label>
                                         {propietario ? 
                                         <input
                                         value={nombre}
@@ -128,6 +128,7 @@ const CompEditObjeto = () => {
                                             type="text"
                                             className="form-control bg-light"
                                             readonly
+                                            aria-label="Ingrese el nombre del objeto"
                                         />
                                         }
                                     </div>
@@ -136,28 +137,33 @@ const CompEditObjeto = () => {
                         </div>
 
                         <div className="mb-3">
-                            <label className='form-label'>Condiciones</label>
+                            <label className='form-label' tabindex="0">Condiciones</label>
                             {propietario ?
                             <textarea cols={30} rows={5} //DEJA EDITAR AUNQUE NO SEAS PROPIETARIO PERO NO GUARDA
                                 value={condiciones} 
                                 onChange={ (e) => setCondiciones(e.target.value)}
+                                aria-label="Ingrese el las condiciones de reserva del objeto"
                                 className="form-control"/> :
                                 <textarea cols={30} rows={5} 
                                     value={condiciones} 
-                                    className="form-control bg-light" readonly/>
+                                    className="form-control bg-light" readonly
+                                    />
                             }
                         </div>
 
                         <div className="mb-3">
-                            <label className='form-label'>Descripcion</label>
+                            <label className='form-label' tabindex="0">Descripcion</label>
                             {propietario ?
                             <textarea cols={30} rows={5} 
                                 value={descripcion} 
                                 onChange={ (e) => setDescripcion(e.target.value)}
+                                aria-label="Ingrese la descripcion del objeto"
                                 className="form-control"/> :
                                 <textarea cols={30} rows={5} 
                                     value={descripcion} 
-                                    className="form-control bg-light" readonly/>
+                                    className="form-control bg-light" readonly
+                                    />
+                                    
                             }
                         </div>
 
@@ -165,18 +171,21 @@ const CompEditObjeto = () => {
                                 <div className='row'>
                                     <div className='col-md-3'></div>
                                     <div className='col-md-6'>
-                                    <label className='form-label'>Ubicacion</label>
+                                    <label className='form-label' tabindex="0">Ubicacion</label>
                                         <input
                                         value={ubicacion}
                                         onChange={ (e) => setUbicacion(e.target.value)}
+                                        aria-label="Ingrese la ubicacion del objeto"
                                         type="text"
-                                        className="form-control"/> 
+                                        className="form-control"
+
+                                        /> 
                                     </div>
                                     <div className='col-md-3'></div>
                                 </div> 
                         </div>
 
-                        <button type="submit" className='btn primario'>Guardar</button> <br/>
+                        <button type="submit" className='btn primario' tabindex="0">Guardar</button> <br/>
                         <button onClick={volverAtras} className='btn btn-secondary mt-2'>Volver atrás</button>
                     </form>
                 </div>

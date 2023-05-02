@@ -51,7 +51,7 @@ const CompCreateObjetos = () => {
                             <div className="container">
                                 <div className="row">
                                     <div className="col">
-                                        <h1>NUEVO OBJETO</h1>
+                                        <h1 tabindex="0">NUEVO OBJETO</h1>
                                     </div>
                                 </div>
                                 <div className="row">
@@ -62,6 +62,7 @@ const CompCreateObjetos = () => {
                                                 <input
                                                     value={nombre}
                                                     onChange={ (e) => setNombre(e.target.value)}
+                                                    aria-label="Ingrese el nombre del objeto"
                                                     type="text"
                                                     className="form-control"
                                                     style={{ width: '50%', margin: '0 auto' }}
@@ -72,6 +73,7 @@ const CompCreateObjetos = () => {
                                                 <input
                                                     value={foto}
                                                     onChange={ (e) => setFoto(e.target.value)}
+                                                    aria-label="Ingrese el enlace de la imagen del objeto"
                                                     type="text"
                                                     className='form-control'
                                                     style={{ width: '75%', margin: '0 auto' }}/>
@@ -81,6 +83,7 @@ const CompCreateObjetos = () => {
                                                 <textarea cols={30} rows={5} 
                                                     value={condiciones} 
                                                     onChange={ (e) => setCondiciones(e.target.value)}
+                                                    aria-label="Ingrese el las condiciones de reserva del objeto"
                                                     style={{ width: '75%', margin: '0 auto' }}
                                                     className="form-control"
                                                 />
@@ -90,6 +93,7 @@ const CompCreateObjetos = () => {
                                                 <textarea cols={30} rows={5} 
                                                     value={descripcion} 
                                                     onChange={ (e) => setDescripcion(e.target.value)}
+                                                    aria-label="Ingrese la descripcion del objeto"
                                                     style={{ width: '75%', margin: '0 auto' }}
                                                     className="form-control"
                                                 />
@@ -99,6 +103,7 @@ const CompCreateObjetos = () => {
                                                 <input
                                                     value={ubicacion}
                                                     onChange={ (e) => setUbicacion(e.target.value)}
+                                                    aria-label="Ingrese la ubicacion del objeto"
                                                     type="text"
                                                     className="form-control"
                                                     style={{ width: '50%', margin: '0 auto' }}
@@ -113,8 +118,8 @@ const CompCreateObjetos = () => {
                                                     </div>
                                                 </div>
                                             )}
-                                            <button type="submit" className='btn primario' >Añadir</button> <br/>
-                                            <button onClick={volverAtras} className='btn btn-secondary mt-2'>Volver atrás</button>
+                                            <button type="submit" className='btn primario' tabindex="0">Añadir</button> <br/>
+                                            <button onClick={volverAtras} className='btn btn-secondary mt-2' tabindex="0">Volver atrás</button>
                                         </form>
                                     </div>
                                 </div>

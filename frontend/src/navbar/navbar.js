@@ -1,38 +1,36 @@
   import React from 'react';
-  import {Link} from "react-router-dom"
+  import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
   import '../App.css';
   import logo from '../imagenes/logoNavBar.jpg';
-  import fotoUsuario from '../imagenes/usuario.jpg'
+  import fotoUsuario from '../imagenes/usuario.jpg';
 
 
-  function Navbar(props) {
+  function NavbarPer(props) {
     return (
-      <nav className="navbar">
-        <div className='row align-items-center'>
-          <div className='col ms-3'>
-            <img src={logo} style={{ width: '50px', borderRadius: '20%' }} alt="logo" />
-          </div>
-          <div className='col'>
-            <Link to={`/${props.idUser}/createAlmacen`} className='btn' style={{ backgroundColor: '#fff4e3', color: 'black', width: '200px' }}>
-              <i className="fa-duotone fa-plus"></i> Nuevo Almacen
-            </Link>
-          </div>
-          <div className='col'>
-            <Link to={`/${props.idUser}`} className='btn' style={{ backgroundColor: '#fff4e3', color: 'black', width: '200px' }}>Mis almacenes</Link>
-          </div>
-          <div className='col'>
-            <Link to={`/${props.idUser}/compartidos`} className='btn' style={{ backgroundColor: '#fff4e3', color: 'black', width: '200px' }}>Compartidos conmigo</Link>
-          </div>
-        </div>
-        <div className="navbar-nav me-2">
-          <div className="nav-item">
-            <Link to={`/${props.idUser}/editUser`} className='btn'>
-              <img src={fotoUsuario} style={{ width: '50px', borderRadius: '20%' }} alt="foto usuario" />
-            </Link>
-          </div>
-        </div>
-    </nav>
+    <Navbar expand="lg" style={{background: '#bb5751'}}>
+      <Navbar.Brand className='ms-3'>
+        <img alt="logo" src={logo} className='navbar-logo'/>
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav" className='navbar-collapse'>
+        <Nav className="me-auto">
+          <Nav.Link href={`/${props.idUser}/createAlmacen`} className='navbar-link'> + Nuevo Almacen
+          </Nav.Link>
+          <Nav.Link href={`/${props.idUser}`} className='navbar-link'>Mis almacenes</Nav.Link>
+          <Nav.Link href={`/${props.idUser}/compartidos`} className='navbar-link'>
+            Compartidos conmigo
+          </Nav.Link>
+        </Nav>
+        <Nav>
+          <NavDropdown drop='start' className='me-3' title={<img src={fotoUsuario} style={{ width: '45px', borderRadius: '20%' }} alt="foto usuario"/>} id="basic-nav-dropdown">
+            <NavDropdown.Item href={`/${props.idUser}/editUser`}>Editar perfil</NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item href="/">Cerrar sesión</NavDropdown.Item>
+          </NavDropdown>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
     );
   }
 
-  export default Navbar;
+  export default NavbarPer;

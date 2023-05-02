@@ -105,9 +105,9 @@ if (toastTrigger) {
                             <div className='container-fluid'>
                                 <div className='row'>
                                     <div className='col mt-3'>
-                                        <h1>NUEVO ALMACEN</h1>
+                                        <h1 tabindex="0">NUEVO ALMACEN</h1>
 
-                                        <button type="button" class="btn btn-light btn-outline-secondary" id="liveToastBtn">INFO</button>
+                                        <button type="button" class="btn btn-light btn-outline-secondary" id="liveToastBtn"  tabindex="0">INFO</button>
                                             <div class="toast-container position-fixed bottom-0 start-0 p-3">
                                                 <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
                                                     <div class="toast-header">
@@ -137,6 +137,7 @@ if (toastTrigger) {
                                                     className='form-control'
                                                     style={{ width: '40%', margin: '0 auto' }}
                                                     required='true'
+                                                    aria-label="Ingrese el nombre del almacen"
                                                 />
                                                 <label className='form-label mt-3'>Enlace foto</label> <br/>
                                                 <input
@@ -145,6 +146,7 @@ if (toastTrigger) {
                                                     type="text"
                                                     className='form-control'
                                                     style={{ width: '60%', margin: '0 auto' }}
+                                                    aria-label="Ingrese un link de imagen para el almacen"
                                                 />
                                                 <div className='mb-3 mt-3'>
                                                     <label className='form-label'>Compartir con</label> <br/>
@@ -158,10 +160,11 @@ if (toastTrigger) {
                                                             className='form-control'
                                                             placeholder='usuario@ejemplo.com'
                                                             style={{ width: '100%'}}
+                                                            aria-label="Ingrese el correo de la persona con quien compartir"
                                                             />
                                                         </div>
                                                         <div className='col-md-1 align-items-start'>
-                                                            <button onClick={nuevoInvitado} className='btn btn-info'>Compartir</button>
+                                                            <button onClick={nuevoInvitado} className='btn btn-info' tabindex="0">Compartir</button>
                                                         </div>
                                                         <div className='col-md-3'></div>
                                                     </div>
@@ -183,10 +186,10 @@ if (toastTrigger) {
                                                         <div style={{width:'50 vmin', justifyContent:'center',alignItems:'center'}}>
                                                             <ul className="list-group">
                                                                 {invitados.map((inv) => (
-                                                                    <li className="list-group-item d-flex justify-content-between align-items-center" key={inv}>
+                                                                    <li className="list-group-item d-flex justify-content-between align-items-center" tabindex="0"key={inv}>
                                                                     {inv}
                                                                     <button className="btn rojo" onClick={(e) => deleteInvitado(e, inv)}>
-                                                                        <i className="fa-solid fa-trash"></i>
+                                                                        <i className="fa-solid fa-trash" aria-label="Borrar persona compartida"></i>
                                                                     </button>
                                                                     </li>
                                                                 ))}
@@ -196,8 +199,8 @@ if (toastTrigger) {
                                                     <div className='col-xl-4'></div>
                                                 </div>
                                             </div>
-                                            <button type='submit' className='btn btn-lg primario' >Crear nuevo almacen</button><br/>
-                                            <button onClick={volverAtras} className='btn btn-secondary mt-2'>Volver atrás</button>
+                                            <button type='submit' className='btn btn-lg primario' tabindex="0">Crear nuevo almacen</button><br/>
+                                            <button onClick={volverAtras} className='btn btn-secondary mt-2' tabindex="0">Volver atrás</button>
                                         </form>
                                     </div>
                                 </div>

@@ -61,7 +61,7 @@ const CompShowObjetos = () => {
         <div className="container mb-4">
             <div className="row">
                 <div className="col-md-1">
-                    <h2>Objetos</h2>
+                    <h1 tabindex="0">Objetos</h1>
                 </div>
                 <div className="col-md-11"/>
             </div>
@@ -78,11 +78,11 @@ const CompShowObjetos = () => {
                                         }
                                     </div>
                                     <div className="col-md-8">
-                                        <h3>{objeto.nombre}</h3>
+                                        <h3 tabindex="0">{objeto.nombre}</h3>
                                         <div className="col">
-                                            <Link to={`/objeto/${objeto.id}/${idUser}`} className='btn primario'>Ver Objeto</Link>
+                                            <Link to={`/objeto/${objeto.id}/${idUser}`} className='btn primario' tabindex="0">Ver Objeto</Link>
                                             {propietarioAlmacen || objeto.propietario == idUser ? 
-                                            <button className="ms-2 btn rojo" onClick={()=>deleteObjeto(objeto.id)}>Borrar</button> : null}
+                                            <button className="ms-2 btn rojo" onClick={()=>deleteObjeto(objeto.id)}tabindex="0">Borrar</button> : null}
                                         </div>
                                     </div>
                                 </div>

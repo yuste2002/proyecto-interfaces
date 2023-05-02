@@ -64,14 +64,14 @@ const CompEditPerfil = () => {
                             <div className='container-fluid'>
                                 <div className='row'>
                                     <div className='col'>
-                                        <h3>Editar Perfil</h3>
+                                        <h1 tabindex="0">Editar Perfil</h1>
                                     </div>
                                 </div>
                                 <div className='row'>
                                     <div className='col'>
                                         <form onSubmit={editar}>
                                             <div className='mb-3'>
-                                                <label className='form-label'>Nombre de usuario*</label>
+                                                <label className='form-label' tabindex="0">Nombre de usuario*</label>
                                                 <input
                                                     defaultValue={username}
                                                     onChange={ (e) => setUsername(e.target.value)}
@@ -79,10 +79,11 @@ const CompEditPerfil = () => {
                                                     className='form-control'
                                                     style={{ width: 'auto', margin: '0 auto' }}
                                                     required='true'
+                                                    aria-label="Ingrese nuevo nombre de usuario"
                                                 />
                                             </div>
                                             <div className='mb-3'>
-                                                <label className='form-label'>Correo electronico*</label>
+                                                <label className='form-label' tabindex="0">Correo electronico*</label>
                                                 <input
                                                     defaultValue={email}
                                                     onChange={ (e) => setEmail(e.target.value)}
@@ -90,10 +91,11 @@ const CompEditPerfil = () => {
                                                     className='form-control'
                                                     style={{ width: 'auto', margin: '0 auto' }}
                                                     required='true'
+                                                    aria-label="Ingrese nuevo correo electrónico"
                                                 />
                                             </div>
                                             <div className='mb-3'>
-                                                <label className='form-label'>Contraseña*</label>
+                                                <label className='form-label' tabindex="0">Contraseña*</label>
                                                 <input
                                                     defaultValue={password}
                                                     onChange={ (e) => setPassword(e.target.value)}
@@ -101,10 +103,11 @@ const CompEditPerfil = () => {
                                                     className='form-control'
                                                     style={{ width: 'auto', margin: '0 auto' }}
                                                     required='true'
+                                                    aria-label="Ingrese nueva contraseña"
                                                 />
                                             </div>
                                             <div className='mb-3'>
-                                                <label className='form-label'>Nombre*</label>
+                                                <label className='form-label' tabindex="0">Nombre*</label>
                                                 <input
                                                     defaultValue={name}
                                                     onChange={ (e) => setName(e.target.value)}
@@ -112,21 +115,22 @@ const CompEditPerfil = () => {
                                                     className='form-control'
                                                     style={{ width: 'auto', margin: '0 auto' }}
                                                     required='true'
+                                                    aria-label="Ingrese nuevo nombre"
                                                 />
                                             </div>
                                             <div className='mb-3'>
-                                                <label className='form-label'>Apellido</label>
+                                                <label className='form-label' tabindex="0">Apellido</label>
                                                 <input
                                                     defaultValue={apellid}
                                                     onChange={ (e) => setApellid(e.target.value)}
                                                     type="text"
                                                     className='form-control'
                                                     style={{ width: 'auto', margin: '0 auto' }}
+                                                    aria-label="Ingrese nuevo apellido"
                                                 />
                                             </div>
-                                            <button type='submit' className='btn primario mt-3'>Confirmar Cambios</button> <br/>
-                                            <button onClick={volverAtras} className='btn btn-secondary mt-2'>Volver atrás</button>
-                                            <Link to={`/`} className='btn ms-2 mt-2 rojo'>Cerrar sesión</Link> 
+                                            <button type='submit' className='btn primario mt-3'  tabindex="0">Confirmar Cambios</button> <br/>
+                                            <button onClick={volverAtras} className='btn btn-secondary mt-2'  tabindex="0">Volver atrás</button> 
                                         </form>
                                     </div>
                                 </div>
