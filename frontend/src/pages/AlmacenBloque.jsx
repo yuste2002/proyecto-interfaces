@@ -7,7 +7,7 @@ import NavbarPer from "../navbar/navbar";
 
 import { useParams, Link } from "react-router-dom"
 
-const URIalmacen = 'http://localhost:8000/almacenes/'
+const URIalmacen = 'https://interfaces-vsr.herokuapp.com/almacenes/'
 
 function AlmacenBloque () {
     

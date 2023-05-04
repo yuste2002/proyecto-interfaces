@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css'
 
 
-const URIuser = 'http://localhost:8000/usuarios/'
+const URIuser = 'https://interfaces-vsr.herokuapp.com/usuarios/'
 
 
 const CompLogin = () => {

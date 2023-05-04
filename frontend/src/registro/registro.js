@@ -7,7 +7,7 @@ import fotoUsuario from '../imagenes/usuario.jpg'
 import { Carousel } from 'bootstrap'
 
 
-const URIuser = 'http://localhost:8000/usuarios/'
+const URIuser = 'https://interfaces-vsr.herokuapp.com/usuarios/'
 
 const CompRegistro = () =>{
 

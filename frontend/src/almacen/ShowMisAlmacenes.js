@@ -4,10 +4,10 @@ import axios from 'axios'
 import almacenDefault from '../imagenes/almacenDefault.jpg'
 
 
-const URIalmacen = 'http://localhost:8000/almacenes/'
-const URIinvitacion = 'http://localhost:8000/invitaciones/'
-const URIobjeto = 'http://localhost:8000/objetos/'
-const URIreserva = 'http://localhost:8000/reservas/'
+const URIalmacen = 'https://interfaces-vsr.herokuapp.com/almacenes/'
+const URIinvitacion = 'https://interfaces-vsr.herokuapp.com/invitaciones/'
+const URIobjeto = 'https://interfaces-vsr.herokuapp.com/objetos/'
+const URIreserva = 'https://interfaces-vsr.herokuapp.com/reservas/'
 
 const CompShowMisAlmacenes = () => {
     //Pillo el id del usuario desde la url

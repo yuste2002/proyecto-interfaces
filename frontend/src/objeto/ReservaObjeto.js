@@ -11,9 +11,9 @@ const localizer = momentLocalizer(moment)
 const fechaActual = moment().toDate()
 
 
-const URIreservas = "http://localhost:8000/reservas/"
-const URIobjetos = "http://localhost:8000/objetos/"
-const URIusuarios = "http://localhost:8000/usuarios/"
+const URIreservas = "https://interfaces-vsr.herokuapp.com/reservas/"
+const URIobjetos = "https://interfaces-vsr.herokuapp.com/objetos/"
+const URIusuarios = "https://interfaces-vsr.herokuapp.com/usuarios/"
 
 const CompReservaObjeto = () => {
     const {idUser} = useParams()

@@ -4,9 +4,9 @@ import { useNavigate, useParams } from 'react-router-dom'
 import '../App.css';
 import * as bootstrap from 'bootstrap';
 
-const URIalmacen = 'http://localhost:8000/almacenes/'
-const URIusuario = 'http://localhost:8000/usuarios/'
-const URIinvitacion = 'http://localhost:8000/invitaciones/'
+const URIalmacen = 'https://interfaces-vsr.herokuapp.com/almacenes/'
+const URIusuario = 'https://interfaces-vsr.herokuapp.com/usuarios/'
+const URIinvitacion = 'https://interfaces-vsr.herokuapp.com/invitaciones/'
 
 const CompCreateAlmacen = () => {
     const [name, setName] = useState('')

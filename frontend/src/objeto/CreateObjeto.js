@@ -2,7 +2,7 @@ import { useParams, Link, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import axios from 'axios'
 
-const URIobjetos = 'http://localhost:8000/objetos/'
+const URIobjetos = 'https://interfaces-vsr.herokuapp.com/objetos/'
 
 const CompCreateObjetos = () => {
     const {idUser} = useParams()

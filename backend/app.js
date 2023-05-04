@@ -27,6 +27,8 @@ app.use('/invitaciones', invitacionRoutes)
 app.use('/objetos', objetoRoutes)
 app.use('/reservas', reservaRoutes)
 
+const PORT = 3306;
+
 try {
     await db.authenticate()
     console.log('Conexion exitosa a la base de datos')
@@ -40,6 +42,6 @@ app.get('/', (req,res) => {
     res.send('HOLA MUNDO')
 })
 
-app.listen(8000, () =>{ 
-    console.log('Server UP running in http://localhost:8000/')  
+app.listen(process.env.PORT || PORT, () =>{ 
+    console.log('Server UP running on port ${PORT}')  
 })

@@ -4,9 +4,9 @@ import axios from 'axios'
 import fotoUsuario from '../imagenes/usuario.jpg'
 import fotoPropietario from '../imagenes/propietario.jpg'
 
-const URIinvitaciones = "http://localhost:8000/invitaciones/"
-const URIusuarios = "http://localhost:8000/usuarios/"
-const URIalmacen = "http://localhost:8000/almacenes/"
+const URIinvitaciones = "https://interfaces-vsr.herokuapp.com/invitaciones/"
+const URIusuarios = "https://interfaces-vsr.herokuapp.com/usuarios/"
+const URIalmacen = "https://interfaces-vsr.herokuapp.com/almacenes/"
 
 const CompShowMiembros = () => {
     

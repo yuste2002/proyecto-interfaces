@@ -4,9 +4,9 @@ import axios from 'axios'
 import objetoDefault from '../imagenes/objectDefault.jpg'
 
 
-const URIobjetos = "http://localhost:8000/objetos/"
-const URIalmacen = "http://localhost:8000/almacenes/"
-const URIreservas = "http://localhost:8000/reservas/"
+const URIobjetos = "https://interfaces-vsr.herokuapp.com/objetos/"
+const URIalmacen = "https://interfaces-vsr.herokuapp.com/almacenes/"
+const URIreservas = "https://interfaces-vsr.herokuapp.com/reservas/"
 
 const CompShowObjetos = () => {
     const {idAlmacen} = useParams()

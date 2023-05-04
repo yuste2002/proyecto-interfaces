@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-const URIalmacen = 'http://localhost:8000/almacenes/'
+const URIalmacen = 'https://interfaces-vsr.herokuapp.com/almacenes/'
 
 const CompEditAlmacen = () => {
     const [name, setName] = useState('')

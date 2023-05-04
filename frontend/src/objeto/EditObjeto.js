@@ -2,9 +2,9 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 
-const URIobjeto = "http://localhost:8000/objetos/"
-const URIalmacen = 'http://localhost:8000/almacenes/'
-const URIusuarios = 'http://localhost:8000/usuarios/'
+const URIobjeto = "https://interfaces-vsr.herokuapp.com/objetos/"
+const URIalmacen = 'https://interfaces-vsr.herokuapp.com/almacenes/'
+const URIusuarios = 'https://interfaces-vsr.herokuapp.com/usuarios/'
 
 const CompEditObjeto = () => {
     const {idObjeto} = useParams()

@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams, Link } from 'react-router-dom'
 
-const URIuser = 'http://localhost:8000/usuarios/'
+const URIuser = 'https://interfaces-vsr.herokuapp.com/usuarios/'
 
 const CompEditPerfil = () => {
     const {idUser} = useParams()

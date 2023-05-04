@@ -4,8 +4,8 @@ import axios from 'axios'
 import almacenDefault from '../imagenes/almacenDefault.jpg'
 
 
-const URIinvitacion = 'http://localhost:8000/invitaciones/'
-const URIalmacen = 'http://localhost:8000/almacenes/'
+const URIinvitacion = 'https://interfaces-vsr.herokuapp.com/invitaciones/'
+const URIalmacen = 'https://interfaces-vsr.herokuapp.com/almacenes/'
 
 //NO SE SI FURULA   
 
