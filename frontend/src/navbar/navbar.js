@@ -9,7 +9,7 @@
     return (
     <Navbar expand="lg" style={{background: '#bb5751'}}>
       <Navbar.Brand className='ms-3'>
-        <img alt="logo" src={logo} className='navbar-logo'/>
+        <img alt="logo aplicacion" src={logo} className='navbar-logo'/>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className='navbar-collapse'>
@@ -22,7 +22,7 @@
           </Nav.Link>
         </Nav>
         <Nav>
-          <NavDropdown drop='start' className='me-3' title={<img src={fotoUsuario} style={{ width: '45px', borderRadius: '20%' }} alt="foto usuario"/>} id="basic-nav-dropdown">
+          <NavDropdown drop='start' className='me-3' title={<img src={fotoUsuario} style={{ width: '6vh', borderRadius: '20%' }} alt="icono usuario"/>} id="basic-nav-dropdown">
             <NavDropdown.Item href={`/${props.idUser}/editUser`}>Editar perfil</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item href="/">Cerrar sesión</NavDropdown.Item>

@@ -129,8 +129,9 @@ if (toastTrigger) {
                                     <div className='col'>
                                         <form onSubmit={crearAlmacen}>
                                             <div className='mb-3 mt-3'>
-                                                <label className='form-label'>Nombre*</label>
+                                                <label className='form-label' for="nombre">Nombre*</label>
                                                 <input
+                                                    name="nombre"
                                                     value={name}
                                                     onChange={ (e) => setName(e.target.value)}
                                                     type="text"
@@ -138,22 +139,26 @@ if (toastTrigger) {
                                                     style={{ width: '40%', margin: '0 auto' }}
                                                     required='true'
                                                     aria-label="Ingrese el nombre del almacen"
+                                                    title="Nombre de almacen"
                                                 />
-                                                <label className='form-label mt-3'>Enlace foto</label> <br/>
+                                                <label className='form-label mt-3' for="foto">Enlace foto</label> <br/>
                                                 <input
+                                                    name="foto"
                                                     value={foto}
                                                     onChange={ (e) => setFoto(e.target.value)}
                                                     type="text"
                                                     className='form-control'
                                                     style={{ width: '60%', margin: '0 auto' }}
                                                     aria-label="Ingrese un link de imagen para el almacen"
+                                                    title="Foto del almacen"
                                                 />
                                                 <div className='mb-3 mt-3'>
-                                                    <label className='form-label'>Compartir con</label> <br/>
+                                                    <label className='form-label' for="invitado">Compartir con</label> <br/>
                                                     <div className='row'>
                                                         <div className='col-md-3'></div>
                                                         <div className='col-md-5 d-flex justify-content-center align-items-center'>
                                                             <input
+                                                            name="invitado"
                                                             value={invitado}
                                                             onChange={ (e) => setInvitado(e.target.value)}
                                                             type="email"
@@ -161,6 +166,7 @@ if (toastTrigger) {
                                                             placeholder='usuario@ejemplo.com'
                                                             style={{ width: '100%'}}
                                                             aria-label="Ingrese el correo de la persona con quien compartir"
+                                                            title="Invitado del almacen"
                                                             />
                                                         </div>
                                                         <div className='col-md-1 align-items-start'>
@@ -180,24 +186,26 @@ if (toastTrigger) {
                                                         )}
                                                     </div>
                                                 </div>
+                                                {invitados.length > 0 && (
                                                 <div className='row'>
                                                     <div className='col-xl-4'></div>
                                                     <div className='col-xl-4'>
-                                                        <div style={{width:'50 vmin', justifyContent:'center',alignItems:'center'}}>
-                                                            <ul className="list-group">
-                                                                {invitados.map((inv) => (
-                                                                    <li className="list-group-item d-flex justify-content-between align-items-center" tabindex="0"key={inv}>
-                                                                    {inv}
-                                                                    <button className="btn rojo" onClick={(e) => deleteInvitado(e, inv)}>
-                                                                        <i className="fa-solid fa-trash" aria-label="Borrar persona compartida"></i>
-                                                                    </button>
-                                                                    </li>
-                                                                ))}
-                                                            </ul>
-                                                        </div>
+                                                    <div style={{ width: '50 vmin', justifyContent: 'center', alignItems: 'center' }}>
+                                                        <ul className="list-group">
+                                                        {invitados.map((inv) => (
+                                                            <li className="list-group-item d-flex justify-content-between align-items-center" key={inv} tabIndex="0">
+                                                            {inv}
+                                                            <button className="btn rojo" onClick={(e) => deleteInvitado(e, inv)}>
+                                                                <i className="fa-solid fa-trash" aria-label="Borrar persona compartida"></i>
+                                                            </button>
+                                                            </li>
+                                                        ))}
+                                                        </ul>
+                                                    </div>
                                                     </div>
                                                     <div className='col-xl-4'></div>
                                                 </div>
+                                                )}
                                             </div>
                                             <button type='submit' className='btn btn-lg primario' tabindex="0">Crear nuevo almacen</button><br/>
                                             <button onClick={volverAtras} className='btn btn-secondary mt-2' tabindex="0">Volver atrás</button>

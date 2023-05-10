@@ -26,6 +26,7 @@ import ObjetoBloque from './pages/ObjetoBloque';
 
 function App() {
   return (
+    <html>
     <div className="App fondoOut">
       <BrowserRouter>
         <Routes>
@@ -44,6 +45,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </div>
+    </html>
   );
 }
 

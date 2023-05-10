@@ -1,14 +1,14 @@
 import React from 'react'
 import { Calendar, momentLocalizer } from 'react-big-calendar'
 import moment from 'moment'
-import { useParams, Link, useNavigate, Navigate } from "react-router-dom"
+import 'moment/locale/es'
+import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import axios from 'axios'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 
 require('moment/locale/es.js');
 const localizer = momentLocalizer(moment)
-const fechaActual = moment().toDate()
 
 
 const URIreservas = "https://interfaces-vsr.herokuapp.com/reservas/"
@@ -81,17 +81,23 @@ const CompReservaObjeto = () => {
     const reservar = async (e) => {
         e.preventDefault()
 
-        if(moment(fechaInicio).isSameOrAfter(moment().startOf('day')) && moment(fechaInicio).isBefore(moment(fechaFin)) && (!coincide(fechaInicio, fechaFin))) {     //La fecha inicio es posterior a la actual
-            axios.post(URIreservas, {
-                fechaInicio: fechaInicio,
-                fechaFin: fechaFin,
-                usuarioReserva: idUser,
-                objetoReserva: idObjeto
-            })
-            window.location.reload()
-        } else {
-            setError('Seleccione una fecha de reserva válida')
+        if (!checkFechas(fechaInicio,fechaFin)){
+            if(moment(fechaInicio).isSameOrAfter(moment().startOf('day')) && moment(fechaInicio).isBefore(moment(fechaFin)) && (!coincide(fechaInicio, fechaFin))) {     //La fecha inicio es posterior a la actual
+                axios.post(URIreservas, {
+                    fechaInicio: fechaInicio,
+                    fechaFin: fechaFin,
+                    usuarioReserva: idUser,
+                    objetoReserva: idObjeto
+                })
+                window.location.reload()
+            } else {
+                setError('Seleccione una fecha de reserva válida')
+            }
+        }else{
+                setError('Seleccione una fecha de reserva válida')
         }
+
+        
     }
 
     function coincide(inicio, fin) {
@@ -119,11 +125,16 @@ const CompReservaObjeto = () => {
         description: objeto.nombre
       }));
 
+      function checkFechas(fechaInicio, fechaFin){
+        return !fechaInicio || !fechaFin;
+      }
+
+
   return (
     <div className='mt-3'>
             <div className="row">
                 <div className="col">
-                    <h1 tabindex="0">CALENDARIO RESERVAS</h1>
+                    <h1 tabIndex="0">CALENDARIO RESERVAS</h1>
                 </div>
             </div>
         <div className="calendar-container">
@@ -132,8 +143,9 @@ const CompReservaObjeto = () => {
             events={eventos}
             startAccessor="start"
             endAccessor="end"
-            style={{ height: 385, backgroundColor: 'white'}}
-            tabindex="-1"
+            style={{ height: '55vh', backgroundColor: 'white'}}
+            tabIndex="-1"
+            id="calendar"
         />
         </div>
       
@@ -142,10 +154,11 @@ const CompReservaObjeto = () => {
             <div className='row'>
                 <div className='col-md-3'></div>
                 <div className='col-md-6'>
-                <label className='form-label' tabindex="0">Fecha inicio</label>
+                <label className='form-label' tabIndex="0" htmlFor="fechaInicio">Fecha inicio</label>
                     <input
-                        value={fechaInicio}
-                        onChange={ (e) => setFechaInicio(e.target.value)}
+                        id="fechaInicio"
+                        defaultValue ={fechaInicio}
+                        onChange={(e) => setFechaInicio(e.target.value)}
                         type="date"
                         className="form-control"
                         aria-label="Ingrese la fecha de inicio de la reserva"
@@ -159,11 +172,12 @@ const CompReservaObjeto = () => {
             <div className='row'>
                     <div className='col-md-3'></div>
                     <div className='col-md-6'>
-                        <label className='form-label' tabindex="0">Fecha fin</label>
+                        <label className='form-label' tabIndex="0" htmlFor="fechaFin">Fecha fin</label>
                             <input
-                                value={fechaFin}
+                                id="fechaFin"
+                                defaultValue ={fechaFin}
+                                onChange={(e) => setFechaFin(e.target.value)}
                                 type="date"
-                                onChange={ (e) => setFechaFin(e.target.value)}
                                 className="form-control"
                                 aria-label="Ingrese la fecha de fin de la reserva"
                             />
@@ -174,7 +188,7 @@ const CompReservaObjeto = () => {
 
         
         </div>
-        <button type="submit" className='btn mb-2 primario' tabindex="0">Reservar</button>
+        <button type="submit" className='btn mb-2 primario' tabIndex="0" aria-label="Botón de reserva">Reservar</button>
         {error && (
             <div className='row'>
                 <div className='col'>

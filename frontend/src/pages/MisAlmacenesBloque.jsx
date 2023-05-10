@@ -1,6 +1,5 @@
 import CompShowMisAlmacenes from "../almacen/ShowMisAlmacenes.js"
-import CompBloqueIzquierdo from "../bloqueIzquierdo/bloqueIzquierdo.js"
-import { Link, useParams } from "react-router-dom"
+import {useParams } from "react-router-dom"
 import NavbarPer from "../navbar/navbar.js"
 
 function MisAlmacenesBloque () {
@@ -17,7 +16,6 @@ function MisAlmacenesBloque () {
                 </div>
             </div>
         </div>
-        
     )
 }
 

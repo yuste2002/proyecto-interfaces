@@ -57,6 +57,7 @@ const CompShowMisAlmacenes = () => {
     }
 
     return(
+        <html lang="es">
         <div className="container">
             <div className="row">
                 <div className="col p-4">
@@ -81,7 +82,7 @@ const CompShowMisAlmacenes = () => {
                 ))}
             </div>
         </div>
-
+        </html>
     )
 }
 
