@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css'
 
 
-const URIuser = 'http://localhost:8000/usuarios/'
+const URIuser = 'https://interfaces-vsr.herokuapp.com/usuarios/'
 
 
 const CompLogin = () => {
@@ -49,21 +49,21 @@ const CompLogin = () => {
             <div className='container'>
                 <div className='row'>
                     <div className='col-lg-8'>
-                        <img src={fotoPortada} style={{width: '600px', height:'600px', objectFit:'contain'}} className="card-img-top img-fluid"></img>
+                        <img  tabindex="0" src={fotoPortada} alt='Imagen de portada' style={{width: '600px', height:'600px', objectFit:'contain'}} longdesc="almacen.html" className="card-img-top img-fluid"></img>
                     </div>
                     <div className='col-lg-4'>
                         <div className='card mb-3' style={{backgroundColor:'rgba(255, 255, 255, 0.7)', marginTop:'30%'}}>
                             <div className='container mt-2 mb-2'>
                                 <div className='row'>
-                                    <div className='col'>
-                                        <h3>Inicio de sesion</h3>
+                                    <div className='col' >
+                                        <h1 tabindex="0">Inicio de sesion</h1>
                                     </div>
                                 </div>
                                 <div className='row'>
                                     <div className='col'>
                                         <form onSubmit={inicioSesion}>
                                             <div className='mb-3'>
-                                                <label className='form-label'>Nombre de usuario</label>
+                                                <label className='form-label' htmlFor="user">Nombre de usuario</label>
                                                 <input
                                                     value={user}
                                                     onChange={ (e) => setUser(e.target.value)}
@@ -71,10 +71,13 @@ const CompLogin = () => {
                                                     className='form-control'
                                                     style={{ width: 'auto', margin: '0 auto' }}
                                                     required='true'
+                                                    aria-label="Ingrese su nombre de usuario"
+                                                    title="Nombre de usuario"
+                                        
                                                 />
                                             </div>
                                             <div className='mb-3'>
-                                                <label className='form-label'>Contraseña</label>
+                                                <label className='form-label' htmlFor="password">Contraseña</label>
                                                 <input
                                                     value={password}
                                                     onChange={ (e) => setPassword(e.target.value)}
@@ -82,6 +85,8 @@ const CompLogin = () => {
                                                     className='form-control'
                                                     style={{ width: 'auto', margin: '0 auto' }}
                                                     required='true'
+                                                    aria-label="Ingrese su contraseña"
+                                                    title="Contraseña"
                                                 />
                                             </div>
                                             {error && (
@@ -93,13 +98,14 @@ const CompLogin = () => {
                                                     </div>
                                                 </div>
                                             )}
-                                            <button type='submit' className='btn primario'>Iniciar Sesion</button>
+                                            <button type='submit' className='btn primario' tabindex="0" htmlFor="Iniciar">Iniciar Sesion</button>
                                         </form>
                                     </div>
                                 </div>
                                 <div className='row'>
                                     <div className='col mt-3'>
-                                        <h3>¿No tienes cuenta? <Link to="/registro" className='btn rojo'>Registrate</Link></h3>
+                                        <h2 tabindex="0">¿No tienes cuenta?</h2>
+                                        <Link to="/registro" className='btn rojo' tabindex="0" htmlFor="Registrar">Registrate</Link>
                                         
                                     </div>
                                 </div>

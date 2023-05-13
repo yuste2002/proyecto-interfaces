@@ -2,9 +2,9 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 
-const URIobjeto = "http://localhost:8000/objetos/"
-const URIalmacen = 'http://localhost:8000/almacenes/'
-const URIusuarios = 'http://localhost:8000/usuarios/'
+const URIobjeto = "https://interfaces-vsr.herokuapp.com/objetos/"
+const URIalmacen = 'https://interfaces-vsr.herokuapp.com/almacenes/'
+const URIusuarios = 'https://interfaces-vsr.herokuapp.com/usuarios/'
 
 const CompEditObjeto = () => {
     const {idObjeto} = useParams()
@@ -75,12 +75,14 @@ const CompEditObjeto = () => {
         if (!descripcion) setDescripcion(res.data.descripcion)
         if (!ubicacion) setUbicacion(res.data.ubicacion)
         if (!condiciones) setCondiciones(res.data.condiciones)
+        if (!foto) setFoto(res.data.foto)
     }
 
     const [nombre, setNombre] = useState('')
     const [descripcion, setDescripcion] = useState('')
     const [ubicacion, setUbicacion] = useState('')
     const [condiciones, setCondiciones] = useState('')
+    const [foto, setFoto] = useState('')
 
     const editar = async (e) => {
         e.preventDefault()
@@ -89,7 +91,8 @@ const CompEditObjeto = () => {
             nombre: nombre,
             descripcion: descripcion,
             ubicacion: ubicacion,
-            condiciones: condiciones
+            condiciones: condiciones,
+            foto: foto
         })
 
         navigate(`/${idUser}/${objeto.almacenAsociado}`)
@@ -104,8 +107,12 @@ const CompEditObjeto = () => {
         <div className="container mt-3">
             <div className="row">
                 <div className="col">
-                    <h1>FICHA DE OBJETO</h1>
-                    <h5>Objeto de: {dueno.nombre}</h5>
+                    <h1 tabIndex="0">FICHA DE OBJETO</h1>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <h2 tabIndex="0">Objeto de: {dueno.nombre}</h2>
                 </div>
             </div>
             <div className="row">
@@ -115,20 +122,24 @@ const CompEditObjeto = () => {
                             <div className="row">
                                     <div className='col-md-3'></div>
                                     <div className='col-md-6'>
-                                    <label className='form-label'>Nombre</label>
+                                    <label className='form-label' tabIndex="0" htmlFor="nombre">Nombre*</label>
                                         {propietario ? 
-                                        <input
+                                        <input required
+                                        id="nombre"
                                         value={nombre}
                                         onChange={ (e) => setNombre(e.target.value)}
                                         type="text"
                                         className="form-control"
+                                        aria-label="Ingrese el nombre del objeto"
                                         /> :
-                                        <input
+                                            <input
+                                            id="nombre"
                                             value={nombre}
                                             type="text"
                                             className="form-control bg-light"
                                             readonly
-                                        />
+                                            aria-label="Ingrese el nombre del objeto"
+                                            />
                                         }
                                     </div>
                                     <div className='col-md-3'></div>
@@ -136,48 +147,85 @@ const CompEditObjeto = () => {
                         </div>
 
                         <div className="mb-3">
-                            <label className='form-label'>Condiciones</label>
+                            <label className='form-label' tabIndex="0" htmlFor="condiciones">Condiciones</label>
                             {propietario ?
-                            <textarea cols={30} rows={5} //DEJA EDITAR AUNQUE NO SEAS PROPIETARIO PERO NO GUARDA
+                            <textarea cols={30} rows={5}
+                                id="condiciones"
                                 value={condiciones} 
                                 onChange={ (e) => setCondiciones(e.target.value)}
+                                aria-label="Ingrese el las condiciones de reserva del objeto"
                                 className="form-control"/> :
-                                <textarea cols={30} rows={5} 
+                                <textarea cols={30} rows={5}
+                                    id="condiciones" 
                                     value={condiciones} 
-                                    className="form-control bg-light" readonly/>
+                                    className="form-control bg-light" readonly
+                                    />
                             }
                         </div>
 
                         <div className="mb-3">
-                            <label className='form-label'>Descripcion</label>
+                            <label className='form-label' tabIndex="0" htmlFor="descripcion">Descripcion</label>
                             {propietario ?
                             <textarea cols={30} rows={5} 
+                                id="descripcion"
                                 value={descripcion} 
                                 onChange={ (e) => setDescripcion(e.target.value)}
+                                aria-label="Ingrese la descripcion del objeto"
                                 className="form-control"/> :
                                 <textarea cols={30} rows={5} 
+                                    id="descripcion"
                                     value={descripcion} 
-                                    className="form-control bg-light" readonly/>
+                                    className="form-control bg-light" readonly
+                                    />
+                                    
                             }
+                        </div>
+
+                        <div className="mb-3">
+                            <label htmlFor="foto" className='form-label'>Enlace foto</label>
+                            {propietario ? 
+                            <input
+                                id="foto"
+                                value={foto}
+                                onChange={ (e) => setFoto(e.target.value)}
+                                aria-label="Ingrese el enlace de la imagen del objeto"
+                                type="text"
+                                className='form-control'
+                                style={{ width: '75%', margin: '0 auto' }}
+                                title="Ingrese el enlace de la foto del objeto"
+                            /> :
+                                <input
+                                id="foto"
+                                value={foto}
+                                aria-label="Ingrese el enlace de la imagen del objeto"
+                                type="text"
+                                className="form-control bg-light" readonly
+                                style={{ width: '75%', margin: '0 auto' }}
+                                title="Ingrese el enlace de la foto del objeto"
+                            />}
+                                                
                         </div>
 
                         <div className="mb-3">
                                 <div className='row'>
                                     <div className='col-md-3'></div>
                                     <div className='col-md-6'>
-                                    <label className='form-label'>Ubicacion</label>
+                                    <label className='form-label' tabIndex="0" htmlFor="ubicacion">Ubicacion</label>
                                         <input
+                                        id="ubicacion"
                                         value={ubicacion}
                                         onChange={ (e) => setUbicacion(e.target.value)}
+                                        aria-label="Ingrese la ubicacion del objeto"
                                         type="text"
-                                        className="form-control"/> 
+                                        className="form-control"
+                                        /> 
                                     </div>
                                     <div className='col-md-3'></div>
                                 </div> 
                         </div>
 
-                        <button type="submit" className='btn primario'>Guardar</button> <br/>
-                        <button onClick={volverAtras} className='btn btn-secondary mt-2'>Volver atrás</button>
+                        <button type="submit" className='btn primario' tabIndex="0" aria-label="Botón de guardar">Guardar</button> <br/>
+                        <button onClick={volverAtras} className='btn btn-secondary mt-2' tabIndex="0" aria-label="Botón de volver atrás"> Volver atrás</button>
                     </form>
                 </div>
             </div>

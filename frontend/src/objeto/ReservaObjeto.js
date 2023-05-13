@@ -1,24 +1,26 @@
 import React from 'react'
 import { Calendar, momentLocalizer } from 'react-big-calendar'
 import moment from 'moment'
-import { useParams, Link, useNavigate, Navigate } from "react-router-dom"
+import 'moment/locale/es'
+import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import axios from 'axios'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 
 require('moment/locale/es.js');
 const localizer = momentLocalizer(moment)
-const fechaActual = moment().toDate()
 
 
-const URIreservas = "http://localhost:8000/reservas/"
-const URIobjetos = "http://localhost:8000/objetos/"
-const URIusuarios = "http://localhost:8000/usuarios/"
+const URIreservas = "https://interfaces-vsr.herokuapp.com/reservas/"
+const URIobjetos = "https://interfaces-vsr.herokuapp.com/objetos/"
+const URIusuarios = "https://interfaces-vsr.herokuapp.com/usuarios/"
 
 const CompReservaObjeto = () => {
     const {idUser} = useParams()
     const {idObjeto} = useParams()
     const [error, setError] = useState(null)
+
+    const [showConfirmation, setShowConfirmation] = useState(false);
 
     const [objeto, setObjeto] = useState('')
     useEffect( () => {
@@ -81,17 +83,17 @@ const CompReservaObjeto = () => {
     const reservar = async (e) => {
         e.preventDefault()
 
-        if(moment(fechaInicio).isSameOrAfter(moment().startOf('day')) && moment(fechaInicio).isBefore(moment(fechaFin)) && (!coincide(fechaInicio, fechaFin))) {     //La fecha inicio es posterior a la actual
-            axios.post(URIreservas, {
-                fechaInicio: fechaInicio,
-                fechaFin: fechaFin,
-                usuarioReserva: idUser,
-                objetoReserva: idObjeto
-            })
-            window.location.reload()
-        } else {
-            setError('Seleccione una fecha de reserva válida')
+        if (!checkFechas(fechaInicio,fechaFin)){
+            if(moment(fechaInicio).isSameOrAfter(moment().startOf('day')) && moment(fechaInicio).isBefore(moment(fechaFin)) && (!coincide(fechaInicio, fechaFin))) {     //La fecha inicio es posterior a la actual
+                setShowConfirmation(true);
+            } else {
+                setError('Seleccione una fecha de reserva válida')
+            }
+        }else{
+                setError('Seleccione una fecha de reserva válida')
         }
+
+        
     }
 
     function coincide(inicio, fin) {
@@ -119,11 +121,16 @@ const CompReservaObjeto = () => {
         description: objeto.nombre
       }));
 
+    function checkFechas(fechaInicio, fechaFin){
+        return !fechaInicio || !fechaFin;
+      }
+
+
   return (
     <div className='mt-3'>
             <div className="row">
                 <div className="col">
-                    <h1>CALENDARIO RESERVAS</h1>
+                    <h1 tabIndex="0">CALENDARIO RESERVAS</h1>
                 </div>
             </div>
         <div className="calendar-container">
@@ -132,8 +139,13 @@ const CompReservaObjeto = () => {
             events={eventos}
             startAccessor="start"
             endAccessor="end"
-            style={{ height: 385, backgroundColor: 'white'}}
-        />
+            className={'REACT-CALENDAR p-2'}
+            view='month'
+            style={{ height: '55vh', backgroundColor: 'white'}}
+            tabIndex={-1}
+            id="calendar"
+            title="Calendario"
+            />
         </div>
       
       <form onSubmit={reservar}>
@@ -141,12 +153,15 @@ const CompReservaObjeto = () => {
             <div className='row'>
                 <div className='col-md-3'></div>
                 <div className='col-md-6'>
-                <label className='form-label'>Fecha inicio</label>
+                <label className='form-label' tabIndex="0" htmlFor="fechaInicio">Fecha inicio</label>
                     <input
-                        value={fechaInicio}
-                        onChange={ (e) => setFechaInicio(e.target.value)}
+                        id="fechaInicio"
+                        defaultValue ={fechaInicio}
+                        onChange={(e) => setFechaInicio(e.target.value)}
                         type="date"
-                        className="form-control"
+                        className={`form-control ${error ? 'error' : ''}`}
+                        aria-label="Ingrese la fecha de inicio de la reserva"
+                        title="Fecha de inicio"
                     />
                 </div>
                 <div className='col-md-3'></div>
@@ -157,12 +172,15 @@ const CompReservaObjeto = () => {
             <div className='row'>
                     <div className='col-md-3'></div>
                     <div className='col-md-6'>
-                        <label className='form-label'>Fecha fin</label>
+                        <label className='form-label' tabIndex="0" htmlFor="fechaFin">Fecha fin</label>
                             <input
-                                value={fechaFin}
+                                id="fechaFin"
+                                defaultValue ={fechaFin}
+                                onChange={(e) => setFechaFin(e.target.value)}
                                 type="date"
-                                onChange={ (e) => setFechaFin(e.target.value)}
-                                className="form-control"
+                                className={`form-control ${error ? 'error' : ''}`}
+                                aria-label="Ingrese la fecha de fin de la reserva"
+                                title="Fecha de fin"
                             />
                     </div>
                     <div className='col-md-3'></div>
@@ -171,7 +189,7 @@ const CompReservaObjeto = () => {
 
         
         </div>
-        <button type="submit" className='btn mb-2 primario'>Reservar</button>
+        <button type="submit" className='btn mb-2 primario' tabIndex="0" aria-label="Botón de reserva" title="Reservar objeto">Reservar</button>
         {error && (
             <div className='row'>
                 <div className='col'>
@@ -182,6 +200,49 @@ const CompReservaObjeto = () => {
             </div>
         )}
       </form>
+                {showConfirmation && (
+                <div className="popup-container">
+                    <div className="popup">
+                    <p>¿Estás seguro de que deseas realizar la reserva?</p>
+                    <div className="popup-buttons">
+                        <button
+                        className="btn mb-2 primario" tabIndex="0" aria-label="Confirmar reserva" title="Confirmar la reserva"
+                        onClick={() => {
+                            // Realizar la reserva
+                            axios
+                            .post(URIreservas, {
+                                fechaInicio: fechaInicio,
+                                fechaFin: fechaFin,
+                                usuarioReserva: idUser,
+                                objetoReserva: idObjeto,
+                            })
+                            .then(() => {
+                                window.location.reload();
+                            })
+                            .catch((error) => {
+                                // Manejar el error de la reserva
+                                setError('Error al realizar la reserva');
+                            });
+
+                            // Cerrar el popup de confirmación
+                            setShowConfirmation(false);
+                        }}
+                        >
+                        Confirmar
+                        </button>
+                        <button
+                        className="btn mb-2 rojo" tabIndex="0" aria-label="Cancelar reserva" title="Cancelar la reserva"
+                        onClick={() => {
+                            // Cerrar el popup de confirmación
+                            setShowConfirmation(false);
+                        }}
+                        >
+                        Cancelar
+                        </button>
+                    </div>
+                    </div>
+                </div>
+                )}
     </div>
   )
 }

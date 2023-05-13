@@ -4,9 +4,9 @@ import axios from 'axios'
 import objetoDefault from '../imagenes/objectDefault.jpg'
 
 
-const URIobjetos = "http://localhost:8000/objetos/"
-const URIalmacen = "http://localhost:8000/almacenes/"
-const URIreservas = "http://localhost:8000/reservas/"
+const URIobjetos = "https://interfaces-vsr.herokuapp.com/objetos/"
+const URIalmacen = "https://interfaces-vsr.herokuapp.com/almacenes/"
+const URIreservas = "https://interfaces-vsr.herokuapp.com/reservas/"
 
 const CompShowObjetos = () => {
     const {idAlmacen} = useParams()
@@ -61,7 +61,7 @@ const CompShowObjetos = () => {
         <div className="container mb-4">
             <div className="row">
                 <div className="col-md-1">
-                    <h2>Objetos</h2>
+                    <h1 tabindex="0">Objetos</h1>
                 </div>
                 <div className="col-md-11"/>
             </div>
@@ -73,16 +73,16 @@ const CompShowObjetos = () => {
                                 <div className="row align-items-center">
                                     <div className="col-md-4">
                                         {objeto.foto == "" || objeto.foto == undefined ? 
-                                        <img src={objetoDefault} style={{width: '70%', borderRadius:'5px'}} className="card-img-top img-fluid"></img>:
-                                        <img src={objeto.foto} style={{width: '70%', borderRadius:'5px'}} className="card-img-top img-fluid"></img>
+                                        <img alt="Foto objeto predeterminada" src={objetoDefault} style={{width: '70%', borderRadius:'5px'}} className="card-img-top img-fluid"></img>:
+                                        <img alt="Foto objeto personalizada" src={objeto.foto} style={{width: '70%', borderRadius:'5px'}} className="card-img-top img-fluid"></img>
                                         }
                                     </div>
                                     <div className="col-md-8">
-                                        <h3>{objeto.nombre}</h3>
+                                        <h3 tabindex="0">{objeto.nombre}</h3>
                                         <div className="col">
-                                            <Link to={`/objeto/${objeto.id}/${idUser}`} className='btn primario'>Ver Objeto</Link>
+                                            <Link to={`/objeto/${objeto.id}/${idUser}`} className='btn primario' tabindex="0">Reservar/Gestionar</Link>
                                             {propietarioAlmacen || objeto.propietario == idUser ? 
-                                            <button className="ms-2 btn rojo" onClick={()=>deleteObjeto(objeto.id)}>Borrar</button> : null}
+                                            <button className="ms-2 btn rojo" onClick={()=>deleteObjeto(objeto.id)}tabindex="0">Borrar</button> : null}
                                         </div>
                                     </div>
                                 </div>
@@ -91,7 +91,7 @@ const CompShowObjetos = () => {
                     </div>
                 ))}
             </div>
-            <Link to={`/${idAlmacen}/${idUser}/createObjeto`} className='btn primario'>Añadir objeto</Link>
+            <Link to={`/${idAlmacen}/${idUser}/crearObjeto`} className='btn primario'>Añadir objeto</Link>
         </div>
     )
 }

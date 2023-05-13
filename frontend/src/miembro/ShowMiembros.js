@@ -4,9 +4,9 @@ import axios from 'axios'
 import fotoUsuario from '../imagenes/usuario.jpg'
 import fotoPropietario from '../imagenes/propietario.jpg'
 
-const URIinvitaciones = "http://localhost:8000/invitaciones/"
-const URIusuarios = "http://localhost:8000/usuarios/"
-const URIalmacen = "http://localhost:8000/almacenes/"
+const URIinvitaciones = "https://interfaces-vsr.herokuapp.com/invitaciones/"
+const URIusuarios = "https://interfaces-vsr.herokuapp.com/usuarios/"
+const URIalmacen = "https://interfaces-vsr.herokuapp.com/almacenes/"
 
 const CompShowMiembros = () => {
     
@@ -114,7 +114,7 @@ const CompShowMiembros = () => {
         <div className="container">
             <div className="row">
                 <div className="col-md-1">
-                    <h2>Miembros</h2>
+                    <h1 tabindex="0">Miembros</h1>
                 </div>
                 <div className="col-md-11"/>
             </div>
@@ -124,13 +124,13 @@ const CompShowMiembros = () => {
                         <div className="card-body">
                             <div className="row align-items-center">
                                 <div className="col-md-4">
-                                    <img src={fotoPropietario} style={{width: '80px', height: '80px', objectFit:'contain'}} className="card-img-top img-fluid"></img>
+                                    <img src={fotoPropietario}  alt='Imagen de propietario' style={{width: '80px', height: '80px', objectFit:'contain'}} className="card-img-top img-fluid"></img>
                                 </div>
                                 <div className="col-md-8">
                                 <div className="row">
                                         <div className="col-md-1"></div>
                                         <div className="col-md-8">
-                                        <h3>{propietario} (propietario)</h3>
+                                        <h3 tabindex="0">{propietario} (propietario)</h3>
                                         </div>
                                         <div className="col-md-1">
                                         </div>
@@ -147,16 +147,16 @@ const CompShowMiembros = () => {
                         <div className="card-body">
                             <div className="row align-items-center">
                                 <div className="col-md-4">
-                                    <img src={fotoUsuario} style={{width: '80px', height: '80px', objectFit:'contain'}} className="card-img-top img-fluid"></img>
+                                    <img src={fotoUsuario} alt='Imagen de propietario' style={{width: '80px', height: '80px', objectFit:'contain'}} className="card-img-top img-fluid"></img>
                                 </div>
                                 <div className="col-md-8">
                                     <div className="row">
                                         <div className="col-md-2"></div>
                                         <div className="col-md-6">
-                                            <h3>{miembro}</h3>
+                                            <h3 tabindex="0">{miembro}</h3>
                                         </div>
                                         <div className="col-md-2">
-                                            {propietarioAlmacen ? <button className="btn primario" onClick={ () => expulsarMiembro(miembro)}>Expulsar</button> : null}
+                                            {propietarioAlmacen ? <button className="btn rojo" tabindex="0" onClick={ () => expulsarMiembro(miembro)}>Expulsar</button> : null}
                                         </div>
                                     </div>
                                 </div>
@@ -169,17 +169,19 @@ const CompShowMiembros = () => {
             {propietarioAlmacen ? 
             <div className="mb-2 mt-3">
                 <form onSubmit={invitar}>
-                    <label className='form-label'>Invitar miembro</label>
+                    <label htmlFor="email" className='form-label' tabindex="0">Invitar miembro</label>
                     <div className="row">
                         <div className="col-md-3"></div>
                         <div className="col-md-5 mb-3 d-flex justify-content-center align-items-center">
                             <input
+                            id="email"
                             value={email}
                             onChange={ (e) => setEmail(e.target.value)}
+                            aria-label="Ingrese el correo electronico para invitar"
                             type="text"
                             className='form-control'
                             placeholder="usuario@ejemplo.com"
-                            style={{ width: '100%'}}
+                            title="Ingresar el correo electronico del usuario que desea invitar al almacen"
                             />
                         </div>
                         <div className="col-md-2">

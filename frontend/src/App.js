@@ -39,7 +39,7 @@ function App() {
           <Route path='/:idUser/editAlmacen/:idAlmacen' element={<EditAlmacen/>}/>
           <Route path='/:idUser/:idAlmacen' element={<AlmacenBloque/>}/>
           <Route path='/objeto/:idObjeto/:idUser' element={<ObjetoBloque/>}/> 
-          <Route path='/:idAlmacen/:idUser/createObjeto' element={<CompCreateObjetos/>}/>
+          <Route path='/:idAlmacen/:idUser/crearObjeto' element={<CompCreateObjetos/>}/>
           <Route path='/reserva/:idObjeto/:idUser' element={<CompReservaObjeto/>}/>
         </Routes>
       </BrowserRouter>

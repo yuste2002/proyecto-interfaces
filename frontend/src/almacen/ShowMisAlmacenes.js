@@ -4,10 +4,10 @@ import axios from 'axios'
 import almacenDefault from '../imagenes/almacenDefault.jpg'
 
 
-const URIalmacen = 'http://localhost:8000/almacenes/'
-const URIinvitacion = 'http://localhost:8000/invitaciones/'
-const URIobjeto = 'http://localhost:8000/objetos/'
-const URIreserva = 'http://localhost:8000/reservas/'
+const URIalmacen = 'https://interfaces-vsr.herokuapp.com/almacenes/'
+const URIinvitacion = 'https://interfaces-vsr.herokuapp.com/invitaciones/'
+const URIobjeto = 'https://interfaces-vsr.herokuapp.com/objetos/'
+const URIreserva = 'https://interfaces-vsr.herokuapp.com/reservas/'
 
 const CompShowMisAlmacenes = () => {
     //Pillo el id del usuario desde la url
@@ -57,10 +57,11 @@ const CompShowMisAlmacenes = () => {
     }
 
     return(
+        <html lang="es">
         <div className="container">
             <div className="row">
                 <div className="col p-4">
-                    <h1>Mis Almacenes</h1>
+                    <h1 tabindex="0">Mis Almacenes</h1>
                 </div>
             </div>
             <div className="row row-cols-4 align-items-center">
@@ -68,20 +69,20 @@ const CompShowMisAlmacenes = () => {
                     <div className="col" key={almacen.id}>
                         <div className="card text-center mb-4">
                             {almacen.foto == "" || almacen.foto == undefined ? 
-                            <img src={almacenDefault} style={{width: '100%', height:'100%', objectFit:'contain'}} className="card-img-top img-fluid"></img>:
-                            <img src={almacen.foto} style={{width: '100%', height:'100%', objectFit:'contain'}} className="card-img-top img-fluid"></img>
+                            <img src={almacenDefault} alt='Imagen almacen'style={{width: '100%', height:'100%', objectFit:'contain'}} className="card-img-top img-fluid"></img>:
+                            <img src={almacen.foto} alt='Imagen almacen' style={{width: '100%', height:'100%', objectFit:'contain'}} className="card-img-top img-fluid"></img>
                             }
                             <div className="card-body">
-                                <h2 className="card-title">{almacen.nombre}</h2>
-                                <Link to={`/${idUser}/${almacen.id}`} className='btn primario'>Acceder</Link> 
-                                <button className="ms-2 btn rojo"onClick={ ()=>deleteAlmacen(almacen.id)}>Borrar</button>
+                                <h2 className="card-title" tabindex="0">{almacen.nombre}</h2>
+                                <Link to={`/${idUser}/${almacen.id}`} className='btn primario' tabindex="0">Acceder</Link> 
+                                <button tabindex="0" className="ms-2 btn rojo"onClick={ ()=>deleteAlmacen(almacen.id)}>Borrar</button>
                             </div>
                         </div>
                     </div>
                 ))}
             </div>
         </div>
-
+        </html>
     )
 }
 

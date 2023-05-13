@@ -78,15 +78,27 @@
   justify-content: space-between;
   align-items: center;
   background: #bb5751 ;
-  padding: 15px;
 }
 
-.navbar__logo img {
-  width: 50px;
-  height: 50px;
-  margin-right: 30px;
-  margin-left: 10px;
-  border-radius: 50%;
+.navbar-logo {
+  width: 7vh !important;
+  border-radius: 20%;
+  text-align: left;
+}
+
+.navbar-link {
+  color: #fff4e3 !important;
+  margin-right: 10px;
+  font-size: x-large;
+}
+
+.navbar-link:hover{
+  color: #fff4e3 !important;
+  font-weight: bold !important;
+}
+
+.navbar-collapse{
+  color: #fff4e3 !important;
 }
 
 .gradient-down{
@@ -122,4 +134,46 @@
 
 .rojo{
   background-color: #EF726B !important;
+}
+
+.error{
+  border: 2% red solid;
+}
+
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999; /* Establece un alto nivel de apilamiento */
+}
+
+.popup {
+  position: relative; /* Cambia a posición relativa */
+  background-color: white;
+  padding: 8%;
+  border-radius: 2%;
+  z-index: 10000; /* Establece un nivel de apilamiento aún más alto */
+}
+
+.popup p {
+  margin-bottom: 4%;
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.popup-buttons button {
+  margin-right: 15%;
+}
+
+.hidden {
+  display: none;
 }
