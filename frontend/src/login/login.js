@@ -45,12 +45,11 @@ const CompLogin = () => {
     }
 
     return(
-        <html lang='es'>
         <div className='d-flex align-items-center vh-100 fondoLogin'>
             <div className='container'>
                 <div className='row'>
                     <div className='col-lg-8'>
-                        <img  tabindex="0" src={fotoPortada} alt='Imagen de portada' style={{width: '600px', height:'600px', objectFit:'contain'}} className="card-img-top img-fluid"></img>
+                        <img  tabindex="0" src={fotoPortada} alt='Imagen de portada' style={{width: '600px', height:'600px', objectFit:'contain'}} longdesc="almacen.html" className="card-img-top img-fluid"></img>
                     </div>
                     <div className='col-lg-4'>
                         <div className='card mb-3' style={{backgroundColor:'rgba(255, 255, 255, 0.7)', marginTop:'30%'}}>
@@ -74,6 +73,7 @@ const CompLogin = () => {
                                                     required='true'
                                                     aria-label="Ingrese su nombre de usuario"
                                                     title="Nombre de usuario"
+                                        
                                                 />
                                             </div>
                                             <div className='mb-3'>
@@ -104,7 +104,8 @@ const CompLogin = () => {
                                 </div>
                                 <div className='row'>
                                     <div className='col mt-3'>
-                                        <h2 tabindex="0">¿No tienes cuenta? <Link to="/registro" className='btn rojo' tabindex="0" htmlFor="Registrar">Registrate</Link></h2>
+                                        <h2 tabindex="0">¿No tienes cuenta?</h2>
+                                        <Link to="/registro" className='btn rojo' tabindex="0" htmlFor="Registrar">Registrate</Link>
                                         
                                     </div>
                                 </div>
@@ -114,7 +115,6 @@ const CompLogin = () => {
                 </div>
             </div>
         </div>
-        </html>
     )
 }
 

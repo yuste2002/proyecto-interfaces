@@ -80,7 +80,7 @@ const CompShowObjetos = () => {
                                     <div className="col-md-8">
                                         <h3 tabindex="0">{objeto.nombre}</h3>
                                         <div className="col">
-                                            <Link to={`/objeto/${objeto.id}/${idUser}`} className='btn primario' tabindex="0">Ver Objeto</Link>
+                                            <Link to={`/objeto/${objeto.id}/${idUser}`} className='btn primario' tabindex="0">Reservar/Gestionar</Link>
                                             {propietarioAlmacen || objeto.propietario == idUser ? 
                                             <button className="ms-2 btn rojo" onClick={()=>deleteObjeto(objeto.id)}tabindex="0">Borrar</button> : null}
                                         </div>
@@ -91,7 +91,7 @@ const CompShowObjetos = () => {
                     </div>
                 ))}
             </div>
-            <Link to={`/${idAlmacen}/${idUser}/createObjeto`} className='btn primario'>Añadir objeto</Link>
+            <Link to={`/${idAlmacen}/${idUser}/crearObjeto`} className='btn primario'>Añadir objeto</Link>
         </div>
     )
 }

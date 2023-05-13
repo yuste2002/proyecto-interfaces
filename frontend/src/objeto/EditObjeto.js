@@ -75,12 +75,14 @@ const CompEditObjeto = () => {
         if (!descripcion) setDescripcion(res.data.descripcion)
         if (!ubicacion) setUbicacion(res.data.ubicacion)
         if (!condiciones) setCondiciones(res.data.condiciones)
+        if (!foto) setFoto(res.data.foto)
     }
 
     const [nombre, setNombre] = useState('')
     const [descripcion, setDescripcion] = useState('')
     const [ubicacion, setUbicacion] = useState('')
     const [condiciones, setCondiciones] = useState('')
+    const [foto, setFoto] = useState('')
 
     const editar = async (e) => {
         e.preventDefault()
@@ -89,7 +91,8 @@ const CompEditObjeto = () => {
             nombre: nombre,
             descripcion: descripcion,
             ubicacion: ubicacion,
-            condiciones: condiciones
+            condiciones: condiciones,
+            foto: foto
         })
 
         navigate(`/${idUser}/${objeto.almacenAsociado}`)
@@ -119,9 +122,9 @@ const CompEditObjeto = () => {
                             <div className="row">
                                     <div className='col-md-3'></div>
                                     <div className='col-md-6'>
-                                    <label className='form-label' tabIndex="0" htmlFor="nombre">Nombre</label>
+                                    <label className='form-label' tabIndex="0" htmlFor="nombre">Nombre*</label>
                                         {propietario ? 
-                                        <input
+                                        <input required
                                         id="nombre"
                                         value={nombre}
                                         onChange={ (e) => setNombre(e.target.value)}
@@ -176,6 +179,31 @@ const CompEditObjeto = () => {
                                     />
                                     
                             }
+                        </div>
+
+                        <div className="mb-3">
+                            <label htmlFor="foto" className='form-label'>Enlace foto</label>
+                            {propietario ? 
+                            <input
+                                id="foto"
+                                value={foto}
+                                onChange={ (e) => setFoto(e.target.value)}
+                                aria-label="Ingrese el enlace de la imagen del objeto"
+                                type="text"
+                                className='form-control'
+                                style={{ width: '75%', margin: '0 auto' }}
+                                title="Ingrese el enlace de la foto del objeto"
+                            /> :
+                                <input
+                                id="foto"
+                                value={foto}
+                                aria-label="Ingrese el enlace de la imagen del objeto"
+                                type="text"
+                                className="form-control bg-light" readonly
+                                style={{ width: '75%', margin: '0 auto' }}
+                                title="Ingrese el enlace de la foto del objeto"
+                            />}
+                                                
                         </div>
 
                         <div className="mb-3">

@@ -84,6 +84,7 @@ function AlmacenBloque () {
                                             placeholder="(Nuevo nombre)"
                                             style={{ width: '100%'}}
                                             aria-label="Ingresar nuevo nombre de almacen"
+                                            title="Ingresar nuevo nombre de almacen"
                                         />
                                     </div>
                                     <div className="col-md-3">

@@ -26,7 +26,6 @@ import ObjetoBloque from './pages/ObjetoBloque';
 
 function App() {
   return (
-    <html>
     <div className="App fondoOut">
       <BrowserRouter>
         <Routes>
@@ -40,12 +39,11 @@ function App() {
           <Route path='/:idUser/editAlmacen/:idAlmacen' element={<EditAlmacen/>}/>
           <Route path='/:idUser/:idAlmacen' element={<AlmacenBloque/>}/>
           <Route path='/objeto/:idObjeto/:idUser' element={<ObjetoBloque/>}/> 
-          <Route path='/:idAlmacen/:idUser/createObjeto' element={<CompCreateObjetos/>}/>
+          <Route path='/:idAlmacen/:idUser/crearObjeto' element={<CompCreateObjetos/>}/>
           <Route path='/reserva/:idObjeto/:idUser' element={<CompReservaObjeto/>}/>
         </Routes>
       </BrowserRouter>
     </div>
-    </html>
   );
 }
 
