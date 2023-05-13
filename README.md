@@ -1,5 +1,4 @@
-# proyecto-interfaces 
-# Grupo L
+# Proyecto grupo L
 
 La aplicación es accesible desde el siguiente enlace:
 https://lucent-melba-05d1e6.netlify.app/
